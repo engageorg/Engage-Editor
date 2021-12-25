@@ -1,0 +1,11 @@
+body{
+  padding: 0;
+  margin: 0;
+  font-family: 'Space Mono', monospace;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}

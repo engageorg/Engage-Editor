@@ -1,0 +1,31 @@
+.editor-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 48px;
+    background-color: #333333;
+    /* border-right: 1px solid #6b6a67; */
+}
+
+.sidenav-buttons{
+    font-size: 24px;
+    align-items: center;
+    transition: 0.2s;
+    justify-content: center;
+    color: #6b6a67;
+    cursor: pointer;
+    padding: 15px;
+}
+.sidenav_button_active{
+      color: white !important;
+}
+
+.sidenav-buttons:active{
+      color: #6b6a67 ;
+      transform: scale(0.9) ;
+    }
+    
+.sidenav-buttons:hover{ 
+    color: white;
+    transform: scale(1.1);
+}
