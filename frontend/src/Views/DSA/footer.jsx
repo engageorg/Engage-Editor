@@ -5,7 +5,7 @@ function Footer() {
         <footer className="texteditor_footer">
         <div className="side_footer">
           <span className="footer_text l_footer">
-            <i className="fas fa-user-tie"></i> $USERNAME
+            <i className="fas fa-file-code"></i> <input className="file-name" defaultValue={"main.cpp"}/>
           </span>
           <span className="footer_text l_footer error">
             <i className="far fa-times-circle"></i>

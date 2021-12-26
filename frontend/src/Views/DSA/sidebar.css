@@ -1,29 +1,29 @@
 .editor-sidebar {
     display: flex;
-    flex-direction: row;
-    width: 100vw;
-    height: 40px;
+    flex-direction: column;
+    align-items: center;
+    width: 48px;
+    height: calc(100vh - 2.4vh);
     background-color: #333333;
     /* border-right: 1px solid #6b6a67; */
 }
 
 .sidenav-buttons{
-    font-size: 18px;
+    font-size: 24px;
     align-items: center;
     transition: 0.2s;
     justify-content: center;
     color: #6b6a67;
     cursor: pointer;
-    padding: 5px;
-    padding-right: 19px;
+    padding: 15px;
 }
 .sidenav_button_active{
       color: white !important;
 }
 
 .sidenav-buttons:active{
-      color: #6b6a67 ;
-      transform: scale(0.9) ;
+      color: #6b6a67;
+      transform: scale(0.9);
     }
     
 .sidenav-buttons:hover{ 

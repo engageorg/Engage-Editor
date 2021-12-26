@@ -4,13 +4,14 @@ import Footer from "./footer";
 import Split from "react-split";
 import Problem from "./problem";
 import Editor from "@monaco-editor/react";
+
 function DSA() {
 
 return(
     <div className="DSA">
     <Split
-        sizes={[5, 65, 30]}
-        minSize={0}
+        sizes={[4, 66, 30]}
+        minSize={40}
         expandToMin={false}
         direction="horizontal"
         cursor="col-resize"
@@ -25,7 +26,7 @@ return(
     />
         <Split
             sizes={[50, 50]}
-            minSize={0}
+            minSize={30}
             expandToMin={false}
             direction="vertical"
             cursor="col-resize"

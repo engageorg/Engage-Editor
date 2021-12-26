@@ -3,6 +3,7 @@
     width: 100vw;
     height: 100vh;
     flex: 1;
+    background-color: #252526;
     flex-direction: column;
     overflow: hidden;
 }
@@ -31,6 +32,7 @@
 .output-input{
     display: flex;
     flex-direction: column;
+    color: #838281;
 }
 
 .output{
@@ -47,4 +49,11 @@
     width: 100%;
     height: 100%;
     border: none;
+    user-select: none;
+    color: #8d8c88;
+    background-color: transparent;
+}
+
+.input-textarea:focus, .output-textarea:focus{
+    outline: none !important;
 }
