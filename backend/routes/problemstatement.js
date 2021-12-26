@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     const $ = cheerio.load(html);
 
     //Problem Statement
-    const problemStatement = $('.problem-statement > div:nth-child(2)').text()
+    const problem_statement = $('.problem-statement > div:nth-child(2)').text()
 
     //Title
     const title = $('.problem-statement > div:nth-child(1) > .title').text()
@@ -31,7 +31,7 @@ router.get("/", (req, res) => {
     
     //sample-tests -  this will be a array
 
-    res.send({title, problemStatement, time_limit, memory_limit, input_specifications, output_specifications})
+    res.send({title, problem_statement, time_limit, memory_limit, input_specifications, output_specifications})
     })
     .catch(function(err){
     //handle error
