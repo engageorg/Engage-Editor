@@ -1,9 +1,13 @@
+const express = require("express");
 const rp = require('request-promise');
 const cheerio = require('cheerio');
-const url = 'https://codeforces.com/problemset/problem/1620/G';
 
-rp(url)
-  .then(function(html){
+const router = express.Router()
+
+router.get("/", (req, res) => {
+   const url = req.query.url;
+    rp(url)
+    .then(function(html){
     const $ = cheerio.load(html);
 
     //Problem Statement
@@ -17,16 +21,26 @@ rp(url)
 
     //Memory limit
     const memory_limit = $('.problem-statement > div:nth-child(1) > .memory-limit').text().replace('memory limit per test', '');
- 
+
     //input-specifications
     const input_specifications = $('.problem-statement > div:nth-child(3)').text().replace('Input', '');
-   
+    
     //output-specifications
     const output_specifications = $('.problem-statement > div:nth-child(4)').text().replace('Output', '');
-    console.log(output_specifications)
     
-   //sample-tests -  this will be a array
-  })
-  .catch(function(err){
+    
+    //sample-tests -  this will be a array
+
+    res.send({title, problemStatement, time_limit, memory_limit, input_specifications, output_specifications})
+    })
+    .catch(function(err){
     //handle error
-  });
+    });
+
+})
+
+module.exports = router
+
+
+const url = 'https://codeforces.com/problemset/problem/1620/G';
+

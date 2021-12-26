@@ -2,6 +2,7 @@ const app = require('express')()
 const express = require('express');
 const login = require('./routes/login')
 const signup = require('./routes/signup')
+const problemStatement = require('./routes/problemstatement')
 const firebase = require("firebase/app");
 require("firebase/firestore");
 require("firebase/storage");
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
     
 app.use('/signup', signup)
 app.use('/login', login)
+app.use('/ps', problemStatement);
 
 
 app.listen(5000, () => {
