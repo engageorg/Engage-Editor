@@ -10,7 +10,7 @@ function Sidebar() {
           <i className="fas fa-file-import"></i> Import Problem Statement
         </button>
         <button className="sidenav-buttons">
-          <i className="far fa-laptop-code"></i> File
+          <i className="far fa-folder"></i> File
         </button>
       </div>
      );
