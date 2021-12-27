@@ -38,6 +38,8 @@ const file = (state = DSAFiles[1], action) => {
         DSAFiles.push(action.file)
         state = DSAFiles.at(-1);
         return state;
+      case "changename":
+        state.name = action.name;
       default:
         return state;
     }

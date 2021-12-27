@@ -1,11 +1,26 @@
 import React from "react";
-import "./footer.css"
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { changeFileName } from "../../actions";
+import "./footer.css";
+
 function Footer(props) {
+    const [fileName, setFileName] = useState(props.fileName);
+    const dispatch = useDispatch();
+    const handleNameChange = (event) => {
+       setFileName(event.target.value)
+       dispatch(changeFileName(event.target.value));
+    }
+
+    useEffect(() => {
+      setFileName(props.fileName)
+    }, [props.fileName])
+
     return ( 
         <footer className="texteditor_footer">
         <div className="side_footer">
           <span className="footer_text l_footer">
-            <i className="fas fa-file-code"></i> <input className="file-name" defaultValue={props.fileName}/>
+            <i className="fas fa-file-code"></i> <input className="file-name" onChange = {handleNameChange} value={fileName}/>
           </span>
           <span className="footer_text l_footer error">
             <i className="far fa-times-circle"></i>

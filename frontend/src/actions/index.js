@@ -11,3 +11,10 @@ export const addFile = (fi) => {
         file : fi
     }
 }
+
+export const changeFileName = (na) => {
+    return {
+        type : "changename",
+        name : na
+    }
+}
