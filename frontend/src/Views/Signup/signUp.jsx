@@ -13,15 +13,16 @@ export default function SignUp() {
         email:userEmail.value,
         password:userPassword.value,
       }).then(response => {
-        if(response.data) {
-          alert("Lecture Saved")
+        if(response.data.status === 200) {
+          localStorage.setItem("currentUserId", JSON.stringify(response.data.id))
+          alert(response.data.message)
         }
       })
     });
   }, []);
   return (
       <>
-            <input type="email" id="email" placeholder="Email" />
+      <input type="email" id="email" placeholder="Email" />
       <input type="password" id="password" placeholder="Password" />
       <button id="submit">Sign Up</button>
       </>

@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
     .auth()
     .signInWithEmailAndPassword(req.body.email, req.body.password)
     .then((result) => {
-        console.log(result)
+        res.json({message:"Login Successful", status:200, id:result.user.uid})
     })
     .catch((error) => {
       console.log(error);
