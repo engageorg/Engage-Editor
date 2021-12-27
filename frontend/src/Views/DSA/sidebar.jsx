@@ -12,7 +12,7 @@ function Sidebar() {
         <button className="full sidenav-buttons" >
           <i className="fas fa-expand-arrows-alt"></i>
         </button>
-        <button className="full sidenav-buttons">
+        <button className="full sidenav-buttons" >
           <i className="fas fa-search"></i>
         </button>
         <button className="output sidenav-buttons">
