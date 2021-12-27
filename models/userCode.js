@@ -9,8 +9,14 @@ const userCodeSchema = new mongoose.Schema({
       type:String,
       required: true
     },
+    language:{
+        type:String,
+        required: true,
+        default: "cpp"
+    },
     creator:{
-        type:String
+        type:String,
+        required:true
     },
     createdAt: {
         type: Date,

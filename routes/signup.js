@@ -6,7 +6,7 @@ router.post("/", (req, res) => {
     firebase.auth()
     .createUserWithEmailAndPassword(req.body.email, req.body.password)
     .then((result) => {
-      console.log(result)
+      res.json({message:"Email Added", status:200, id:result.user.uid})
     })
 })
 

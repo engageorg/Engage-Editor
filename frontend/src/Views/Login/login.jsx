@@ -13,7 +13,8 @@ export default function Login() {
         email:userEmail.value,
         password:userPassword.value,
       }).then(response => {
-        console.log(response)
+        localStorage.setItem("currentUserId", JSON.stringify(response.data.id))
+        alert(response.data.message)
       })
     });
   }, []);
@@ -21,7 +22,7 @@ export default function Login() {
       <>
             <input type="email" id="email" placeholder="Email" />
       <input type="password" id="password" placeholder="Password" />
-      <button id="submit">Sign Up</button>
+      <button id="submit">Login</button>
       </>
   );
 }
