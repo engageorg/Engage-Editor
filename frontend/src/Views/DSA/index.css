@@ -3,24 +3,25 @@
     width: 100vw;
     height: 100vh;
     flex: 1;
+    background-color: #1e1e1e;
     flex-direction: column;
     overflow: hidden;
 }
 
-.gutter {
-    background-color: var(--fg);
-    background-repeat: no-repeat;
-    background-position: 50%;
-  }
   
 .gutter.gutter-horizontal {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
     cursor: col-resize;
+    width: 10px !important;
+ 
 }
 
 .gutter.gutter-vertical {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
     cursor: row-resize;
+   
+}
+
+.gutter.gutter-horizontal:hover, .gutter.gutter-vertical:hover{
+    background-color: #333333;
 }
 
 .split-flex {
@@ -31,6 +32,7 @@
 .output-input{
     display: flex;
     flex-direction: column;
+    color: #838281;
 }
 
 .output{
@@ -41,10 +43,18 @@
 .input{
     display: flex;
     flex-direction: column;
+    border-bottom:1px solid #333333;
 }
 
 .input-textarea, .output-textarea{
     width: 100%;
     height: 100%;
     border: none;
+    user-select: none;
+    color: #8d8c88;
+    background-color: transparent;
+}
+
+.input-textarea:focus, .output-textarea:focus{
+    outline: none !important;
 }
