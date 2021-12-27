@@ -1,11 +1,11 @@
 import React from "react";
 import "./footer.css"
-function Footer() {
+function Footer(props) {
     return ( 
         <footer className="texteditor_footer">
         <div className="side_footer">
           <span className="footer_text l_footer">
-            <i className="fas fa-file-code"></i> <input className="file-name" defaultValue={"main.cpp"}/>
+            <i className="fas fa-file-code"></i> <input className="file-name" defaultValue={props.fileName}/>
           </span>
           <span className="footer_text l_footer error">
             <i className="far fa-times-circle"></i>
@@ -19,7 +19,7 @@ function Footer() {
           <span className="footer_text r_footer line-col-num">{"Ln ${Ln}, Col ${Col}"}</span>
           <span className="footer_text r_footer">Layout: US</span>
           <span className="footer_text r_footer language">
-            <i className="fab fa-markdown"></i> editorLang
+            <i className="fab fa-markdown"></i> {props.editorLang}
           </span>
           <span className="footer_text r_footer">CRLF</span>
           <span className="footer_text r_footer">UTF-8</span>

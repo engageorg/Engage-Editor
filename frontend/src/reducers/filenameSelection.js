@@ -28,10 +28,10 @@ const DSAFiles = [
 ]
 
 
-const file = (state = DSAFiles[0], action) => {
+const file = (state = DSAFiles[1], action) => {
     switch(action.type){
-      case "uploadfile":
-        state = action.file;
+      case "changecontent":
+        state.content = action.content;
         return state;
       default:
         return state;
