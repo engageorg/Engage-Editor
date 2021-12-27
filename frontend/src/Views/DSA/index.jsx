@@ -4,7 +4,6 @@ import Footer from "./footer";
 import { addContent } from "../../actions"
 import { useSelector, useDispatch } from "react-redux";
 import Split from "react-split";
-import { nanoid } from 'nanoid';
 import Problem from "./problem";
 import Editor from "@monaco-editor/react";
 
@@ -23,6 +22,9 @@ function DSA() {
           break;
         case "c":
           editorLang = "cpp";
+          break;
+        case "js":
+          editorLang = "javascript";
           break;
         default:
           break;
