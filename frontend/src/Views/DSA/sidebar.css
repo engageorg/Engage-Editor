@@ -38,6 +38,24 @@
 .sidenav-buttons:hover:before {
     display:block;
   }
+  
+/*  Trying out Arrow in tool tip
+ .sidenav-buttons:after {
+    content: "";
+    position:absolute;
+    left:100%;
+    margin-left:-13px;
+    top:50%;
+    transform:translateY(-50%);
+    
+    border:8px solid #272727;;
+    border-color: transparent #272727 transparent transparent;
+    display:none;
+  }
+  
+.sidenav-buttons:hover:before, .sidenav-buttons:hover:after {
+    display:block;
+  } */
 
 .sidenav_button_active{
       color: white !important;
