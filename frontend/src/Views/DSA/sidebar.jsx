@@ -28,7 +28,7 @@ function Sidebar() {
             <button className="folder sidenav-buttons" data-text="Open File" onClick = {openFile}>
               <i className="far fa-folder"></i>
             </button>
-            <button className="full sidenav-buttons" data-text="Open File">
+            <button className="full sidenav-buttons" data-text="">
               <i className="fas fa-expand-arrows-alt"></i>
             </button>
             <button className="full sidenav-buttons" >
@@ -41,7 +41,7 @@ function Sidebar() {
           </div>
 
           <div className="lower-icons">
-            <button className="output sidenav-buttons" data-text="User Name">
+            <button className="output sidenav-buttons" data-text="User Profile">
               {" "}
               <i className="far fa-user"></i>
             </button>

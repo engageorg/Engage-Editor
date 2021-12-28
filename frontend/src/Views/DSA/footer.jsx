@@ -49,6 +49,9 @@ function Footer(props) {
         <footer className="texteditor_footer">
         <div className="side_footer">
           <span className="footer_text l_footer">
+            <i className="far fa-user"></i> UserName
+          </span>
+          <span className="footer_text l_footer">
             <i className="fas fa-file-code"></i> <input className="file-name" onChange = {handleNameChange} value={fileName}/>
           </span>
           <span className="footer_text l_footer error" onClick={handleFileSave}>

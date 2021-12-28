@@ -102,7 +102,7 @@ function DSA() {
     return(
         <div className="DSA">
         <Split
-            sizes={[4, 66, 30]}
+            sizes={[20, 50, 30]}
             minSize={40}
             expandToMin={false}
             direction="horizontal"
