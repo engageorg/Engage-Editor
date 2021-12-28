@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useState, useRef } from "react"
 import "./index.css";
 import Footer from "./footer";
 import { addContent } from "../../actions";
@@ -10,6 +10,7 @@ import Editor from "@monaco-editor/react";
 
 function DSA() {
     const file = useSelector((state) => state.file);
+    const [problemScreenWidth, setProbelmScreenWidth] = useState(3)
     const dispatch = useDispatch();
     const editorRef = useRef(null);
     let editorLang = "cpp";
@@ -102,14 +103,14 @@ function DSA() {
     return(
         <div className="DSA">
         <Split
-            sizes={[20, 50, 30]}
+            sizes={[problemScreenWidth, 70 - problemScreenWidth, 30]}
             minSize={40}
             expandToMin={false}
             direction="horizontal"
             cursor="col-resize"
             className="split-flex"        
         >
-        <Problem/>
+        <Problem setWidth = {setProbelmScreenWidth}/>
         <Editor
             height="calc(100vh - 2.4vh)"
             theme="vs-dark"

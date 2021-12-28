@@ -1,10 +1,10 @@
 import React from "react";
 import "./problem.css"
 import Sidebar from "./sidebar";
-function Problem() {
+function Problem(props) {
     return ( 
         <div className="problem">
-            <Sidebar/>
+            <Sidebar problemWidth = {props.setWidth}/>
         </div >
      );
 }

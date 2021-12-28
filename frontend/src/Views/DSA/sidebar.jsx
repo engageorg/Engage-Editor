@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { addFile } from "../../actions";
 import { useDispatch } from "react-redux";
 import "./sidebar.css"
-function Sidebar() {
+function Sidebar(props) {
     
     const dispatch = useDispatch();
     const openFile = async () => {
@@ -19,24 +19,20 @@ function Sidebar() {
         content : contents
       }));
     }
+    const handlePSWidth = () => {
+      props.problemWidth(20)
+    }
     return ( 
         <div className="editor-sidebar">
           <div className="upper-icons">
-            <button className="suprise_button sidenav-buttons" data-text="Import Problem" >
+          <button className="run_code sidenav-buttons" data-text="Run Code" >
+              <i className="fas fa-play" style = {{color : "green"}}></i>
+            </button>
+            <button className="suprise_button sidenav-buttons" onClick={handlePSWidth} data-text="Import Problem Statement" >
               <i className="fas fa-file-import"></i>
             </button>
             <button className="folder sidenav-buttons" data-text="Open File" onClick = {openFile}>
               <i className="far fa-folder"></i>
-            </button>
-            <button className="full sidenav-buttons" data-text="">
-              <i className="fas fa-expand-arrows-alt"></i>
-            </button>
-            <button className="full sidenav-buttons" >
-              <i className="fas fa-search"></i>
-            </button>
-            <button className="output sidenav-buttons">
-              {" "}
-              <i className="fas fa-chalkboard-teacher"></i>
             </button>
           </div>
 
