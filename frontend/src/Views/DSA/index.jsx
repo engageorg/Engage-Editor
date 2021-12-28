@@ -114,6 +114,7 @@ function DSA() {
             height="calc(100vh - 2.4vh)"
             theme="vs-dark"
             language={editorLang}
+            className="codeText"
             defaultValue={file.content}
             value={file.content}
             onMount={handleEditorDidMount}

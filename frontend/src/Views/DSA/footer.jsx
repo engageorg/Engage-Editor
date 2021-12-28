@@ -7,6 +7,8 @@ import "./footer.css";
 function Footer(props) {
     const [fileName, setFileName] = useState(props.fileName);
     const dispatch = useDispatch();
+    const [Ln, setLn] = useState(1);
+    const [Col, setCol] = useState(1);
     const file = useSelector((state) => state.file);
     const handleNameChange = (event) => {
       setFileName(event.target.value)
@@ -22,6 +24,7 @@ function Footer(props) {
     }, [props.fileName])
 
     useEffect(() => {
+
       var isCtrl = false;
       document.onkeyup=function(e){
         if(e.key === 'Control') isCtrl=false;
@@ -34,6 +37,12 @@ function Footer(props) {
           return false;
         }
       }
+      const codeText = document.getElementsByClassName("codeText")[0];
+      codeText
+      .addEventListener("keyup", function () {
+        setLn(props.editor.current.getPosition().lineNumber);
+        setCol(props.editor.current.getPosition().column);
+      });
     }, [])
 
     return ( 
@@ -48,7 +57,7 @@ function Footer(props) {
           </span>
         </div>
         <div className="side_footer">
-          <span className="footer_text r_footer line-col-num">{"Ln ${Ln}, Col ${Col}"}</span>
+          <span className="footer_text r_footer line-col-num">{`Ln ${Ln}, Col ${Col}`}</span>
           <span className="footer_text r_footer">Layout: US</span>
           <span className="footer_text r_footer language">
             <i className="fab fa-markdown"></i> {props.editorLang}
