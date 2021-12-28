@@ -1,0 +1,12 @@
+.problem{
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 2.4vh);
+}
+.problem_screen{
+  width: 100%;
+}
+
+.url_input{
+    width: 100%;
+}

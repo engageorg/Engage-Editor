@@ -35,6 +35,7 @@
 .output-input{
     display: flex;
     flex-direction: column;
+    height: calc(100vh - 2.4vh);
     color: #838281;
 }
 

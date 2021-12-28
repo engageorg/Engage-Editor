@@ -42,5 +42,3 @@ router.get("/", (req, res) => {
 module.exports = router
 
 
-const url = 'https://codeforces.com/problemset/problem/1620/G';
-
