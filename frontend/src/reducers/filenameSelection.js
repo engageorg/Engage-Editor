@@ -40,7 +40,7 @@ const file = (state = DSAFiles[1], action) => {
         return state;
       case "changename":
         state.name = action.name;
-        break;
+        return state;
       default:
         return state;
     }
