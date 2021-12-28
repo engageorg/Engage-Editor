@@ -7,7 +7,7 @@ require("firebase/auth");
 
 router.get("/:id", async(req, res) => {
     console.log(req.params)
-    UserCode.find({creator:req.params.id}).then(response => {
+    UserCode.find({creator:req.params.id}, 'name createdAt language').then(response => {
         console.log(response)
         res.json({status:200, code:response})
     })
