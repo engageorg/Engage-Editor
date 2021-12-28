@@ -138,7 +138,7 @@ function DSA() {
             </div>
             </Split>
         </Split>
-        <Footer fileName = {file.name} editorLang = {editorLang}/>
+        <Footer fileName = {file.name} editor = {editorRef} editorLang = {editorLang}/>
         </div>
     )
 

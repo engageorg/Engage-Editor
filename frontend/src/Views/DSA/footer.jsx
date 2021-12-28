@@ -21,21 +21,20 @@ function Footer(props) {
       setFileName(props.fileName)
     }, [props.fileName])
 
-    // useEffect(() => {
-    //   const listenSaveEvent = (event) => {
-    //     console.log(event)
-    //     if (event.ctrlKey || event.code === 'KeyS') {
-    //           event.preventDefault();
-    //           console.log("sfsf")
-    //           alert('ctrl-s');
-    //     }
-    //   }
-    //   document.addEventListener("keypress", listenSaveEvent)
+    useEffect(() => {
+      var isCtrl = false;
+      document.onkeyup=function(e){
+        if(e.key === 'Control') isCtrl=false;
+        }
 
-    //   return(
-    //     document.removeEventListener("keypress", listenSaveEvent)
-    //   )
-    // }, [])
+      document.onkeydown=function(e){
+        if(e.key === 'Control') isCtrl=true;
+        if(e.key === 's' && isCtrl === true) {
+          dispatch(savefile(file));
+          return false;
+        }
+      }
+    }, [])
 
     return ( 
         <footer className="texteditor_footer">
