@@ -25,6 +25,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<DSA/>}/>
+          <Route path="/usercode/:id" element={<DSA/>}/>
           <Route path="/signup" element={<SignUp/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/usercode" element={<UserCode/>}/>

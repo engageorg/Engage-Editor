@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import "./index.css";
 import Footer from "./footer";
 import { addContent } from "../../actions";
@@ -6,11 +6,15 @@ import { useSelector, useDispatch } from "react-redux";
 import Split from "react-split";
 import Problem from "./problem";
 import Editor from "@monaco-editor/react";
-
+import axios from "axios";
+import { useParams } from "react-router";
 
 function DSA() {
+    const {id} = useParams()
+    console.log(id)
     const file = useSelector((state) => state.file);
     const [problemScreenWidth, setProbelmScreenWidth] = useState(3)
+    const [isLoading, setLoading] = useState(false)
     const dispatch = useDispatch();
     const editorRef = useRef(null);
     let editorLang = "cpp";
@@ -33,6 +37,18 @@ function DSA() {
     function handleEditorChange(value) {
         dispatch(addContent(value));
     }
+
+    useEffect(() => {
+      if(id) {
+        axios.get(`http://localhost:5000/usercode/code/${id}`).then(response => {
+        console.log(response.data.code)  
+        file.content = response.data.code
+        setLoading(true)
+        })
+      }else{
+        setLoading(true)
+      }
+    }, [])
 
     function handleEditorDidMount(editor, monaco) {
         editorRef.current = editor;
@@ -101,7 +117,8 @@ function DSA() {
     }
 
     return(
-        <div className="DSA">
+      <>
+      {!isLoading? '':<div className="DSA">
         <Split
             sizes={[problemScreenWidth, 70 - problemScreenWidth, 30]}
             minSize={40}
@@ -141,7 +158,8 @@ function DSA() {
             </Split>
         </Split>
         <Footer fileName = {file.name} editor = {editorRef} editorLang = {editorLang}/>
-        </div>
+        </div>}
+      </>
     )
 
 }
