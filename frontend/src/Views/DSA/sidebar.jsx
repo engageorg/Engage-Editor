@@ -22,13 +22,13 @@ function Sidebar() {
     return ( 
         <div className="editor-sidebar">
           <div className="upper-icons">
-            <button className="suprise_button sidenav-buttons">
+            <button className="suprise_button sidenav-buttons" data-text="Import Problem" >
               <i className="fas fa-file-import"></i>
             </button>
-            <button className="folder sidenav-buttons" onClick = {openFile}>
+            <button className="folder sidenav-buttons" data-text="Open File" onClick = {openFile}>
               <i className="far fa-folder"></i>
             </button>
-            <button className="full sidenav-buttons" >
+            <button className="full sidenav-buttons" data-text="Open File">
               <i className="fas fa-expand-arrows-alt"></i>
             </button>
             <button className="full sidenav-buttons" >
@@ -41,12 +41,12 @@ function Sidebar() {
           </div>
 
           <div className="lower-icons">
-            <button className="output sidenav-buttons">
+            <button className="output sidenav-buttons" data-text="User Name">
               {" "}
               <i className="far fa-user"></i>
             </button>
 
-            <button className="output sidenav-buttons">
+            <button className="output sidenav-buttons" data-text="Settings">
               {" "}
               <i className="fas fa-cog"></i>
             </button>

@@ -17,6 +17,28 @@
     cursor: pointer;
     padding: 15px;
 }
+
+.sidenav-buttons:before {
+    content: attr(data-text);
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    left:100%;
+    margin-left:1px;
+    width:max-content;
+    padding:3px;
+    background:#272727;
+    color: #6b6a67;
+    text-align:center;
+    display:none;
+    font-size: 14px;
+    border: 1px solid rgb(116, 114, 114);
+}
+
+.sidenav-buttons:hover:before {
+    display:block;
+  }
+
 .sidenav_button_active{
       color: white !important;
 }
