@@ -10,7 +10,7 @@ import Editor from "@monaco-editor/react";
 
 function DSA() {
     const file = useSelector((state) => state.file);
-    const [problemScreenWidth, setProbelmScreenWidth] = useState(3)
+    const [problemScreenWidth, setProbelmScreenWidth] = useState(2)
     const dispatch = useDispatch();
     const editorRef = useRef(null);
     let editorLang = "cpp";
