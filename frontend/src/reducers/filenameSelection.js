@@ -28,11 +28,18 @@ const DSAFiles = [
 ]
 
 
+
 const file = (state = DSAFiles[1], action) => {
     switch(action.type){
       case "changecontent":
         state.content = action.content;
         return state;
+      case "addfile":
+        DSAFiles.push(action.file)
+        state = DSAFiles.at(-1);
+        return state;
+      case "changename":
+        state.name = action.name;
       default:
         return state;
     }
