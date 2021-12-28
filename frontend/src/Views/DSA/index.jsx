@@ -27,6 +27,9 @@ function DSA() {
         case "js":
           editorLang = "javascript";
           break;
+        case "jsx":
+          editorLang = "javascript";
+          break;
         default:
           break;
     }
