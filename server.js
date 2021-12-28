@@ -3,6 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const login = require("./routes/login");
 const signup = require("./routes/signup");
+const userCode = require("./routes/userCode")
 const codeSave = require('./routes/saveCode')
 const mongoose = require("mongoose");
 const problemStatement = require("./routes/problemstatement");
@@ -51,6 +52,7 @@ app.use((req, res, next) => {
 app.use("/signup", signup);
 app.use("/login", login);
 app.use("/codesave", codeSave);
+app.use("/usercode", userCode);
 app.use("/ps", problemStatement);
 
 app.listen(5000, () => {

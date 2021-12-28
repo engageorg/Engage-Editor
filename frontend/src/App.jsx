@@ -7,6 +7,7 @@ import allReducer from "./reducers";
 import DSA from "./Views/DSA";
 import SignUp from "./Views/Signup/signUp";
 import Login from './Views/Login/login';
+import UserCode from "./Views/SavedCode/userCode";
 
 const middleware = [thunk];
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" element={<DSA/>}/>
           <Route path="/signup" element={<SignUp/>}/>
           <Route path="/login" element={<Login/>}/>
+          <Route path="/usercode" element={<UserCode/>}/>
         </Routes>
       </BrowserRouter>
      </Provider>

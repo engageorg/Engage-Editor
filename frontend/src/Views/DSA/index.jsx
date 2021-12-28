@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-=======
 import React, { useState, useEffect, useRef } from "react"
->>>>>>> 4e0a32e55d11f4ebc30ca17da213e93cf3da0b34
 import "./index.css";
 import Footer from "./footer";
 import { addContent } from "../../actions"
