@@ -130,7 +130,7 @@ function DSA() {
             cursor="col-resize"
             className="split-flex"        
         >
-            <iframe src="https://codeforces.com/problemset/problem/1623/E"/>
+            <iframe title="codeforces" src="https://codeforces.com/problemset/problem/1623/E"/>
             <Split
                 sizes={[50, 50]}
                 minSize={30}

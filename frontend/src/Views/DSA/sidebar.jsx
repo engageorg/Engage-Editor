@@ -1,11 +1,12 @@
 import React from "react";
 import { nanoid } from 'nanoid';
 import { addFile } from "../../actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./sidebar.css"
 function Sidebar() {
     const dispatch = useDispatch();
+    const file = useSelector((state) => state.file);
     const openFile = async () => {
       let fileHandle
       [fileHandle] = await window.showOpenFilePicker();
@@ -19,6 +20,22 @@ function Sidebar() {
         content : contents
       }));
     }
+    
+    function downloadFile() {
+      var filename = file.name;
+      var text = file.content;
+      var element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+      element.setAttribute('download', filename);
+    
+      element.style.display = 'none';
+      document.body.appendChild(element);
+    
+      element.click();
+    
+      document.body.removeChild(element);
+    }
+
     return ( 
         <div className="editor-sidebar">
           <div className="upper-icons">
@@ -30,6 +47,9 @@ function Sidebar() {
             </button>
             <button className="folder sidenav-buttons" data-text="Open File" onClick = {openFile}>
               <i className="far fa-folder"></i>
+            </button>
+            <button className="download sidenav-buttons" data-text="Download File" onClick = {downloadFile}>
+              <i className="fas fa-download"></i>
             </button>
           </div>
 
