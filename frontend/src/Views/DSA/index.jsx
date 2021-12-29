@@ -13,7 +13,6 @@ function DSA() {
     const {id} = useParams()
     console.log(id)
     const file = useSelector((state) => state.file);
-    const [problemScreenWidth, setProbelmScreenWidth] = useState(3)
     const [isLoading, setLoading] = useState(false)
     const dispatch = useDispatch();
     const editorRef = useRef(null);

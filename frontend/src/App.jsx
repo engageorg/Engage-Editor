@@ -7,6 +7,7 @@ import allReducer from "./reducers";
 import DSA from "./Views/DSA";
 import SignUp from "./Views/Signup/signUp";
 import Login from './Views/Login/login';
+import Problem from './Views/DSA/problem';
 import UserCode from "./Views/SavedCode/userCode";
 
 const middleware = [thunk];
@@ -24,7 +25,8 @@ function App() {
      <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DSA/>}/>
+          <Route path="/" element={<Problem/>}/>
+          <Route path="/ps" element={<Problem/>}/>
           <Route path="/usercode/:id" element={<DSA/>}/>
           <Route path="/signup" element={<SignUp/>}/>
           <Route path="/login" element={<Login/>}/>
