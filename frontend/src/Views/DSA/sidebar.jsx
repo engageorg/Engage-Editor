@@ -20,7 +20,7 @@ function Sidebar(props) {
       }));
     }
     const handlePSWidth = () => {
-      props.problemWidth(20)
+      console.log("clicked")
     }
     return ( 
         <div className="editor-sidebar">

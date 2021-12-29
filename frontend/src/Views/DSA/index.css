@@ -1,10 +1,13 @@
 .DSA {
     display: flex;
+    flex-direction: row;
     width: 100vw;
     height: 100vh;
     flex: 1;
     background-color: #1e1e1e;
-    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     overflow: hidden;
 }
 
@@ -30,6 +33,7 @@
 .split-flex {
     display: flex;
     flex-direction: row;
+    width: calc(100vw - 48px);
 }
 
 .output-input{

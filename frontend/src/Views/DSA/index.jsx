@@ -4,7 +4,7 @@ import Footer from "./footer";
 import { addContent } from "../../actions";
 import { useSelector, useDispatch } from "react-redux";
 import Split from "react-split";
-import Problem from "./problem";
+import Sidebar from "./sidebar";
 import Editor from "@monaco-editor/react";
 import axios from "axios";
 import { useParams } from "react-router";
@@ -122,15 +122,15 @@ function DSA() {
     return(
       <>
       {!isLoading? '':<div className="DSA">
+        <Sidebar/>
         <Split
-            sizes={[problemScreenWidth, 70 - problemScreenWidth, 30]}
-            minSize={40}
+            sizes={[80, 20]}
+            minSize={20}
             expandToMin={false}
             direction="horizontal"
             cursor="col-resize"
             className="split-flex"        
         >
-        <Problem setWidth = {setProbelmScreenWidth}/>
         <Editor
             height="calc(100vh - 2.4vh)"
             theme="vs-dark"
