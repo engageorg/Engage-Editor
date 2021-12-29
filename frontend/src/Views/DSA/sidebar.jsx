@@ -2,9 +2,9 @@ import React from "react";
 import { nanoid } from 'nanoid';
 import { addFile } from "../../actions";
 import { useDispatch } from "react-redux";
+
 import "./sidebar.css"
-function Sidebar(props) {
-    
+function Sidebar() {
     const dispatch = useDispatch();
     const openFile = async () => {
       let fileHandle
@@ -19,16 +19,13 @@ function Sidebar(props) {
         content : contents
       }));
     }
-    const handlePSWidth = () => {
-      console.log("clicked")
-    }
     return ( 
         <div className="editor-sidebar">
           <div className="upper-icons">
           <button className="run_code sidenav-buttons" data-text="Run Code" >
               <i className="fas fa-play" style = {{color : "green"}}></i>
             </button>
-            <button className="suprise_button sidenav-buttons" onClick={handlePSWidth} data-text="Import Problem Statement" >
+            <button className="suprise_button sidenav-buttons" data-text="Import Problem Statement" >
               <i className="fas fa-file-import"></i>
             </button>
             <button className="folder sidenav-buttons" data-text="Open File" onClick = {openFile}>
