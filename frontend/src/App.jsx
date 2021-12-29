@@ -25,7 +25,7 @@ function App() {
      <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Problem/>}/>
+          <Route path="/" element={<DSA/>}/>
           <Route path="/ps" element={<Problem/>}/>
           <Route path="/usercode/:id" element={<DSA/>}/>
           <Route path="/signup" element={<SignUp/>}/>
