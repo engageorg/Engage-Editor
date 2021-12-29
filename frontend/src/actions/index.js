@@ -14,11 +14,11 @@ export const addFile = (fi) => {
     }
 }
 
-export const savefile = (file) => async dispatch => {
+export const savefile = (file, sessionId) => async dispatch => {
    return await axios.post("http://localhost:5000/codesave/", {
     code: file.content,
     name: file.name,
-    creator:JSON.parse(localStorage.getItem("currentUserId"))
+    sessionId:sessionId
     }).then((response) => {
     if(response.data.status === 200){
       alert("CODE SAVED")

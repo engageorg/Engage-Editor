@@ -4,6 +4,7 @@ const session = require("express-session");
 const login = require("./routes/login");
 const signup = require("./routes/signup");
 const userCode = require("./routes/userCode")
+const logout = require('./routes/logout')
 const codeSave = require('./routes/saveCode')
 const mongoose = require("mongoose");
 const problemStatement = require("./routes/problemstatement");
@@ -31,14 +32,6 @@ mongoose.connect(process.env.DATABASE_URL, {
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Mongoose"));
-
-app.use(session({
-    secret: "secret-key",
-    cookie: {maxAge: 9999999999},
-    saveUninitialized: false,
-    resave: true
-}))
-
 app.use(express.json());
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -53,6 +46,7 @@ app.use("/signup", signup);
 app.use("/login", login);
 app.use("/codesave", codeSave);
 app.use("/usercode", userCode);
+app.use("/logout",logout);
 app.use("/ps", problemStatement);
 
 app.listen(5000, () => {

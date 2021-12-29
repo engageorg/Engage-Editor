@@ -1,25 +1,28 @@
-const express = require("express")
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 const firebase = require("firebase/app");
+const UserSession = require("../models/userSession");
+const { v4: uuidv4 } = require('uuid');
 require("firebase/auth");
-
+const MAX_AGE = 1000 * 60 * 60 * 3; // Three hours
 router.post("/", (req, res) => {
-   if(req.session.authenticated) {
-     req.json(req.session);   
-   }
-   else{
-    firebase
+  firebase
     .auth()
     .signInWithEmailAndPassword(req.body.email, req.body.password)
-    .then((result) => {
-        res.json({message:"Login Successful", status:200, id:result.user.uid})
+    .then(async (result) => {
+      try {
+        await UserSession.create({sessId:uuidv4(),expire:MAX_AGE, user:result.user.uid}).then((response) => {
+          console.log(response)
+          res.json({ message: "Login Successful", sessId:response.sessId});
+        });
+      } catch (error) {
+        console.log(error);
+      }
     })
     .catch((error) => {
+      req.session.error = "Invalid Credentials";
       console.log(error);
-      alert(error.message);
     });
-   }
-   
-})
+});
 
-module.exports = router
+module.exports = router;

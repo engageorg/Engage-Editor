@@ -2,11 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { changeFileName, savefile } from "../../actions";
+import { useCookies } from "react-cookie";
 import "./footer.css";
 
 function Footer(props) {
     const [fileName, setFileName] = useState(props.fileName);
     const dispatch = useDispatch();
+    const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
     const [Ln, setLn] = useState(1);
     const [Col, setCol] = useState(1);
     const file = useSelector((state) => state.file);
@@ -16,7 +18,7 @@ function Footer(props) {
     }
 
     const handleFileSave = () => {
-      dispatch(savefile(file));
+      dispatch(savefile(file,cookies.sessId));
     }
 
     useEffect(() => {
