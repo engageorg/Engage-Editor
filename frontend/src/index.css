@@ -1,7 +1,7 @@
 body{
-
   font-family: 'Space Mono', monospace;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 button {
