@@ -12,6 +12,7 @@ function Footer(props) {
     const [Ln, setLn] = useState(1);
     const [Col, setCol] = useState(1);
     const file = useSelector((state) => state.file);
+    const userName = useSelector((state) => state.user);
     const handleNameChange = (event) => {
       setFileName(event.target.value)
       dispatch(changeFileName(event.target.value));
@@ -51,7 +52,7 @@ function Footer(props) {
         <footer className="texteditor_footer">
         <div className="side_footer">
           <span className="footer_text l_footer">
-            <i className="far fa-user"></i> UserName
+            <i className="far fa-user"></i> {userName}
           </span>
           <span className="footer_text l_footer">
             <i className="fas fa-file-code"></i> <input className="file-name" onChange = {handleNameChange} value={fileName}/>
