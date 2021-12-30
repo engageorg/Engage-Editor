@@ -19,6 +19,7 @@ export default function Login() {
           password: userPassword.value,
         })
         .then((response) => {
+		  console.log(response)
           setCookie("sessId",response.data.sessId)
           alert(response.data.message);
         });

@@ -5,11 +5,13 @@ export default function SignUp() {
   useEffect(() => {
     const submitButton = document.getElementById("submit");
     const userPassword = document.getElementById("password");
+    const userName = document.getElementById("username");
     const userEmail = document.getElementById("email");
     submitButton.addEventListener("click", () => {
       axios.post("http://localhost:5000/signup", {
         email:userEmail.value,
         password:userPassword.value,
+        name:userName.value
       }).then(response => {
         if(response.data.status === 200) {
           localStorage.setItem("currentUserId", JSON.stringify(response.data.id))
@@ -39,7 +41,7 @@ export default function SignUp() {
                 name="logname"
                 className="form-style"
                 placeholder="Your Full Name"
-                id="logname"
+                id="username"
                 autoComplete="off"
               />
               <i className="input-icon uil uil-user"><i className="fas fa-user"></i></i>
