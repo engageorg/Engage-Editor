@@ -22,6 +22,8 @@ export const savefile = (file, sessionId) => async dispatch => {
     }).then((response) => {
     if(response.data.status === 200){
       alert("CODE SAVED")
+    }else if(response.data.status === 401){
+        alert(response.data.message)
     }
     })
 }

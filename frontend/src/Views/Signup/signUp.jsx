@@ -7,8 +7,6 @@ export default function SignUp() {
     const userPassword = document.getElementById("password");
     const userEmail = document.getElementById("email");
     submitButton.addEventListener("click", () => {
-      console.log(userEmail.value)
-      console.log(userPassword.value)
       axios.post("http://localhost:5000/signup", {
         email:userEmail.value,
         password:userPassword.value,
@@ -16,7 +14,11 @@ export default function SignUp() {
         if(response.data.status === 200) {
           localStorage.setItem("currentUserId", JSON.stringify(response.data.id))
           alert(response.data.message)
+        }else if(response.data.status === 403){
+          alert(response.data.error.message)
         }
+      }).catch(err => {
+        console.log(err)
       })
     });
   }, []);

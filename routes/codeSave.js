@@ -4,12 +4,12 @@ const UserSession = require("../models/userSession");
 const UserCode = require("../models/userCode")
 
 router.post("/", async (req, res) => {
-  UserSession.find({ sessId: req.body.sessionId }).then((response) => {
-    if (response.length === 1) {
+  UserSession.findOne({ sessId: req.body.sessionId }).then((response) => {
+    if (response) {
     console.log(response)
     const code =req.body.code
     const name =req.body.name
-    const creator = response[0].user
+    const creator = response.user
     try{
         UserCode.create({code,name,creator}).then((response) => {
             res.json({ status: 200 });
@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
         console.log(error);
     }
     }else{
-        console.log("NO SUCH USER")
+      res.json({ status: 401, message: "Login First" });
     }
   });
 });
