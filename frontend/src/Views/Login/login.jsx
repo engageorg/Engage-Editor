@@ -22,8 +22,9 @@ export default function Login() {
           password: userPassword.value,
         })
         .then((response) => {
-          setCookie("sessId",response.data.sessId);
-          dispatch(loginUser(response.data.name));
+		  console.log(response)
+          setCookie("sessId",response.data.sessId)
+		  dispatch(loginUser(response.data.name))
           alert(response.data.message);
         });
     });
