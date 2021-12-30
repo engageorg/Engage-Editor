@@ -17,6 +17,7 @@ function DSA() {
     const [isLoading, setLoading] = useState(false)
     const dispatch = useDispatch();
     const editorRef = useRef(null);
+    let snippet;
     let editorLang = "cpp";
     switch (file.name.split('.').pop()) {
         case "py":
@@ -60,7 +61,7 @@ function DSA() {
         if(localStorage.getItem('description') && localStorage.getItem('tabtrigger') && localStorage.getItem('snippet')){
           const description = localStorage.getItem('description');
           const labeltrigger = localStorage.getItem('tabtrigger');
-          const snippet = localStorage.getItem('snippet');
+          snippet = localStorage.getItem('snippet');
           monaco.languages.registerCompletionItemProvider('javascript', {
             provideCompletionItems: () => {
               return {
@@ -159,7 +160,7 @@ function DSA() {
             theme="vs-dark"
             language={editorLang}
             className="codeText"
-            defaultValue={file.content}
+            defaultValue={snippet}
             value={file.content}
             onMount={handleEditorDidMount}
             onChange={handleEditorChange}
@@ -169,7 +170,7 @@ function DSA() {
                 minSize={30}
                 expandToMin={false}
                 direction="vertical"
-                cursor="col-resize"
+                cursor="row-resize"
                 className="output-input"   
             >
             <div className="input">
