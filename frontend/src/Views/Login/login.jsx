@@ -2,9 +2,12 @@ import React from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../actions";
 import './styles.css'
 
 export default function Login() {
+  const dispatch = useDispatch();
   const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
   useEffect(() => {
     const submitButton = document.getElementById("submit");
@@ -19,13 +22,14 @@ export default function Login() {
           password: userPassword.value,
         })
         .then((response) => {
-          setCookie("sessId",response.data.sessId)
+          setCookie("sessId",response.data.sessId);
+          dispatch(loginUser(response.data.name));
           alert(response.data.message);
         });
     });
   }, []);
   return (
-    <>
+    <div className="login-screen">
 
 			<div className="row full-height justify-content-center">
 				<div className="col-12 text-center align-self-center py-5">
@@ -53,6 +57,6 @@ export default function Login() {
 			      	</div>
 		      	</div>
 	      	</div>
-    </>
+    </div>
   );
 }

@@ -1,12 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { nanoid } from 'nanoid';
 import { addFile } from "../../actions";
+import { useCookies } from "react-cookie";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./sidebar.css"
 function Sidebar() {
     const dispatch = useDispatch();
     const file = useSelector((state) => state.file);
+    const userName = useSelector((state) => state.user);
+    const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
+
+    // const logButton = (user) => {
+    //   if(user === )
+    // }
     const openFile = async () => {
       let fileHandle
       [fileHandle] = await window.showOpenFilePicker();

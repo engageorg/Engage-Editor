@@ -1,7 +1,11 @@
 import React from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../actions";
 import { useEffect } from "react";
 export default function SignUp() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const submitButton = document.getElementById("submit");
     const userPassword = document.getElementById("password");
@@ -14,6 +18,7 @@ export default function SignUp() {
         if(response.data.status === 200) {
           localStorage.setItem("currentUserId", JSON.stringify(response.data.id))
           alert(response.data.message)
+          dispatch(loginUser("Chanel Preston"));
         }else if(response.data.status === 403){
           alert(response.data.error.message)
         }

@@ -34,3 +34,16 @@ export const changeFileName = (na) => {
         name : na
     }
 }
+
+export const loginUser = (na) => {
+    return {
+        type : "login",
+        user : na
+    }
+}
+
+export const logoutUser = () => {
+    return {
+        type : "logout"
+    }
+}
