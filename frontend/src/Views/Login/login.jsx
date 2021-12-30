@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
@@ -8,6 +9,7 @@ import './styles.css'
 
 export default function Login() {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
   const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
   useEffect(() => {
     const submitButton = document.getElementById("submit");
@@ -26,6 +28,7 @@ export default function Login() {
           setCookie("sessId",response.data.sessId)
 		  dispatch(loginUser(response.data.name))
           alert(response.data.message);
+		  navigate("/");
         });
     });
   }, []);

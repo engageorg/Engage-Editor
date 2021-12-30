@@ -1,20 +1,20 @@
 import Editor from "@monaco-editor/react";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./snippet.css";
 
 function SnippetScreen() {
     const [description, setDescription] = useState('');
     const [tabtrigger, setTabtrigger] = useState('');
     const [snippet, setSnippet] = useState('');
-
-
+    let navigate = useNavigate();
 
     const handleSubmission = (event) => {
       event.preventDefault();
       localStorage.setItem('description', description);
       localStorage.setItem('tabtrigger', tabtrigger);
       localStorage.setItem('snippet', snippet);
-      window.location.href = 'http://localhost:3000/'; 
+		  navigate("/");
     }
     return ( 
       <div className="snippet-screen snippet-active">
