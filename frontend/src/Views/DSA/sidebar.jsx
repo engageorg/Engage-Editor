@@ -13,13 +13,20 @@ function Sidebar() {
     const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
 
     const logButton = (user) => {
-      if(user === "Engage User"){
+      if(user !== "Engage User"){
         return(
-          <Link className="options-link" to = '/login'>Login</Link>
+          <ul>
+          <li><Link className="options-link" to = '/login'>Login</Link></li>
+          <li><Link className="options-link" to = '/usercode'>Saved Codes</Link></li>
+          <li><Link className="options-link" to = '/snippet'>Create Snippet</Link></li>
+          </ul>
+
         )
       }
         return(
-          <Link className="options-link" to = '/logout'>Logout</Link>
+          <ul>
+          <li><Link className="options-link" to = '/logout'>Logout</Link></li>
+          </ul>
         )
       
     }
@@ -99,11 +106,7 @@ function Sidebar() {
           </div>
 
           <div className="user-option">
-             <ul>
-               <li>{logButton()}</li>
-               <li><Link className="options-link" to = '/usercode'>Saved Codes</Link></li>
-               <li><Link className="options-link" to = '/snippet'>Create Snippet</Link></li>
-             </ul>
+             {logButton()}
           </div>
       </div>
      );
