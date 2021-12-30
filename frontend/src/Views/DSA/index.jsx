@@ -8,6 +8,7 @@ import Sidebar from "./sidebar";
 import Editor from "@monaco-editor/react";
 import axios from "axios";
 import { useParams } from "react-router";
+import SnippetScreen from "./snippet";
 
 function DSA() {
     const {id} = useParams()
@@ -141,7 +142,9 @@ function DSA() {
 
     return(
       <>
-      {!isLoading? '':<div className="DSA">
+      {!isLoading? '':<div>
+        <SnippetScreen/>
+        <div className="DSA">
         <Sidebar/>
         <Split
             sizes={[80, 20]}
@@ -181,6 +184,7 @@ function DSA() {
             </Split>
         </Split>
         <Footer fileName = {file.name} editor = {editorRef} editorLang = {editorLang}/>
+        </div>
         </div>}
       </>
     )

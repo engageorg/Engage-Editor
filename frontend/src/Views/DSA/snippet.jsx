@@ -17,8 +17,8 @@ function SnippetScreen() {
       window.location.href = 'http://localhost:3000/'; 
     }
     return ( 
-      <div className="snippet-screen" onSubmit={handleSubmission}>
-          <form>
+      <div className="snippet-screen snippet-active">
+          <form className="snippet-form" onSubmit={handleSubmission}>
             <div className="upper-input">
               <input className="snippet-description" placeholder="snippet-description" onChange={(event) => {setDescription(event.target.value)}} value={description}/>
               <input className="snippet-tabtrigger" placeholder="snippet-tabtrigger" onChange={(event) => {setTabtrigger(event.target.value)}} value={tabtrigger}/>
@@ -26,9 +26,9 @@ function SnippetScreen() {
             <div>
               <Editor
                 height="calc(90vh - 2.4vh)"
-                theme="vs-dark"
+                theme="vs-light"
                 language="javascript"
-                defaultValue="//snippet here"
+                defaultValue="//Type your snippet here"
                 value={snippet}
                 onChange={(value) => {setSnippet(value)}}
               />
