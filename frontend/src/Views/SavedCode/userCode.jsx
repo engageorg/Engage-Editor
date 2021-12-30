@@ -2,10 +2,13 @@ import React from "react";
 import "./style.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import Table from "../Table/savedCodeTable";
 const userCode = []
+
 export default function UserCode() {
   const [codeInfo, setCodeInfo] = useState([]);
+  const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
   useEffect(() => {
     // const submitButton = document.getElementById("openCode");
     // submitButton.addEventListener("click", () => {
@@ -25,9 +28,7 @@ export default function UserCode() {
     // })
    (() => {
       axios(
-        `http://localhost:5000/usercode/${JSON.parse(
-          localStorage.getItem("currentUserId")
-        )}`
+        `http://localhost:5000/usercode/${cookies.sessId}`
       ).then((response) => {
         response.data.code.forEach((code, index) => {
           userCode.push({code:code.code,no:index+1,id:code._id, name:code.name,language:code.language,createdAt:code.createdAt})
