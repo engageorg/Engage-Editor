@@ -11,7 +11,7 @@ import { useParams } from "react-router";
 
 function DSA() {
     const {id} = useParams()
-    console.log(id)
+    console.log("reloaded")
     const file = useSelector((state) => state.file);
     const [isLoading, setLoading] = useState(false)
     const dispatch = useDispatch();
@@ -56,6 +56,27 @@ function DSA() {
         editorRef.current = editor;
         //monaco editor custom language color
         // https://microsoft.github.io/monaco-editor/playground.html#extending-language-services-custom-language
+        if(localStorage.getItem('description') && localStorage.getItem('tabtrigger') && localStorage.getItem('snippet')){
+          const description = localStorage.getItem('description');
+          const labeltrigger = localStorage.getItem('tabtrigger');
+          const snippet = localStorage.getItem('snippet');
+          monaco.languages.registerCompletionItemProvider('javascript', {
+            provideCompletionItems: () => {
+              return {
+                suggestions: [
+                  {
+                    label: labeltrigger,
+                    kind: monaco.languages.CompletionItemKind.Snippet,
+                    documentation: description,
+                    insertText: [
+                      `${snippet}`].join('\n')
+                  }
+                ]
+              };
+            }
+          });
+        }
+
         monaco.editor.defineTheme('ace', {
           base: 'vs',
           inherit: true,
