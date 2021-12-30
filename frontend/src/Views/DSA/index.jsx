@@ -144,7 +144,6 @@ function DSA() {
     return(
       <>
       {!isLoading? '':<div>
-        <SnippetScreen/>
         <div className="DSA">
         <Sidebar/>
         <Split

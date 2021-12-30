@@ -5,15 +5,24 @@ import { useCookies } from "react-cookie";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./sidebar.css"
+import { Link } from "react-router-dom";
 function Sidebar() {
     const dispatch = useDispatch();
     const file = useSelector((state) => state.file);
     const userName = useSelector((state) => state.user);
     const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
 
-    // const logButton = (user) => {
-    //   if(user === )
-    // }
+    const logButton = (user) => {
+      if(user === "Engage User"){
+        return(
+          <Link className="options-link" to = '/login'>Login</Link>
+        )
+      }
+        return(
+          <Link className="options-link" to = '/logout'>Logout</Link>
+        )
+      
+    }
     const openFile = async () => {
       let fileHandle
       [fileHandle] = await window.showOpenFilePicker();
@@ -91,10 +100,9 @@ function Sidebar() {
 
           <div className="user-option">
              <ul>
-               <li>option 1</li>
-               <li>option 2</li>
-               <li>option 3</li>
-               <li>option 4</li>
+               <li>{logButton()}</li>
+               <li><Link className="options-link" to = '/usercode'>Saved Codes</Link></li>
+               <li><Link className="options-link" to = '/snippet'>Create Snippet</Link></li>
              </ul>
           </div>
       </div>

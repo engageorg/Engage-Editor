@@ -60,6 +60,7 @@
 
 .sidenav_button_active{
       color: white !important;
+      user-select: none;
 }
 
 .sidenav-buttons:active{
@@ -103,4 +104,18 @@ ul{
     margin:0;
     padding: 5px;
     box-shadow: rgba(131, 129, 129, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+li{
+   border-bottom: 1px solid rgb(116, 114, 114); 
+   font-size: 14px;
+}
+
+.options-link{
+    color: #6b6a67 !important; 
+    transition: 1s;
+}
+
+.options-link:hover{
+    color: white !important; 
 }

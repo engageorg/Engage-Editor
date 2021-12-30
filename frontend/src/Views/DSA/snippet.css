@@ -9,9 +9,6 @@
     z-index: 2;
 }
 
-.snippet-active{
-    display: none;
-}
 .snippet-form{
     width: 70vw;
 }

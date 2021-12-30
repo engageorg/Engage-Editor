@@ -9,6 +9,7 @@ import SignUp from "./Views/Signup/signUp";
 import Login from './Views/Login/login';
 import Problem from './Views/DSA/problem';
 import UserCode from "./Views/SavedCode/userCode";
+import SnippetScreen from "./Views/DSA/snippet";
 
 const middleware = [thunk];
 
@@ -27,6 +28,8 @@ function App() {
         <Routes>
           <Route path="/" element={<DSA/>}/>
           <Route path="/ps" element={<Problem/>}/>
+          <Route path="/logout" element={<DSA/>}/>
+          <Route path="/snippet" element={<SnippetScreen/>}/>
           <Route path="/usercode/:id" element={<DSA/>}/>
           <Route path="/signup" element={<SignUp/>}/>
           <Route path="/login" element={<Login/>}/>

@@ -6,10 +6,11 @@ const username = (state = userName, action) => {
     switch(action.type){
       case "login":
         state = action.user;
-        localStorage.setItem("engage-user", action.user);
+        localStorage.setItem("engage-user", state);
         return state;
       case "logout":
         state = "Engage User";
+        localStorage.setItem("engage-user", state);
         return state;
       default:
         return state;

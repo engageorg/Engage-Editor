@@ -17,7 +17,7 @@ function SnippetScreen() {
 		  navigate("/");
     }
     return ( 
-      <div className="snippet-screen snippet-active">
+      <div className="snippet-screen">
           <form className="snippet-form" onSubmit={handleSubmission}>
             <div className="upper-input">
               <input className="snippet-description" placeholder="snippet-description" onChange={(event) => {setDescription(event.target.value)}} value={description}/>
