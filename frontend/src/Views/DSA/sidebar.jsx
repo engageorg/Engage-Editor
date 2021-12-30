@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { nanoid } from 'nanoid';
 import { addFile } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,6 +36,23 @@ function Sidebar() {
       document.body.removeChild(element);
     }
 
+    useEffect(() => {
+      
+      let userOption = false;
+    
+      document.getElementsByClassName('profile')[0].onclick = function(e){
+          if(userOption === false){
+            document.getElementsByClassName('user-option')[0].style.display = "block";
+            userOption = true;
+          }
+          else{
+            document.getElementsByClassName('user-option')[0].style.display = "none";
+            userOption = false;
+          }
+      }
+
+    }, [])
+
     return ( 
         <div className="editor-sidebar">
           <div className="upper-icons">
@@ -54,15 +71,24 @@ function Sidebar() {
           </div>
 
           <div className="lower-icons">
-            <button className="output sidenav-buttons" data-text="User Profile">
+            <button className="profile sidenav-buttons" data-text="User Profile">
               {" "}
               <i className="far fa-user"></i>
             </button>
 
-            <button className="output sidenav-buttons" data-text="Settings">
+            <button className="settings sidenav-buttons" data-text="Settings">
               {" "}
               <i className="fas fa-cog"></i>
             </button>
+          </div>
+
+          <div className="user-option">
+             <ul>
+               <li>option 1</li>
+               <li>option 2</li>
+               <li>option 3</li>
+               <li>option 4</li>
+             </ul>
           </div>
       </div>
      );
