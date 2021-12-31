@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createStore, compose, applyMiddleware } from 'redux';
+import { AnimatePresence } from 'framer-motion/dist/framer-motion';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import allReducer from './reducers';
@@ -24,6 +25,7 @@ function App() {
   return (
     <div>
      <Provider store={store}>
+      <AnimatePresence exitBeforeEnter>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<DSA/>}/>
@@ -35,6 +37,7 @@ function App() {
           <Route path="/usercode" element={<UserCode/>}/>
         </Routes>
       </BrowserRouter>
+      </AnimatePresence>
      </Provider>
     </div>
   );

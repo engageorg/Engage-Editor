@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import "./index.css";
 import Footer from "./footer";
+import { Motion } from 'framer-motion/dist/framer-motion';
 import { addContent } from "../../actions";
 import { useSelector, useDispatch } from "react-redux";
 import Split from "react-split";
@@ -120,7 +121,7 @@ function DSA() {
 
     return(
       <>
-      {!isLoading? '':<div className="DSA">
+      {!isLoading? '':<Motion.div className="DSA" initial= {{opacity:0, scale: 0.8 }} animate={{opacity:1, scale: 1}} transition= {{duration: 0.2}}>
         <Sidebar/>
         <Split
             sizes={[80, 20]}
@@ -153,7 +154,7 @@ function DSA() {
             </Split>
         </Split>
         <Footer fileName = {file.name} editor = {editorRef} editorLang = {editorLang}/>
-        </div>}
+        </Motion.div>}
       </>
     )
 

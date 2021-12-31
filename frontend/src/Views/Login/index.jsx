@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { Motion } from 'framer-motion/dist/framer-motion';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -35,7 +36,7 @@ export default function Login() {
     });
   }, []);
   return (
-    <div className="login-screen">
+    <Motion.div className="login-screen" initial= {{opacity:0, scale: 0.8 }} animate={{opacity:1, scale: 1}} transition= {{duration: 0.2}}>
             <ToastContainer/>
 			<div className="row full-height justify-content-center">
 				<div className="col-12 text-center align-self-center py-5">
@@ -65,6 +66,6 @@ export default function Login() {
 			      	</div>
 		      	</div>
 	      	</div>
-    </div>
+    </Motion.div>
   );
 }

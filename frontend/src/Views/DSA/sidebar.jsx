@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { addFile, loginUser } from "../../actions";
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import { motion } from 'framer-motion/dist/framer-motion';
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from "react-redux";
@@ -112,7 +113,7 @@ function Sidebar() {
     }, [])
 
     return ( 
-        <div className="editor-sidebar">
+        <motion.div className="editor-sidebar">
            <ToastContainer autoClose = {5000} theme="dark" position="bottom-right" closeOnClickrtl={true}/>
           <div className="upper-icons">
           <button className="run_code sidenav-buttons" data-text="Run Code" >
@@ -144,7 +145,7 @@ function Sidebar() {
           <div className="user-option">
              {logButton(userName)}
           </div>
-      </div>
+      </motion.div>
      );
 }
 

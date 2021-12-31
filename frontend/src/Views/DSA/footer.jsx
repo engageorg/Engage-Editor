@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { changeFileName, savefile } from "../../actions";
+import { motion } from 'framer-motion/dist/framer-motion';
 import 'react-toastify/dist/ReactToastify.css';
 import { useCookies } from "react-cookie";
 import "./footer.css";
@@ -50,7 +51,7 @@ function Footer(props) {
     }, [])
 
     return ( 
-        <footer className="texteditor_footer">
+        <motion.footer initial= {{opacity:0, scale: 0.8 }} animate={{opacity:1, scale: 1}} transition= {{duration: 0.2}} className="texteditor_footer">
         <div className="side_footer">
           <span className="footer_text l_footer">
             <i className="far fa-user"></i> {userName}
@@ -75,7 +76,7 @@ function Footer(props) {
             <i className="fas fa-terminal"></i> someoption
           </span>
         </div>
-      </footer>
+      </motion.footer>
      );
 }
 

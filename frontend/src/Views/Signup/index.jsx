@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../actions";
 import { useNavigate } from "react-router-dom";
+import { Motion } from 'framer-motion/dist/framer-motion';
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { toast, ToastContainer } from "react-toastify";
@@ -49,7 +50,7 @@ export default function SignUp() {
     });
   }, []);
   return (
-    <>
+    <Motion.div initial= {{opacity:0, scale: 0.8 }} animate={{opacity:1, scale: 1}} transition= {{duration: 0.2}}>
       <div className="row full-height justify-content-center signup-screen">
         <ToastContainer/>
         <div className="col-12 text-center align-self-center py-5">
@@ -105,6 +106,6 @@ export default function SignUp() {
         </div>
       </div>
 
-    </>
+    </Motion.div>
   );
 }
