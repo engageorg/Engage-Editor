@@ -25,14 +25,15 @@ function SnippetScreen() {
             </div>
             <div>
               <Editor
-                height="calc(90vh - 2.4vh)"
-                theme="vs-light"
+                height="calc(70vh - 2.4vh)"
+                theme="vs-dark"
                 language="javascript"
+                className="snipper-editor"
                 defaultValue="//Type your snippet here"
                 value={snippet}
                 onChange={(value) => {setSnippet(value)}}
               />
-              <input type="submit" className="snippet-submit"/>
+              <button type="submit" className="snippet-submit btn mt-4">Save Snippet</button>
             </div>
 
           </form>
