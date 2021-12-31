@@ -1,7 +1,7 @@
 import Editor from "@monaco-editor/react";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Motion } from 'framer-motion/dist/framer-motion';
+import { motion } from 'framer-motion/dist/framer-motion';
 import "./snippet.css";
 
 function SnippetScreen() {
@@ -18,7 +18,7 @@ function SnippetScreen() {
 		  navigate("/");
     }
     return ( 
-      <Motion.div className="snippet-screen" initial= {{opacity:0, scale: 0.8 }} animate={{opacity:1, scale: 1}} transition= {{duration: 0.2}}>
+      <motion.div className="snippet-screen" initial= {{opacity:0, scale: 0.8 }} animate={{opacity:1, scale: 1}} transition= {{duration: 0.2}}>
           <Link to='/' className="snippet-close-button"><i className="fas fa-times-circle"></i></Link>
           <form className="snippet-form" onSubmit={handleSubmission}>
             <div className="upper-input">
@@ -39,7 +39,7 @@ function SnippetScreen() {
             </div>
 
           </form>
-      </Motion.div>
+      </motion.div>
     );
 }
 
