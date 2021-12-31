@@ -86,14 +86,14 @@ function Sidebar() {
           };
           const event = new CustomEvent("output", { detail: data });
           document.documentElement.dispatchEvent(event);
-          toast.update(id, { render: "All is good!", type: "success", isLoading: false , autoClose: true});
+          toast.update(id, { render: "Hurry!", type: "success", isLoading: false, autoClose: 1000, closeButton: true});
         })
       }
     }, [])
 
     return ( 
         <div className="editor-sidebar">
-           <ToastContainer autoClose = {5000} position="bottom-right" closeOnClickrtl={true}/>
+           <ToastContainer autoClose = {5000} theme="dark" position="bottom-right" closeOnClickrtl={true}/>
           <div className="upper-icons">
           <button className="run_code sidenav-buttons" data-text="Run Code" >
               <i className="fas fa-play" style = {{color : "green"}}></i>
