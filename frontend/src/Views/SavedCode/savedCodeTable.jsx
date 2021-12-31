@@ -7,15 +7,16 @@ export default function Table(props) {
     <div className="codetable">
       <Link to='/' className="snippet-close-button"><i className="fas fa-times-circle"></i></Link>
       <table>
-        <tr>
+        <tbody>
+        <tr className="table-header">
           <th>No.</th>
           <th>Name</th>
           <th>Language</th>
           <th>Created At</th>
         </tr>
-        {props.savedCode.map((lecture) => {
+        {props.savedCode.map((lecture, key) => {
           return (
-            <tr id={lecture.id}>
+            <tr key = {key} id={lecture.id} className="table-row">
               <td>
                 <a href={`usercode/${lecture.id}`}>{lecture.no}</a>
               </td>
@@ -31,6 +32,7 @@ export default function Table(props) {
             </tr>
           );
         })}
+        </tbody>
       </table>
     </div>
   );
