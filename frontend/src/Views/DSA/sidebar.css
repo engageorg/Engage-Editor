@@ -5,7 +5,6 @@
     width: 48px;
     height: calc(100vh - 2.4vh);
     background-color: #333333;
-    /* border-right: 1px solid #6b6a67; */
 }
 
 .sidenav-buttons{
@@ -17,6 +16,10 @@
     cursor: pointer;
     padding: 15px;
     z-index: 1;
+}
+
+.sidenav-buttons:focus {
+    outline: 0;
 }
 
 .sidenav-buttons:before {

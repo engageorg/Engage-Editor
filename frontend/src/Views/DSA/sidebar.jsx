@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { nanoid } from 'nanoid';
-import { addFile } from "../../actions";
+import { useNavigate } from "react-router-dom";
+import { addFile, loginUser } from "../../actions";
 import { useCookies } from "react-cookie";
+import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from "react-redux";
@@ -11,17 +13,34 @@ import { runCode } from "../../actions/outputAction";
 
 function Sidebar() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const file = useSelector((state) => state.file);
     const inout = useSelector((state) => state.inout);
     const userName = useSelector((state) => state.user);
     const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
-    console.log(inout)
+    const handleLogout = () => {
+      let logoutReq = axios.get(`http://localhost:5000/logout?id=${cookies.sessId}`)
+
+      const id = toast.loading("Logging you out!");
+
+      logoutReq.then((response) => {
+        if (response.data.status === 200) {
+          dispatch(loginUser("Engage User"))
+          toast.update(id, { render: `See you soon, ${userName}`, type: "success", isLoading: false });
+          navigate("/");
+        }else if(response.data.status === 401){
+          toast.error(response.data.message)
+        }
+
+      });
+    }
+
     const logButton = (user) => {
       console.log(user)
       if(user !== "Engage User"){
         return(
           <ul>
-          <li><Link className="options-link" to = '/logout'>Logout</Link></li>
+          <li><button className="options-link logoutbutton" onClick={handleLogout}>Logout</button></li>
           <li><Link className="options-link" to = '/usercode'>Saved Codes</Link></li>
           <li><Link className="options-link" to = '/snippet'>Create Snippet</Link></li>
           </ul>
