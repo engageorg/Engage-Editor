@@ -24,18 +24,15 @@ export default function Login() {
 		email: userEmail.value,
 		password: userPassword.value,
 	  })
+	  const id = toast.loading("Logging you in!");
       loginReq.then((response) => {
 		  console.log(response)
           setCookie("sessId",response.data.sessId)
 		  dispatch(loginUser(response.data.name))
+		  toast.update(id, { render: "All is good", type: "success", isLoading: false });
 		  navigate("/");
         });
 
-	  toast.promise(loginReq, {
-			pending: "Wait a Sec, Coder!",
-			success: "Good Day!",
-			error: "rejected"
-		  });
     });
   }, []);
   return (

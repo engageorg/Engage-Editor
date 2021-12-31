@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { nanoid } from 'nanoid';
 import { addFile } from "../../actions";
 import { useCookies } from "react-cookie";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from "react-redux";
 import "./sidebar.css"
 import { Link } from "react-router-dom";
@@ -76,6 +78,7 @@ function Sidebar() {
           }
       }
       document.getElementsByClassName('run_code')[0].onclick = () => {
+        const id = toast.loading("Running Your Code!");
         dispatch(runCode(file.content, file.name.split('.').pop(),inout[0].content)).then((e) => {
           inout[1].content = e.data.output
           const data = {
@@ -83,12 +86,14 @@ function Sidebar() {
           };
           const event = new CustomEvent("output", { detail: data });
           document.documentElement.dispatchEvent(event);
+          toast.update(id, { render: "All is good!", type: "success", isLoading: false , autoClose: true});
         })
       }
     }, [])
 
     return ( 
         <div className="editor-sidebar">
+           <ToastContainer autoClose = {5000} position="bottom-right" closeOnClickrtl={true}/>
           <div className="upper-icons">
           <button className="run_code sidenav-buttons" data-text="Run Code" >
               <i className="fas fa-play" style = {{color : "green"}}></i>
