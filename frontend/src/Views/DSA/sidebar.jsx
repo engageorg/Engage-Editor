@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { nanoid } from 'nanoid';
 import { useNavigate } from "react-router-dom";
 import { addFile, loginUser } from "../../actions";
@@ -17,7 +17,7 @@ function Sidebar() {
     const file = useSelector((state) => state.file);
     const inout = useSelector((state) => state.inout);
     const userName = useSelector((state) => state.user);
-    const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
+    const [cookies, , ] = useCookies(["cookie-name"]);
     const handleLogout = () => {
       let logoutReq = axios.get(`http://localhost:5000/logout?id=${cookies.sessId}`)
 

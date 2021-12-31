@@ -3,12 +3,12 @@ import "./style.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import Table from "../Table/savedCodeTable";
+import Table from "./savedCodeTable";
 const userCode = [];
 
 export default function UserCode() {
   const [codeInfo, setCodeInfo] = useState([]);
-  const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
+  const [cookies] = useCookies(["cookie-name"]);
   useEffect(() => {
     (() => {
       axios(`http://localhost:5000/usercode/${cookies.sessId}`).then(

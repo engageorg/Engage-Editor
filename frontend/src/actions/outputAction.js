@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const env = process.env.NODE_ENV; // current environment
-
 export const runCode = ( code,language,input) => async dispatch => {
     let url
     url = 'http://localhost:5000/'

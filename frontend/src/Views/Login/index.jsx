@@ -13,7 +13,7 @@ import './styles.css';
 export default function Login() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+  const [, setCookie, ] = useCookies(['cookie-name']);
   useEffect(() => {
     const submitButton = document.getElementById("submit");
     const userPassword = document.getElementById("password");

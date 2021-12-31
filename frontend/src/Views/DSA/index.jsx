@@ -8,7 +8,6 @@ import Sidebar from "./sidebar";
 import Editor from "@monaco-editor/react";
 import axios from "axios";
 import { useParams } from "react-router";
-import SnippetScreen from "./snippet";
 
 function DSA() {
     const {id} = useParams()

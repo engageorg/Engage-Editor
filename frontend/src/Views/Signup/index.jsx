@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function SignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+  const [, setCookie,] = useCookies(['cookie-name']);
 
   useEffect(() => {
     const submitButton = document.getElementById("submit");

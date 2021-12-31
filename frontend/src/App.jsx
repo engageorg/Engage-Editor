@@ -8,7 +8,7 @@ import DSA from './Views/DSA';
 import SignUp from './Views/Signup/';
 import Login from './Views/Login';
 import Problem from './Views/DSA/problem';
-import UserCode from './Views/SavedCode/userCode';
+import UserCode from './Views/SavedCode';
 import SnippetScreen from './Views/DSA/snippet';
 
 const middleware = [thunk];
