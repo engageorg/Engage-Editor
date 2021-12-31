@@ -11,6 +11,7 @@ import Login from './Views/Login';
 import Problem from './Views/DSA/problem';
 import UserCode from './Views/SavedCode';
 import SnippetScreen from './Views/DSA/snippet';
+import EditorSettingsScreen from './Views/DSA/editorSettings';
 
 const middleware = [thunk];
 
