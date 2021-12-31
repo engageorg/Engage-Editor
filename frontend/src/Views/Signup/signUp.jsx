@@ -31,7 +31,7 @@ export default function SignUp() {
   }, []);
   return (
     <>
-      <div className="row full-height justify-content-center">
+      <div className="row full-height justify-content-center signup-screen">
         <div className="col-12 text-center align-self-center py-5">
           <div>
             <div className="card-3d-wrap mx-auto">

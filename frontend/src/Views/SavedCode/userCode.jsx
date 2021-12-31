@@ -35,7 +35,6 @@ export default function UserCode() {
 
   return (
     <>
-      <h1>MY CODE</h1>
       <Table savedCode={codeInfo} />
     </>
   );

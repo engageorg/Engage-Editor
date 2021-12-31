@@ -9,6 +9,16 @@
 	background-color: #1e1e1e;
 	overflow-x: hidden;
 }
+
+.signup-screen{
+	font-family: 'Poppins', sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 1.7;
+	color: #c4c3ca;
+	background-color: #1e1e1e;
+	overflow-x: hidden;
+}
 a {
 	cursor: pointer;
   transition: all 200ms linear;
@@ -108,7 +118,7 @@ h6 span{
 .card-front, .card-back {
   width: 100%;
   height: 100%;
-  background-color: #1e1e1e;
+  background-color: #1c1d22;
   ;
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
   background-position: bottom center;
@@ -161,7 +171,7 @@ h6 span{
   letter-spacing: 0.5px;
   outline: none;
   color: #6b6a67;
-  background-color: #1e1e1e;
+  background-color: #282828;
   border: none;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
@@ -181,7 +191,7 @@ h6 span{
   font-size: 24px;
   line-height: 48px;
   text-align: left;
-  color: #6b6a67;
+  color: #ffeba7;
   -webkit-transition: all 200ms linear;
     transition: all 200ms linear;
 }
@@ -266,7 +276,7 @@ h6 span{
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
 .btn:hover{  
-  background-color: #333333;
+  background-color: #ffeba7;
   color: #6b6a67;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
