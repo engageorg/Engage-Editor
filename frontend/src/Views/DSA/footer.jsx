@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { changeFileName, savefile } from "../../actions";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { useCookies } from "react-cookie";
 import "./footer.css";
 
@@ -19,7 +21,9 @@ function Footer(props) {
     }
 
     const handleFileSave = () => {
+
       dispatch(savefile(file,cookies.sessId));
+      toast.success("Code Saved to Server");
     }
 
     useEffect(() => {
