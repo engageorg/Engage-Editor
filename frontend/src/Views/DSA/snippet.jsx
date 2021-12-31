@@ -1,6 +1,6 @@
 import Editor from "@monaco-editor/react";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./snippet.css";
 
 function SnippetScreen() {
@@ -18,6 +18,7 @@ function SnippetScreen() {
     }
     return ( 
       <div className="snippet-screen">
+          <Link to='/' className="snippet-close-button"><i className="fas fa-times-circle"></i></Link>
           <form className="snippet-form" onSubmit={handleSubmission}>
             <div className="upper-input">
               <input className="snippet-description" placeholder="snippet-description" onChange={(event) => {setDescription(event.target.value)}} value={description}/>

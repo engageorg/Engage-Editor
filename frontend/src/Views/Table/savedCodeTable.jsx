@@ -6,6 +6,7 @@ import "./styles.css";
 export default function Table(props) {
   return (
     <div className="codetable">
+      <Link to='/' className="snippet-close-button"><i className="fas fa-times-circle"></i></Link>
       <table>
         <tr>
           <th>No.</th>
