@@ -20,7 +20,7 @@ export default function Login() {
     const userPassword = document.getElementById("password");
     const userEmail = document.getElementById("email");
     submitButton.addEventListener("click", () => {
-	  let loginReq = axios.post("http://localhost:5000/login", {
+	  let loginReq = axios.post("https://engage-editor-backend.herokuapp.com/login", {
 		email: userEmail.value,
 		password: userPassword.value,
 	  })

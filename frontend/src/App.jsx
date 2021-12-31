@@ -30,6 +30,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<DSA/>}/>
+          <Route path="/editorSettings" element={<EditorSettingsScreen/>}/>
           <Route path="/ps" element={<Problem/>}/>
           <Route path="/snippet" element={<SnippetScreen/>}/>
           <Route path="/usercode/:id" element={<DSA/>}/>

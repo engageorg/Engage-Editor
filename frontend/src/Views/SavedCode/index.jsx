@@ -11,7 +11,7 @@ export default function UserCode() {
   const [cookies] = useCookies(["cookie-name"]);
   useEffect(() => {
     (() => {
-      axios(`http://localhost:5000/usercode/${cookies.sessId}`).then(
+      axios(`https://engage-editor-backend.herokuapp.com/usercode/${cookies.sessId}`).then(
         (response) => {
           if (response.data.status === 200) {
             response.data.code.forEach((code, index) => {

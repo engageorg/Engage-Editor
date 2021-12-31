@@ -20,7 +20,7 @@ function Sidebar() {
     const userName = useSelector((state) => state.user);
     const [cookies, , ] = useCookies(["cookie-name"]);
     const handleLogout = () => {
-      let logoutReq = axios.get(`http://localhost:5000/logout?id=${cookies.sessId}`)
+      let logoutReq = axios.get(`https://engage-editor-backend.herokuapp.com/logout?id=${cookies.sessId}`)
 
       const id = toast.loading("Logging you out!");
 

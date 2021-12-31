@@ -43,7 +43,7 @@ function DSA() {
 
     useEffect(() => {
       if(id) {
-        axios.get(`http://localhost:5000/usercode/code/${id}`).then(response => {
+        axios.get(`https://engage-editor-backend.herokuapp.com/usercode/code/${id}`).then(response => {
         console.log(response.data.code)  
         file.content = response.data.code
         setLoading(true)

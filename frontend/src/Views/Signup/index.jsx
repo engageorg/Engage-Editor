@@ -21,7 +21,7 @@ export default function SignUp() {
     const userEmail = document.getElementById("email");
     submitButton.addEventListener("click", () => {
       const id = toast.loading("Creating Your Account...");
-      axios.post("http://localhost:5000/signup", {
+      axios.post("https://engage-editor-backend.herokuapp.com/signup", {
         email:userEmail.value,
         password:userPassword.value,
         name:userName.value
@@ -30,7 +30,7 @@ export default function SignUp() {
           localStorage.setItem("currentUserId", JSON.stringify(response.data.id))
           toast.update(id, { render: `Hi, ${userName.value}`, type: "success", isLoading: false, autoClose: 300 });
           dispatch(loginUser(response.data.name));
-          let loginReq = axios.post("http://localhost:5000/login", {
+          let loginReq = axios.post("https://engage-editor-backend.herokuapp.com/login", {
             email: userEmail.value,
             password: userPassword.value,
             })
