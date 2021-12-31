@@ -14,6 +14,8 @@ function DSA() {
     const {id} = useParams()
     console.log("reloaded")
     const file = useSelector((state) => state.file);
+    const inout = useSelector((state) => state.inout);
+    const [outputValue, setOutputValue] = useState("");
     const [isLoading, setLoading] = useState(false)
     const dispatch = useDispatch();
     const editorRef = useRef(null);
@@ -52,7 +54,15 @@ function DSA() {
       }else{
         setLoading(true)
       }
+      document.documentElement.addEventListener("output", (e) => {
+        //console.log(e.detail.output)
+        setOutputValue(e.detail.output);
+      })
     }, [])
+    
+    function handleInput(e) {
+      inout[0].content = e.target.value
+    }
 
     function handleEditorDidMount(editor, monaco) {
         editorRef.current = editor;
@@ -174,12 +184,12 @@ function DSA() {
             >
             <div className="input">
             <div className="output-input-heading">Input</div>
-            <textarea className="input-textarea"/>
+            <textarea onChange={handleInput} className="input-textarea"/>
             </div>
 
             <div className="output">
             <div className="output-input-heading">Output</div>
-            <textarea className="output-textarea"/>
+            <textarea className="output-textarea" defaultValue={outputValue}/>
             </div>
             </Split>
         </Split>

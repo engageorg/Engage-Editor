@@ -3,15 +3,17 @@ import { nanoid } from 'nanoid';
 import { addFile } from "../../actions";
 import { useCookies } from "react-cookie";
 import { useDispatch, useSelector } from "react-redux";
-
 import "./sidebar.css"
 import { Link } from "react-router-dom";
+import { runCode } from "../../actions/outputAction";
+
 function Sidebar() {
     const dispatch = useDispatch();
     const file = useSelector((state) => state.file);
+    const inout = useSelector((state) => state.inout);
     const userName = useSelector((state) => state.user);
     const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
-
+    console.log(inout)
     const logButton = (user) => {
       if(user !== "Engage User"){
         return(
@@ -73,7 +75,16 @@ function Sidebar() {
             userOption = false;
           }
       }
-
+      document.getElementsByClassName('run_code')[0].onclick = () => {
+        dispatch(runCode(file.content, file.name.split('.').pop(),inout[0].content)).then((e) => {
+          inout[1].content = e.data.output
+          const data = {
+            output: e.data.output,
+          };
+          const event = new CustomEvent("output", { detail: data });
+          document.documentElement.dispatchEvent(event);
+        })
+      }
     }, [])
 
     return ( 

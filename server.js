@@ -5,6 +5,7 @@ const signup = require("./routes/signup");
 const userCode = require("./routes/userCode")
 const logout = require('./routes/logout')
 const codeSave = require('./routes/codeSave')
+const runCode = require('./routes/runCode')
 const mongoose = require("mongoose");
 const problemStatement = require("./routes/problemstatement");
 const firebase = require("firebase/app");
@@ -49,6 +50,7 @@ app.use("/login", login);
 app.use("/codesave", codeSave);
 app.use("/usercode", userCode);
 app.use("/logout",logout);
+app.use("/runcode",runCode);
 app.use("/ps", problemStatement);
 
 app.listen(process.env.PORT||5000, () => {
