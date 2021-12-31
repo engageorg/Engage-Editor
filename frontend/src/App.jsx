@@ -28,7 +28,6 @@ function App() {
         <Routes>
           <Route path="/" element={<DSA/>}/>
           <Route path="/ps" element={<Problem/>}/>
-          <Route path="/logout" element={<DSA/>}/>
           <Route path="/snippet" element={<SnippetScreen/>}/>
           <Route path="/usercode/:id" element={<DSA/>}/>
           <Route path="/signup" element={<SignUp/>}/>

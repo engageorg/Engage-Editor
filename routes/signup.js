@@ -10,7 +10,7 @@ router.post("/", (req, res) => {
     .createUserWithEmailAndPassword(req.body.email, req.body.password)
     .then((result) => {
       UserInfo.create({email:req.body.email,name:req.body.name}).then(() => {
-        res.json({message:"Email Added", status:200, id:result.user.uid})
+        res.json({message:"Email Added",name:req.body.name, status:200, id:result.user.uid})
       })
     }).catch(error => {
       console.log(error)

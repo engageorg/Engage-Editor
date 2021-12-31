@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
@@ -18,8 +19,6 @@ export default function Login() {
     const userPassword = document.getElementById("password");
     const userEmail = document.getElementById("email");
     submitButton.addEventListener("click", () => {
-      console.log(userEmail.value);
-      console.log(userPassword.value);
 	  let loginReq = axios.post("http://localhost:5000/login", {
 		email: userEmail.value,
 		password: userPassword.value,
@@ -55,7 +54,9 @@ export default function Login() {
 												<input type="password" name="logpass" className="form-style" placeholder="Your Password" id="password" autoComplete="off"/>
 												<i className="input-icon uil uil-lock-alt"><i className="fas fa-lock"></i></i>
 											</div>
-											<button id="submit" className="btn mt-4">submit</button>
+											<button id="submit" className="btn mt-4">SignIn</button><br/>
+											<span>or</span><br/>
+											<Link to='/signup'><button id="signup" className="btn mt-1">Create An Account</button></Link>
 				      					</div>
 			      					</div>
 			      				</div>
