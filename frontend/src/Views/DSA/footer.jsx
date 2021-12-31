@@ -21,9 +21,7 @@ function Footer(props) {
     }
 
     const handleFileSave = () => {
-
       dispatch(savefile(file,cookies.sessId));
-      toast.success("Code Saved to Server");
     }
 
     useEffect(() => {
@@ -40,7 +38,7 @@ function Footer(props) {
       document.onkeydown=function(e){
         if(e.key === 'Control') isCtrl=true;
         if(e.key === 's' && isCtrl === true) {
-          dispatch(savefile(file));
+          dispatch(savefile(file,cookies.sessId));
           return false;
         }
       }

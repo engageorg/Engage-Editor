@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const addContent = (con) => {
     return {
@@ -21,8 +22,9 @@ export const savefile = (file, sessionId) => async dispatch => {
     sessionId:sessionId
     }).then((response) => {
     if(response.data.status === 200){
+        toast.success("Code Saved to Server");
     }else if(response.data.status === 401){
-        alert(response.data.message)
+        toast.error(response.data.message)
     }
     })
 }
