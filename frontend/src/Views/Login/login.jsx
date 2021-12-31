@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../actions";
-import './styles.css'
+import './styles.css';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -18,23 +20,27 @@ export default function Login() {
     submitButton.addEventListener("click", () => {
       console.log(userEmail.value);
       console.log(userPassword.value);
-      axios
-        .post("http://localhost:5000/login", {
-          email: userEmail.value,
-          password: userPassword.value,
-        })
-        .then((response) => {
+	  let loginReq = axios.post("http://localhost:5000/login", {
+		email: userEmail.value,
+		password: userPassword.value,
+	  })
+      loginReq.then((response) => {
 		  console.log(response)
           setCookie("sessId",response.data.sessId)
 		  dispatch(loginUser(response.data.name))
-          alert(response.data.message);
 		  navigate("/");
         });
+
+	  toast.promise(loginReq, {
+			pending: "Wait a Sec, Coder!",
+			success: "Good Day!",
+			error: "rejected"
+		  });
     });
   }, []);
   return (
     <div className="login-screen">
-
+            <ToastContainer/>
 			<div className="row full-height justify-content-center">
 				<div className="col-12 text-center align-self-center py-5">
 					<div>

@@ -18,7 +18,7 @@ function Sidebar() {
       if(user !== "Engage User"){
         return(
           <ul>
-          <li><Link className="options-link" to = '/login'>Login</Link></li>
+          <li><Link className="options-link" to = '/logout'>Logout</Link></li>
           <li><Link className="options-link" to = '/usercode'>Saved Codes</Link></li>
           <li><Link className="options-link" to = '/snippet'>Create Snippet</Link></li>
           </ul>
@@ -27,7 +27,7 @@ function Sidebar() {
       }
         return(
           <ul>
-          <li><Link className="options-link" to = '/logout'>Logout</Link></li>
+          <li><Link className="options-link" to = '/login'>Login</Link></li>
           </ul>
         )
       
