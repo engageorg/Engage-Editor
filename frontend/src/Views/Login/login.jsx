@@ -29,7 +29,7 @@ export default function Login() {
 		  console.log(response)
           setCookie("sessId",response.data.sessId)
 		  dispatch(loginUser(response.data.name))
-		  toast.update(id, { render: "All is good", type: "success", isLoading: false });
+		  toast.update(id, { render: `Hi, ${response.data.name}`, type: "success", isLoading: false });
 		  navigate("/");
         });
 

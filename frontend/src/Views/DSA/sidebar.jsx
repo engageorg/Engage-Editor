@@ -17,6 +17,7 @@ function Sidebar() {
     const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
     console.log(inout)
     const logButton = (user) => {
+      console.log(user)
       if(user !== "Engage User"){
         return(
           <ul>
@@ -122,7 +123,7 @@ function Sidebar() {
           </div>
 
           <div className="user-option">
-             {logButton()}
+             {logButton(userName)}
           </div>
       </div>
      );
