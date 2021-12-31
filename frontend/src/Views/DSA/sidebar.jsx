@@ -26,7 +26,7 @@ function Sidebar() {
       logoutReq.then((response) => {
         if (response.data.status === 200) {
           dispatch(loginUser("Engage User"))
-          toast.update(id, { render: `See you soon, ${userName}`, type: "success", isLoading: false });
+          toast.update(id, { render: `See you soon, ${userName}`, type: "success", isLoading: false,  autoClose: 3000 });
           navigate("/");
         }else if(response.data.status === 401){
           toast.error(response.data.message)
