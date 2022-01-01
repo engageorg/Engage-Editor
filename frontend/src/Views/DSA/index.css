@@ -11,15 +11,10 @@
     overflow: hidden;
 }
 
-.codeText{
-    border-right: 1px solid #333333;
-}
-
 .gutter.gutter-horizontal {
     cursor: col-resize;
-    width: 10px !important;
-    margin: 0 -4px;
- 
+    width: 15px !important;
+    border-right: 1px solid #333333;
 }
 
 .gutter.gutter-vertical {
@@ -44,15 +39,20 @@
     color: #838281;
 }
 
+.output-input-heading{
+    border-bottom:1px solid #333333;
+    padding: 5px; 
+}
+
 .output{
     display: flex;
     flex-direction: column;
+    border-top:1px solid #333333;
 }
 
 .input{
     display: flex;
     flex-direction: column;
-    border-bottom:1px solid #333333;
 }
 
 .input-textarea, .output-textarea{
