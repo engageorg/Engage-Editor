@@ -8,7 +8,6 @@ router.post('/', async(req, res, next) => {
     clientSecret: process.env.CLIENT_SECRET,
     ...req.body
   }
-  console.log(body)
   fetch('https://api.jdoodle.com/v1/execute', {
     method: 'POST',
     body: JSON.stringify(body),

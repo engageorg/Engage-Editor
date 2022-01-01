@@ -12,6 +12,16 @@ import "./sidebar.css";
 import { Link } from "react-router-dom";
 import { runCode } from "../../actions/outputAction";
 
+const env = process.env.NODE_ENV; // current environment
+let url
+if(env === "development") {
+    url = 'http://localhost:5000'
+}else{
+    url = 'https://engage-editor-backend.herokuapp.com' 
+}
+
+
+
 function Sidebar(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,7 +31,7 @@ function Sidebar(props) {
   const [cookies, setCookie,] = useCookies(["cookie-name"]);
   const handleLogout = () => {
     let logoutReq = axios.get(
-      `http://localhost:5000/logout?id=${cookies.sessId}`
+      url+`/logout?id=${cookies.sessId}`
     );
 
     const id = toast.loading("Logging you out!");

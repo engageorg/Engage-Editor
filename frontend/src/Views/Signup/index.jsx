@@ -9,6 +9,15 @@ import { useCookies } from "react-cookie";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+const env = process.env.NODE_ENV; // current environment
+let url
+if(env === "development") {
+    url = 'http://localhost:5000'
+}else{
+    url = 'https://engage-editor-backend.herokuapp.com' 
+}
+
+
 export default function SignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,7 +30,7 @@ export default function SignUp() {
     const userEmail = document.getElementById("email");
     submitButton.addEventListener("click", () => {
       const id = toast.loading("Creating Your Account...");
-      axios.post("https://engage-editor-backend.herokuapp.com/signup", {
+      axios.post(url+"/signup", {
         email:userEmail.value,
         password:userPassword.value,
         name:userName.value
@@ -30,7 +39,7 @@ export default function SignUp() {
           localStorage.setItem("currentUserId", JSON.stringify(response.data.id))
           toast.update(id, { render: `Hi, ${userName.value}`, type: "success", isLoading: false, autoClose: 300 });
           dispatch(loginUser(response.data.name));
-          let loginReq = axios.post("https://engage-editor-backend.herokuapp.com/login", {
+          let loginReq = axios.post(url+"/login", {
             email: userEmail.value,
             password: userPassword.value,
             })

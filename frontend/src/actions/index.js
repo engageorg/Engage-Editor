@@ -1,5 +1,15 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+const env = process.env.NODE_ENV; // current environment
+let url
+if(env === "development") {
+    url = 'http://localhost:5000'
+}else{
+    url = 'https://engage-editor-backend.herokuapp.com' 
+}
+
+
+
 
 export const addContent = (con) => {
     return {
@@ -16,7 +26,7 @@ export const addFile = (fi) => {
 }
 
 export const savefile = (file, sessionId) => async dispatch => {
-   return await axios.post("https://engage-editor-backend.herokuapp.com/codesave/", {
+   return await axios.post(url+"/codesave/", {
     code: file.content,
     name: file.name,
     sessionId:sessionId
