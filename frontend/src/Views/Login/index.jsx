@@ -21,7 +21,7 @@ export default function Login() {
     const userEmail = document.getElementById("email");
     submitButton.addEventListener("click", () => {
       let loginReq = axios.post(
-        "https://engage-editor-backend.herokuapp.com/login",
+        "http://localhost:5000/login",
         {
           email: userEmail.value,
           password: userPassword.value,
@@ -29,15 +29,27 @@ export default function Login() {
       );
       const id = toast.loading("Logging you in!");
       loginReq.then((response) => {
-        console.log(response);
-        setCookie("sessId", response.data.sessId);
-        dispatch(loginUser(response.data.name));
-        toast.update(id, {
-          render: `Hi, ${response.data.name}`,
-          type: "success",
-          isLoading: false,
-        });
-        navigate("/");
+        console.log(response)
+        if(response.data.status === 200){
+          setCookie("sessId", response.data.sessId);
+          dispatch(loginUser(response.data.name));
+          toast.update(id, {
+            render: `Hi, ${response.data.name}`,
+            type: "success",
+            isLoading: false,
+          });
+          navigate("/");
+        }else if(response.data.status === 403){
+          toast.update(id, {
+            render: `Wrong Credential`,
+            isLoading: false,
+          });
+        }else if(response.data.status === 404){
+          toast.update(id, {
+            render: `User not found`,
+            isLoading: false,
+          });
+        }
       });
     });
   }, []);

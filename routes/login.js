@@ -8,20 +8,25 @@ const { response } = require("express");
 require("firebase/auth");
 const MAX_AGE = 1000 * 60 * 60 * 3; // Three hours
 router.post("/", (req, res) => {
+  console.log(req.body)
   firebase
     .auth()
     .signInWithEmailAndPassword(req.body.email, req.body.password)
     .then((result) => {
+       //console.log(result.code)
         UserInfo.findOne({email:req.body.email}).then((userinfo) => {
           console.log(userinfo)
           UserSession.create({sessId:uuidv4(),expire:MAX_AGE, user:result.user.uid}).then((response) => {
-            res.json({ message: "Login Successful", name:userinfo.name,sessId:response.sessId});
+            res.json({ message: "Login Successful", status:200,name:userinfo.name,sessId:response.sessId});
           })
         })
     })
     .catch((error) => {
-      req.session.error = "Invalid Credentials";
-      console.log(error);
+      if(error.code === 'auth/wrong-password'){
+        res.json({ message: 'wrong informantion', status:403});
+      }else if(error.code === 'auth/user-not-found'){
+        res.json({ message: error.code, status:404});
+      }
     });
 });
 

@@ -18,16 +18,18 @@ function Sidebar() {
   const file = useSelector((state) => state.file);
   const inout = useSelector((state) => state.inout);
   const userName = useSelector((state) => state.user);
-  const [cookies, ,] = useCookies(["cookie-name"]);
+  const [cookies, setCookie,] = useCookies(["cookie-name"]);
   const handleLogout = () => {
     let logoutReq = axios.get(
-      `https://engage-editor-backend.herokuapp.com/logout?id=${cookies.sessId}`
+      `http://localhost:5000/logout?id=${cookies.sessId}`
     );
 
     const id = toast.loading("Logging you out!");
 
     logoutReq.then((response) => {
+      console.log(response)
       if (response.data.status === 200) {
+        setCookie("sessId", response.data.sessId);
         dispatch(loginUser("Engage User"));
         toast.update(id, {
           render: `See you soon, ${userName}`,
