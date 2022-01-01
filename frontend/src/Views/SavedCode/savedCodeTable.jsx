@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./savedCodeTables.css";
+import "./savedCodeTable.css";
 
 export default function Table(props) {
   return (

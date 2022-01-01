@@ -24,6 +24,7 @@ export default function UserCode() {
                 createdAt: code.createdAt,
               });
             });
+            userCode.reverse();
             setCodeInfo(userCode);
           }else if(response.data.status === 401){
             alert(response.data.message)
