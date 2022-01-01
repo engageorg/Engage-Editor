@@ -18,6 +18,7 @@ function Sidebar(props) {
   const file = useSelector((state) => state.file);
   const inout = useSelector((state) => state.inout);
   const userName = useSelector((state) => state.user);
+
   const [cookies, ,] = useCookies(["cookie-name"]);
   const handleLogout = () => {
     let logoutReq = axios.get(
@@ -98,7 +99,7 @@ function Sidebar(props) {
     );
   };
 
-  function downloadFile() {
+  const downloadFile = () => {
     var filename = file.name;
     var text = file.content;
     var element = document.createElement("a");
@@ -116,9 +117,30 @@ function Sidebar(props) {
     document.body.removeChild(element);
   }
 
+  const codeRun = () => {
+    const id = toast.loading("Running Your Code!");
+    console.log(props.editorLang);
+    dispatch(
+      runCode(file.content, props.editorLang, inout[0].content)
+    ).then((e) => {
+      inout[1].content = e.data.output;
+      const data = {
+        output: e.data.output,
+      };
+      const event = new CustomEvent("output", { detail: data });
+      document.documentElement.dispatchEvent(event);
+      toast.update(id, {
+        render: "Hurry!",
+        type: "success",
+        isLoading: false,
+        autoClose: 1000,
+        closeButton: true,
+      });
+    });
+  }
+
   useEffect(() => {
     let userOption = false;
-
     document.getElementsByClassName("profile")[0].onclick = function (e) {
       if (userOption === false) {
         document.getElementsByClassName("user-option")[0].style.display =
@@ -129,26 +151,6 @@ function Sidebar(props) {
           "none";
         userOption = false;
       }
-    };
-    document.getElementsByClassName("run_code")[0].onclick = () => {
-      const id = toast.loading("Running Your Code!");
-      dispatch(
-        runCode(file.content, props.editorLang, inout[0].content)
-      ).then((e) => {
-        inout[1].content = e.data.output;
-        const data = {
-          output: e.data.output,
-        };
-        const event = new CustomEvent("output", { detail: data });
-        document.documentElement.dispatchEvent(event);
-        toast.update(id, {
-          render: "Hurry!",
-          type: "success",
-          isLoading: false,
-          autoClose: 1000,
-          closeButton: true,
-        });
-      });
     };
   }, []);
 
@@ -161,7 +163,7 @@ function Sidebar(props) {
         closeOnClickrtl={true}
       />
       <div className="upper-icons">
-        <button className="run_code sidenav-buttons" data-text="Run Code">
+        <button className="run_code sidenav-buttons" data-text="Run Code" onClick={codeRun}>
           <i className="fas fa-play" style={{ color: "green" }}></i>
         </button>
         <button

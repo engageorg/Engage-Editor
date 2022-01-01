@@ -1,4 +1,3 @@
-
 export const DSAFiles = [
     {
         "type": "file",
@@ -76,8 +75,6 @@ cout.tie(NULL);
     }
 ]
 
-
-
 const file = (state = DSAFiles[0], action) => {
     switch(action.type){
       case "changecontent":
@@ -95,5 +92,14 @@ const file = (state = DSAFiles[0], action) => {
     }
 }
 
+export const editorLang = (state = "cpp", action) => {
+  switch(action.type){
+    case "changelang":
+      state = action.lang;
+      return state;
+    default:
+      return state;
+  }
+}
 
 export default file;

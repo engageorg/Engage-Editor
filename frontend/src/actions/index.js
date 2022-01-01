@@ -36,6 +36,13 @@ export const changeFileName = (na) => {
     }
 }
 
+export const changeLang = (la) => {
+    return {
+        type : "changelang",
+        lang : la
+    }
+}
+
 export const loginUser = (na) => {
     return {
         type : "login",

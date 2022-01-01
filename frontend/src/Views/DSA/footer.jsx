@@ -16,6 +16,7 @@ function Footer(props) {
   const [Col, setCol] = useState(1);
   const file = useSelector((state) => state.file);
   const userName = useSelector((state) => state.user);
+  
   const handleNameChange = (event) => {
     setFileName(event.target.value);
     dispatch(changeFileName(event.target.value));

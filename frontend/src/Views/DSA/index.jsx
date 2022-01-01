@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./index.css";
 import Footer from "./footer";
-import { addContent } from "../../actions";
+import { addContent, changeLang } from "../../actions";
 import { useSelector, useDispatch } from "react-redux";
 import Split from "react-split";
 import Sidebar from "./sidebar";
@@ -15,26 +15,30 @@ function DSA() {
   const file = useSelector((state) => state.file);
   const inout = useSelector((state) => state.inout);
   const [outputValue, setOutputValue] = useState("");
+  const editorLang = useSelector((state) => state.editorLang);
   const [isLoading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const editorRef = useRef(null);
   let snippet;
-  let editorLang = "cpp";
+ 
   switch (file.name.split(".").pop()) {
     case "py":
-      editorLang = "python";
+      dispatch(changeLang("python"));
       break;
     case "cpp":
-      editorLang = "cpp";
+      dispatch(changeLang("cpp"));
       break;
     case "c":
-      editorLang = "cpp";
+      dispatch(changeLang("cpp"));
       break;
     case "js":
-      editorLang = "javascript";
+      dispatch(changeLang("javascript"));
       break;
     case "jsx":
-      editorLang = "javascript";
+      dispatch(changeLang("javascript"));
+      break;
+    case "java":
+      dispatch(changeLang("java"));
       break;
     default:
       break;
