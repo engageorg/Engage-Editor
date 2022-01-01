@@ -12,7 +12,7 @@ import "./sidebar.css";
 import { Link } from "react-router-dom";
 import { runCode } from "../../actions/outputAction";
 
-function Sidebar() {
+function Sidebar(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const file = useSelector((state) => state.file);
@@ -133,7 +133,7 @@ function Sidebar() {
     document.getElementsByClassName("run_code")[0].onclick = () => {
       const id = toast.loading("Running Your Code!");
       dispatch(
-        runCode(file.content, file.name.split(".").pop(), inout[0].content)
+        runCode(file.content, props.editorLang, inout[0].content)
       ).then((e) => {
         inout[1].content = e.data.output;
         const data = {

@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeFileName, savefile } from "../../actions";
+import { changeFileName, savefile, addFile } from "../../actions";
+import { DSAFiles } from "../../reducers/filenameSelection";
 import { motion } from "framer-motion/dist/framer-motion";
 import "react-toastify/dist/ReactToastify.css";
 import { useCookies } from "react-cookie";
@@ -22,10 +23,6 @@ function Footer(props) {
 
   const handleFileSave = () => {
     dispatch(savefile(file, cookies.sessId));
-  };
-
-  const handleLanguageChange = (lang) => {
-    console.log(lang);
   };
 
   useEffect(() => {
@@ -92,13 +89,13 @@ function Footer(props) {
         </span>
 
         <div className="language-options">
-          <button className="language-buttons" onClick={handleLanguageChange}>
+          <button className="language-buttons" onClick={() => {dispatch(addFile(DSAFiles[0]))}}>
             C++
           </button>
-          <button className="language-buttons" onClick={handleLanguageChange}>
-            Python3
+          <button className="language-buttons" onClick={() => {dispatch(addFile(DSAFiles[1]))}}>
+            Python
           </button>
-          <button className="language-buttons" onClick={handleLanguageChange}>
+          <button className="language-buttons" onClick={() => {dispatch(addFile(DSAFiles[3]))}}>
             Java
           </button>
         </div>

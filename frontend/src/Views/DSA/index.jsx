@@ -162,7 +162,7 @@ function DSA() {
       ) : (
         <div>
           <div className="DSA">
-            <Sidebar />
+            <Sidebar editorLang={editorLang}/>
             <Split
               sizes={[80, 20]}
               minSize={20}
