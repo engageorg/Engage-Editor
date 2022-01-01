@@ -180,6 +180,7 @@ function Sidebar(props) {
         <button
           className="suprise_button sidenav-buttons"
           data-text="Import Problem Statement"
+          onClick={() => {navigate('/ps');}}
         >
           <i className="fas fa-file-import"></i>
         </button>
