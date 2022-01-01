@@ -5,7 +5,7 @@ export const runCode = ( code,language,input) => async dispatch => {
     url = 'https://engage-editor-backend.herokuapp.com/'
     
     return await axios.post( url+'runcode', {
-        language: "python2", 
+        language: "cpp", 
         stdin:input,
         versionIndex: "0",
         script:code

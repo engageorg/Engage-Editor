@@ -30,7 +30,7 @@ const DSAFiles = [
 
 
 
-const file = (state = DSAFiles[1], action) => {
+const file = (state = DSAFiles[0], action) => {
     switch(action.type){
       case "changecontent":
         state.content = action.content;
