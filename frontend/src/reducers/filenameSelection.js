@@ -1,5 +1,4 @@
-
-const DSAFiles = [
+export const DSAFiles = [
     {
         "type": "file",
         "name": "main.cpp",
@@ -69,14 +68,12 @@ cout.tie(NULL);
     },
     {
         "type": "file",
-        "name": "main.c",
+        "name": "main.java",
         "id": "o-KZ6TIhTfeClAUkKFhwF",
         "children": [],
-        "content": "aman"
+        "content": ""
     }
 ]
-
-
 
 const file = (state = DSAFiles[0], action) => {
     switch(action.type){
@@ -95,5 +92,14 @@ const file = (state = DSAFiles[0], action) => {
     }
 }
 
+export const editorLang = (state = "cpp", action) => {
+  switch(action.type){
+    case "changelang":
+      state = action.lang;
+      return state;
+    default:
+      return state;
+  }
+}
 
 export default file;
