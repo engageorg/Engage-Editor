@@ -182,12 +182,12 @@ function DSA() {
                 className="output-input"   
             >
             <div className="input">
-            <div className="output-input-heading">Input</div>
+            <div className="output-input-heading" style={{marginTop: "8px"}}>&nbsp; Input</div>
             <textarea onChange={handleInput} className="input-textarea"/>
             </div>
 
             <div className="output">
-            <div className="output-input-heading">Output</div>
+            <div className="output-input-heading">&nbsp; Output</div>
             <textarea className="output-textarea" defaultValue={outputValue}/>
             </div>
             </Split>

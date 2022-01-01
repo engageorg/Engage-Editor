@@ -12,12 +12,13 @@
 }
 
 .codeText{
-    border-left: 1px solid #333333;
+    border-right: 1px solid #333333;
 }
 
 .gutter.gutter-horizontal {
     cursor: col-resize;
     width: 10px !important;
+    margin: 0 -4px;
  
 }
 
