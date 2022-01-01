@@ -24,17 +24,31 @@ function Footer(props) {
       dispatch(savefile(file,cookies.sessId));
     }
 
+
+    const handleLanguageChange = (lang) => {
+      console.log(lang);
+    }
+
     useEffect(() => {
       setFileName(props.fileName)
     }, [props.fileName])
 
     useEffect(() => {
 
-      var isCtrl = false;
+      let isCtrl = false, langOptions = false;
+      document.getElementsByClassName("change_lang")[0].addEventListener("click", () => {
+        if(langOptions === false){
+          document.getElementsByClassName("language-options")[0].style.display = "flex";
+          langOptions = true;
+        }
+        else{
+          document.getElementsByClassName("language-options")[0].style.display = "none";  
+          langOptions = false;        
+        }
+      })
       document.onkeyup=function(e){
         if(e.key === 'Control') isCtrl=false;
         }
-
       document.onkeydown=function(e){
         if(e.key === 'Control') isCtrl=true;
         if(e.key === 's' && isCtrl === true) {
@@ -63,18 +77,25 @@ function Footer(props) {
             <i className="far fa-save"></i>{" "}
             Save code
           </span>
+          <span className="footer_text l_footer change_lang">
+            <i className="fas fa-code"></i>{" "}
+            Change Programming Language
+          </span>
+
+          <div className="language-options">
+            <button className="language-buttons" onClick={handleLanguageChange}>C++</button>
+            <button className="language-buttons" onClick={handleLanguageChange}>Python3</button>
+            <button className="language-buttons" onClick={handleLanguageChange}>Java</button>
+          </div>
         </div>
         <div className="side_footer">
           <span className="footer_text r_footer line-col-num">{`Ln ${Ln}, Col ${Col}`}</span>
           <span className="footer_text r_footer">Layout: US</span>
           <span className="footer_text r_footer language">
-            <i className="fab fa-markdown"></i> {props.editorLang}
+          <i className="fas fa-terminal"></i> {props.editorLang}
           </span>
           <span className="footer_text r_footer">CRLF</span>
           <span className="footer_text r_footer">UTF-8</span>
-          <span className="footer_text r_footer console-button">
-            <i className="fas fa-terminal"></i> someoption
-          </span>
         </div>
       </motion.footer>
      );

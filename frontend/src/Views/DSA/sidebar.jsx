@@ -35,7 +35,7 @@ function Sidebar() {
 
       });
     }
-
+  
     const logButton = (user) => {
       console.log(user)
       if(user !== "Engage User"){
@@ -54,6 +54,10 @@ function Sidebar() {
           </ul>
         )
       
+    }
+
+    const shareCode = () => {
+      alert("In Progress!");
     }
     const openFile = async () => {
       let fileHandle
@@ -127,6 +131,9 @@ function Sidebar() {
             </button>
             <button className="download sidenav-buttons" data-text="Download File" onClick = {downloadFile}>
               <i className="fas fa-download"></i>
+            </button>
+            <button className="share sidenav-buttons" data-text="Share Code's Link" onClick = {shareCode}>
+              <i className="fas fa-share"></i>
             </button>
           </div>
 

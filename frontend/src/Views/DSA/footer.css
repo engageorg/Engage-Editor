@@ -1,11 +1,11 @@
 .texteditor_footer {
     width: 100vw;
     position: absolute;
-    height: 2.4vh;
+    height: 2.6vh;
     background-color: rgb(0, 122, 204);
     color: rgb(255, 255, 255);
     z-index: 3;
-    top: 97.6vh;
+    top: 97.3vh;
     display: flex;
     justify-content: space-between;
 }
@@ -18,7 +18,7 @@
 }
     
 .footer_text {
-    font-size: 1.4vh;
+    font-size: 1.45vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transform: scale(0.97);
     cursor: pointer;
@@ -56,4 +56,36 @@
 
 .footer_text:hover:not(.disabled) {
     background-color: rgba(255, 255, 255, 0.12);
+}
+
+.change_lang {
+    margin-left: 30px;
+    font-size: 1.5vh;
+}
+
+.language-options {
+    position: absolute;
+    bottom: 2.8vh;
+    display: none;
+    flex-direction: column;
+    background-color: rgb(0, 122, 204);
+    color: rgb(255, 255, 255);
+    min-width: 160px;
+    left:35vh;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.language-buttons {
+    font-size: 1.45vh;
+    color: rgb(255, 255, 255);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transform: scale(0.97);
+    cursor: pointer;
+    border-bottom: 1px solid white;
+}
+
+.language-buttons:hover {
+    color: rgb(0, 122, 204);
+    background-color: rgb(255, 255, 255);
 }
