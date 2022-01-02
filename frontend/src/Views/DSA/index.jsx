@@ -177,7 +177,7 @@ function DSA() {
             >
               <Editor
                 height="calc(100vh - 2.4vh)"
-                theme="vs-light"
+                theme="vs-dark"
                 language={editorLang}
                 className="codeText"
                 defaultValue={snippet}
