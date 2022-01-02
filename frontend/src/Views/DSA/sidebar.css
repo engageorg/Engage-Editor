@@ -95,7 +95,6 @@
 .user-option{
     position: absolute;
     z-index: 3;
-    display: none;
     background-color: #242121;
     color: #6b6a67;
     left:52px;
