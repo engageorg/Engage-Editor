@@ -31,8 +31,8 @@
     margin-left:1px;
     width:max-content;
     padding:3px;
-    background:#272727;
-    color: var(--sidenavcolor);
+    background:var(--gutterbackground);
+    color: var(--useroptionbackgroundcolor);
     text-align:center;
     display:none;
     font-size: 12px;
