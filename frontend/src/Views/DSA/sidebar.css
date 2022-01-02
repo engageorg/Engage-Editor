@@ -4,7 +4,7 @@
     align-items: center;
     width: 48px;
     height: calc(100vh - 2.4vh);
-    background-color: #333333;
+    background-color: var(--gutterbackground);
 }
 
 .sidenav-buttons{
@@ -12,7 +12,7 @@
     align-items: center;
     transition: 0.2s;
     justify-content: center;
-    color: #6b6a67;
+    color: var(--sidenavcolor);
     cursor: pointer;
     padding: 15px;
     z-index: 1;
@@ -32,11 +32,11 @@
     width:max-content;
     padding:3px;
     background:#272727;
-    color: #6b6a67;
+    color: var(--sidenavcolor);
     text-align:center;
     display:none;
     font-size: 12px;
-    border: 1px solid rgb(116, 114, 114);
+    border: 1px solid var(--sidenavcolor);
 }
 
 .sidenav-buttons:hover:before {
@@ -67,7 +67,7 @@
 }
 
 .sidenav-buttons:active{
-      color: #6b6a67;
+      color: var(--sidenavcolor);
       transform: scale(0.9);
     }
     
@@ -96,8 +96,8 @@
     position: absolute;
     z-index: 3;
     display: none;
-    background-color: #242121;
-    color: #6b6a67;
+    background-color: var(--useroptionbackgroundcolor);
+    color: var(--sidenavcolor);
     left:52px;
     top:83vh;
 }
@@ -124,6 +124,6 @@ li{
 
 
 li:hover{
-    background-color: rgb(0, 122, 204);
+    background-color: var(--footerbackground);
     color: white !important; 
 }

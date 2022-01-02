@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1e1e1e;
+  background-color: var(--bodybackground);
 }
 
 table {
@@ -16,8 +16,8 @@ table {
 }
 
 th {
-  border-bottom: 1px solid #c4c3ca;
-  color: #c4c3ca;
+  border-bottom: 1px solid var(--loginsignupcolor);
+  color: var(--loginsignupcolor);
   font-weight: 300;
 	font-size: 25px;
 }
@@ -32,5 +32,5 @@ td {
 }
 
 td a{
-  color: #ffeba7;
+  color: var(--footerbackground);
 }
