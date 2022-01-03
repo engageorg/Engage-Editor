@@ -6,12 +6,23 @@ import { DSAFiles } from "../../reducers/filenameSelection";
 import { motion } from "framer-motion/dist/framer-motion";
 import "react-toastify/dist/ReactToastify.css";
 import { useCookies } from "react-cookie";
+import axios from "axios";
 import "./footer.css";
+const env = process.env.NODE_ENV; // current environment
+let url
+if(env === "development") {
+    url = 'http://localhost:5000'
+}else{
+    url = 'https://engage-editor-backend.herokuapp.com' 
+}
+
+
 //let closeLangOption = false
 function Footer(props) {
   const [fileName, setFileName] = useState(props.fileName);
   const dispatch = useDispatch();
 const [closeLangOption, setLangOption] = useState(false)
+const inout = useSelector((state) => state.inout);
   const [cookies] = useCookies(["cookie-name"]);
   const [Ln, setLn] = useState(1);
   const [Col, setCol] = useState(1);
@@ -25,6 +36,17 @@ const [closeLangOption, setLangOption] = useState(false)
 
   const handleFileSave = () => {
     dispatch(savefile(file, cookies.sessId));
+  };
+
+  const handleShareFile = (e) => {
+    axios.post(url+'/share',{
+      code:file.content,
+      input:inout[0].content,
+      output:inout[1].content
+    }).then(res => {
+      console.log(url+'/share/'+res.data.response._id)
+    })
+    //dispatch(savefile(file, cookies.sessId));
   };
 
   useEffect(() => {
@@ -110,6 +132,7 @@ const [closeLangOption, setLangOption] = useState(false)
         </div> : ''}
       </div>
       <div className="side_footer">
+      <span className="footer_text r_footer line-col-num" onClick={handleShareFile}>Share</span>
         <span className="footer_text r_footer line-col-num">{`Ln ${Ln}, Col ${Col}`}</span>
         <span className="footer_text r_footer">Layout: US</span>
         <span className="footer_text r_footer language">

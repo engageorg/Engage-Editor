@@ -60,7 +60,8 @@ function DSA() {
       setLoading(true);
     }
     document.documentElement.addEventListener("output", (e) => {
-      //console.log(e.detail.output)
+
+      inout[1].content = e.detail.output
       setOutputValue(e.detail.output);
     });
   }, []);
@@ -203,6 +204,7 @@ function DSA() {
                   <textarea
                     className="output-textarea"
                     defaultValue={outputValue}
+                    readOnly
                   />
                 </div>
               </Split>
