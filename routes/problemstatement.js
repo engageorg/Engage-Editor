@@ -30,8 +30,9 @@ router.get("/", (req, res) => {
     
     
     //sample-tests -  this will be a array
+    const markup = $('.problem-statement').html();
 
-    res.send({title, problem_statement, time_limit, memory_limit, input_specifications, output_specifications})
+    res.send({markup, title, problem_statement, time_limit, memory_limit, input_specifications, output_specifications})
     })
     .catch(function(err){
     //handle error

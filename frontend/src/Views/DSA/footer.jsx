@@ -7,10 +7,11 @@ import { motion } from "framer-motion/dist/framer-motion";
 import "react-toastify/dist/ReactToastify.css";
 import { useCookies } from "react-cookie";
 import "./footer.css";
-
+//let closeLangOption = false
 function Footer(props) {
   const [fileName, setFileName] = useState(props.fileName);
   const dispatch = useDispatch();
+const [closeLangOption, setLangOption] = useState(false)
   const [cookies] = useCookies(["cookie-name"]);
   const [Ln, setLn] = useState(1);
   const [Col, setCol] = useState(1);
@@ -33,16 +34,24 @@ function Footer(props) {
   useEffect(() => {
     let isCtrl = false,
       langOptions = false;
+    document.documentElement.addEventListener("click", (e) => {
+      if(e.target.className !== 'footer_text l_footer change_lang'){
+        console.log(e.target.className)
+        if (langOptions === true) {
+          console.log("WORKING")
+          setLangOption(false)
+          langOptions = false;
+        }
+      }
+    })
     document
       .getElementsByClassName("change_lang")[0]
       .addEventListener("click", () => {
         if (langOptions === false) {
-          document.getElementsByClassName("language-options")[0].style.display =
-            "flex";
+          setLangOption(true)
           langOptions = true;
         } else {
-          document.getElementsByClassName("language-options")[0].style.display =
-            "none";
+          setLangOption(false)
           langOptions = false;
         }
       });
@@ -88,8 +97,7 @@ function Footer(props) {
         <span className="footer_text l_footer change_lang">
           <i className="fas fa-code"></i> Change Programming Language
         </span>
-
-        <div className="language-options">
+        {closeLangOption? <div className="language-options">
           <button className="language-buttons" onClick={() => {dispatch(addFile(DSAFiles[0]))}}>
             C++
           </button>
@@ -99,7 +107,7 @@ function Footer(props) {
           <button className="language-buttons" onClick={() => {dispatch(addFile(DSAFiles[3]))}}>
             Java
           </button>
-        </div>
+        </div> : ''}
       </div>
       <div className="side_footer">
         <span className="footer_text r_footer line-col-num">{`Ln ${Ln}, Col ${Col}`}</span>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
 import { addFile, loginUser } from "../../actions";
@@ -25,6 +25,7 @@ if(env === "development") {
 function Sidebar(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [closeUserOption, setUserOption] = useState(false)
   const file = useSelector((state) => state.file);
   const inout = useSelector((state) => state.inout);
   const userName = useSelector((state) => state.user);
@@ -55,7 +56,6 @@ function Sidebar(props) {
   };
 
   const logButton = (user) => {
-    console.log(user);
     if (user !== "Engage User") {
       return (
         <ul>
@@ -152,14 +152,22 @@ function Sidebar(props) {
 
   useEffect(() => {
     let userOption = false;
+    document.documentElement.addEventListener("click", (e) => {
+      console.log(e.target.className)
+      if(e.target.className !== 'far fa-user'){
+        if (userOption === true) {
+          console.log("WORKING")
+          setUserOption(false)
+          userOption = false;
+        }
+      }
+    })
     document.getElementsByClassName("profile")[0].onclick = function (e) {
       if (userOption === false) {
-        document.getElementsByClassName("user-option")[0].style.display =
-          "block";
+        setUserOption(true)
         userOption = true;
       } else {
-        document.getElementsByClassName("user-option")[0].style.display =
-          "none";
+        setUserOption(false)
         userOption = false;
       }
     };
@@ -180,6 +188,7 @@ function Sidebar(props) {
         <button
           className="suprise_button sidenav-buttons"
           data-text="Import Problem Statement"
+          onClick={() => {navigate('/ps');}}
         >
           <i className="fas fa-file-import"></i>
         </button>
@@ -218,7 +227,7 @@ function Sidebar(props) {
         </button>
       </div>
 
-      <div className="user-option">{logButton(userName)}</div>
+      {closeUserOption ? <div className="user-option">{logButton(userName)}</div>: null}
     </motion.div>
   );
 }
