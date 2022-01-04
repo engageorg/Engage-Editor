@@ -154,6 +154,23 @@ function Sidebar(props) {
     document.body.removeChild(element);
   }
 
+  const handleCopy = () => {
+    const copyClipboard = async () => {
+    if (!navigator.clipboard) {
+      alert("Clipboard API not available")
+      return
+    }
+    try {
+      await navigator.clipboard.writeText(copyUrl)
+    } catch (err) {
+      console.error('Failed to copy!', err)
+    }
+   }
+
+   copyClipboard()
+    
+  }
+
   const codeRun = () => {
     const id = toast.loading("Running Your Code!");
     console.log(props.editorLang);
@@ -218,8 +235,8 @@ function Sidebar(props) {
         ariaHideApp={false}
       >
         <button onClick={closeModal}>close</button>
-        <input value={copyUrl}/>
-        <button>Copy Url</button>
+        <input id="url_input" value={copyUrl}/>
+        <button onClick={handleCopy}>Copy Url</button>
         
       </Modal>
     </div>
