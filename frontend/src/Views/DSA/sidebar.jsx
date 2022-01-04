@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
 import { addFile, loginUser } from "../../actions";
 import { useCookies } from "react-cookie";
+import Modal from 'react-modal';
 import axios from "axios";
 import { motion } from "framer-motion/dist/framer-motion";
 import { toast, ToastContainer } from "react-toastify";
@@ -20,16 +21,44 @@ if(env === "development") {
     url = 'https://engage-editor-backend.herokuapp.com' 
 }
 
+const ModalStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
 
 
 function Sidebar(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [closeUserOption, setUserOption] = useState(false)
+  const [closeUserOption, setUserOption] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [copyUrl, setCopyUrl] = useState("");
   const file = useSelector((state) => state.file);
   const inout = useSelector((state) => state.inout);
   const userName = useSelector((state) => state.user);
   const [cookies, setCookie,] = useCookies(["cookie-name"]);
+  
+  function openModal() {
+    axios.post(url+'/share',{
+      code:file.content,
+      input:inout[0].content,
+      output:inout[1].content
+    }).then(res => {
+      setCopyUrl(url+'/share/'+res.data.response._id)
+    })
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   const handleLogout = () => {
     let logoutReq = axios.get(
       url+`/logout?id=${cookies.sessId}`
@@ -91,9 +120,6 @@ function Sidebar(props) {
     );
   };
 
-  const shareCode = () => {
-    alert("In Progress!");
-  };
   const openFile = async () => {
     let fileHandle;
     [fileHandle] = await window.showOpenFilePicker();
@@ -181,6 +207,22 @@ function Sidebar(props) {
         position="bottom-right"
         closeOnClickrtl={true}
       />
+
+<div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={ModalStyles}
+        contentLabel="Example Modal"
+        overlayClassName="Overlay"
+        ariaHideApp={false}
+      >
+        <button onClick={closeModal}>close</button>
+        <input value={copyUrl}/>
+        <button>Copy Url</button>
+        
+      </Modal>
+    </div>
       <div className="upper-icons">
         <button className="run_code sidenav-buttons" data-text="Run Code" onClick={codeRun}>
           <i className="fas fa-play" style={{ color: "green" }}></i>
@@ -209,7 +251,7 @@ function Sidebar(props) {
         <button
           className="share sidenav-buttons"
           data-text="Share Code's Link"
-          onClick={shareCode}
+          onClick={openModal}
         >
           <i className="fas fa-share"></i>
         </button>

@@ -21,8 +21,8 @@ if(env === "development") {
 function Footer(props) {
   const [fileName, setFileName] = useState(props.fileName);
   const dispatch = useDispatch();
-const [closeLangOption, setLangOption] = useState(false)
-const inout = useSelector((state) => state.inout);
+  const [closeLangOption, setLangOption] = useState(false)
+  const inout = useSelector((state) => state.inout);
   const [cookies] = useCookies(["cookie-name"]);
   const [Ln, setLn] = useState(1);
   const [Col, setCol] = useState(1);
