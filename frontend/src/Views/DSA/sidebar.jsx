@@ -154,21 +154,18 @@ function Sidebar(props) {
     document.body.removeChild(element);
   }
 
-  const handleCopy = () => {
-    const copyClipboard = async () => {
+  const handleCopy = async () => {
     if (!navigator.clipboard) {
       alert("Clipboard API not available")
+      toast.error("Clipboard API not available")
       return
     }
     try {
       await navigator.clipboard.writeText(copyUrl)
+      toast.success("Link Copied to Clipboard")
     } catch (err) {
-      console.error('Failed to copy!', err)
+      toast.error('Failed to copy!', err)
     }
-   }
-
-   copyClipboard()
-    
   }
 
   const codeRun = () => {
