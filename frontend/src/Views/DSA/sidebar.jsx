@@ -50,7 +50,7 @@ function Sidebar(props) {
       input:inout[0].content,
       output:inout[1].content
     }).then(res => {
-      setCopyUrl(url+'/share/'+res.data.response._id)
+      setCopyUrl(window.location +  +res.data.response._id)
     })
     setIsOpen(true);
   }
