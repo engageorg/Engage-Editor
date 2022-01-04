@@ -17,6 +17,7 @@ router.post("/", (req, res) => {
 router.get("/:id", (req, res) => {
     console.log(req.params)
     ShareCode.findOne({_id:req.params.id}).then(response => {
+        console.log(response)
         res.send(response)
     })
 });

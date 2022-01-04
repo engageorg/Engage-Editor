@@ -8,9 +8,18 @@ import Sidebar from "./sidebar";
 import Editor from "@monaco-editor/react";
 import axios from "axios";
 import { useParams } from "react-router";
+const env = process.env.NODE_ENV; // current environment
+let url
+if(env === "development") {
+    url = 'http://localhost:5000'
+}else{
+    url = 'https://engage-editor-backend.herokuapp.com' 
+}
+
+
 
 function DSA() {
-  const { id } = useParams();
+  const { id,shareId } = useParams();
   console.log("reloaded");
   const file = useSelector((state) => state.file);
   const inout = useSelector((state) => state.inout);
@@ -50,12 +59,20 @@ function DSA() {
   useEffect(() => {
     if (id) {
       axios
-        .get(`https://engage-editor-backend.herokuapp.com/usercode/code/${id}`)
+        .get(url+`/usercode/code/${id}`)
         .then((response) => {
           console.log(response.data.code);
           file.content = response.data.code;
           setLoading(true);
         });
+    } else if(shareId){
+      console.log("WORKING")
+      axios
+      .get(url+`/share/${shareId}`)
+      .then((response) => {
+        file.content = response.data.code;
+        setLoading(true);
+      });
     } else {
       setLoading(true);
     }

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { changeFileName, savefile, addFile } from "../../actions";
 import { DSAFiles } from "../../reducers/filenameSelection";
 import { motion } from "framer-motion/dist/framer-motion";
@@ -21,8 +22,8 @@ if(env === "development") {
 function Footer(props) {
   const [fileName, setFileName] = useState(props.fileName);
   const dispatch = useDispatch();
-const [closeLangOption, setLangOption] = useState(false)
-const inout = useSelector((state) => state.inout);
+  const [closeLangOption, setLangOption] = useState(false)
+  const inout = useSelector((state) => state.inout);
   const [cookies] = useCookies(["cookie-name"]);
   const [Ln, setLn] = useState(1);
   const [Col, setCol] = useState(1);
@@ -44,9 +45,8 @@ const inout = useSelector((state) => state.inout);
       input:inout[0].content,
       output:inout[1].content
     }).then(res => {
-      console.log(url+'/share/'+res.data.response._id)
+      console.log('http://localhost:3000/'+res.data.response._id)
     })
-    //dispatch(savefile(file, cookies.sessId));
   };
 
   useEffect(() => {
