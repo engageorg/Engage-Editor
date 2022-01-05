@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { DSAFiles } from "../../reducers/filenameSelection";
 import Editor from "@monaco-editor/react";
 import { useState } from "react";
 import "./problem.css";
@@ -48,7 +49,8 @@ function Problem(props) {
                 <Editor
                     height="calc(100vh - 2.4vh)"
                     theme="vs-dark"
-                    language="c++"
+                    language="cpp"
+                    defaultValue={DSAFiles[0].content}
                     className="codeText"
                 />
                 </Split>
