@@ -9,12 +9,10 @@ import Split from "react-split";
 import Sidebar from "./sidebar";
 function Problem(props) {
     const [url, setUrl] = useState('')
-    const [screenData, setScreenData] = useState('')
     const handleSubmit = (event) => {
         event.preventDefault()
         axios.get("http://localhost:5000/ps?url=" + url).then((response) => {
             let if_data = cfMarkup + response.data.markup + cfEndMarkup;
-            setScreenData(cfMarkup + response.data.markup + cfEndMarkup);
             var ifrm = document.createElement('iframe');
             ifrm.srcdoc = if_data;
             ifrm.style.width = "100%";
