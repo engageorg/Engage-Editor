@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
+import { cfEndMarkup, cfMarkup } from "./codeforcesTemplate";
 import { DSAFiles } from "../../reducers/filenameSelection";
 import Editor from "@monaco-editor/react";
 import { useState } from "react";
 import "./problem.css";
-
 import Split from "react-split";
 import Sidebar from "./sidebar";
 function Problem(props) {
@@ -13,13 +13,16 @@ function Problem(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
         axios.get("http://localhost:5000/ps?url=" + url).then((response) => {
-            setScreenData(response.data);
-            console.log(screenData.markup);
+            let if_data = cfMarkup + response.data.markup + cfEndMarkup;
+            setScreenData(cfMarkup + response.data.markup + cfEndMarkup);
+            var ifrm = document.createElement('iframe');
+            ifrm.srcdoc = if_data;
+            ifrm.style.width = "100%";
+            ifrm.style.height = "90vh";
+            document.getElementsByClassName("iframe_div")[0].innerHTML = '';
+            document.getElementsByClassName("iframe_div")[0].appendChild(ifrm);
+        
         })
-        var frame =
-        document.getElementsByClassName("ps_iframe")[0].contentDocument;
-        frame.body.innerHTML = screenData.markup;
-        frame.location.reload(true);
     }
     return ( 
         <div className="problem">
@@ -36,16 +39,16 @@ function Problem(props) {
             <p style={{color : "white"}}>{screenData.input_specifications}</p>
             <p style={{color : "white"}}>{screenData.output_specifications}</p> 
                   */}
-                {/* <div className="codeforces_data" dangerouslySetInnerHTML={{__html: screenData.markup}} /> */}
+                {/* <html className="codeforces_data" dangerouslySetInnerHTML={{__html: screenData.markup}} ></html> */}
                 <Split
-                    sizes={[80, 20]}
+                    sizes={[50, 50]}
                     minSize={20}
                     expandToMin={false}
                     direction="horizontal"
                     cursor="col-resize"
                     className="split-flex"
                 >
-                <iframe className="ps_iframe"title="problemscreen" src="./problemscreen.html"/>
+                <div className="iframe_div"><h1>Insert problem statement link,above to show here</h1></div>
                 <Editor
                     height="calc(100vh - 2.4vh)"
                     theme="vs-dark"
