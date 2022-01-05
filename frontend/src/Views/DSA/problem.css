@@ -19,3 +19,10 @@ pre{
   height: 90vh;
   overflow:auto;
 }
+
+iframe {
+  width: auto;
+  height: 93vh;
+  border: none;
+  
+}

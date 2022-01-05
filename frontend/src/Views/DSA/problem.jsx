@@ -1,8 +1,10 @@
-
 import React from "react";
 import axios from "axios";
+import Editor from "@monaco-editor/react";
 import { useState } from "react";
-import "./problem.css"
+import "./problem.css";
+
+import Split from "react-split";
 import Sidebar from "./sidebar";
 function Problem(props) {
     const [url, setUrl] = useState('')
@@ -11,7 +13,12 @@ function Problem(props) {
         event.preventDefault()
         axios.get("http://localhost:5000/ps?url=" + url).then((response) => {
             setScreenData(response.data);
+            console.log(screenData.markup);
         })
+        var frame =
+        document.getElementsByClassName("ps_iframe")[0].contentDocument;
+        frame.body.innerHTML = screenData.markup;
+        frame.location.reload(true);
     }
     return ( 
         <div className="problem">
@@ -28,7 +35,23 @@ function Problem(props) {
             <p style={{color : "white"}}>{screenData.input_specifications}</p>
             <p style={{color : "white"}}>{screenData.output_specifications}</p> 
                   */}
-                <div className="codeforces_data" dangerouslySetInnerHTML={{__html: screenData.markup}} />
+                {/* <div className="codeforces_data" dangerouslySetInnerHTML={{__html: screenData.markup}} /> */}
+                <Split
+                    sizes={[80, 20]}
+                    minSize={20}
+                    expandToMin={false}
+                    direction="horizontal"
+                    cursor="col-resize"
+                    className="split-flex"
+                >
+                <iframe className="ps_iframe"title="problemscreen" src="./problemscreen.html"/>
+                <Editor
+                    height="calc(100vh - 2.4vh)"
+                    theme="vs-dark"
+                    language="c++"
+                    className="codeText"
+                />
+                </Split>
             </div>
         </div >
      );
