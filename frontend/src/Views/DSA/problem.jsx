@@ -7,11 +7,14 @@ import { useState } from "react";
 import "./problem.css";
 import Split from "react-split";
 import Sidebar from "./sidebar";
+
+let globalUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://engage-editor-backend.herokuapp.com';
+
 function Problem(props) {
     const [url, setUrl] = useState('')
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.get("http://localhost:5000/ps?url=" + url).then((response) => {
+        axios.get(globalUrl + "/ps?url=" + url).then((response) => {
             let if_data = cfMarkup + response.data.markup + cfEndMarkup;
             var ifrm = document.createElement('iframe');
             ifrm.srcdoc = if_data;
