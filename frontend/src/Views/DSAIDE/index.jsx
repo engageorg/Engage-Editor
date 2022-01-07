@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./index.css";
-import Footer from "./footer";
+import Footer from "../../Components/footer";
 import { addContent, changeLang } from "../../actions";
 import { useSelector, useDispatch } from "react-redux";
 import Split from "react-split";
-import Sidebar from "./sidebar";
+import Sidebar from "../../Components/sidebar";
 import Editor from "@monaco-editor/react";
 import axios from "axios";
 import { useParams } from "react-router";

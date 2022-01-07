@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
-import { addFile, loginUser } from "../../actions";
+import { addFile, loginUser } from "../actions";
+import { runCode } from "../actions/outputAction";
 import { useCookies } from "react-cookie";
 import Modal from 'react-modal';
 import axios from "axios";
@@ -11,7 +12,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-import { runCode } from "../../actions/outputAction";
 
 const env = process.env.NODE_ENV; // current environment
 let url

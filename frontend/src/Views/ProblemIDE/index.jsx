@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
 import axios from "axios";
 import { cfEndMarkup, cfMarkup } from "./codeforcesTemplate";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { DSAFiles } from "../../reducers/filenameSelection";
 import Editor from "@monaco-editor/react";
-import Footer from "./footer";
+import Footer from "../../Components/footer";
 import { useState } from "react";
-import "./problem.css";
+import "./index.css";
 import Split from "react-split";
-import Sidebar from "./sidebar";
+import Sidebar from "../../Components/sidebar";
 
 let globalUrl =
   process.env.NODE_ENV === "development"

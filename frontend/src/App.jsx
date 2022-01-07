@@ -5,13 +5,13 @@ import { AnimatePresence } from 'framer-motion/dist/framer-motion';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import allReducer from './reducers';
-import DSA from './Views/DSA';
+import DSA from './Views/DSAIDE';
 import SignUp from './Views/Signup/';
 import Login from './Views/Login';
-import Problem from './Views/DSA/problem';
+import Problem from './Views/ProblemIDE';
 import UserCode from './Views/SavedCode';
-import SnippetScreen from './Views/DSA/snippet';
-import EditorSettingsScreen from './Views/DSA/editorSettings';
+import SnippetScreen from './Components/snippet';
+import EditorSettingsScreen from './Components/editorSettings';
 
 const middleware = [thunk];
 
