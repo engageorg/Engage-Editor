@@ -214,7 +214,7 @@ function Sidebar(props) {
   }, []);
 
   return (
-    <motion.div className="editor-sidebar">
+    <motion.div style={{zIndex:"5"}} initial={{ x: '-50px', scale: 0.8 }} animate={{ x:'0px', scale: 1 }} transition={{delay:0.1, duration: 0.1 }} className="editor-sidebar">
       <ToastContainer
         autoClose={5000}
         theme="dark"
@@ -283,7 +283,7 @@ function Sidebar(props) {
         </button>
       </div>
 
-      {closeUserOption ? <div className="user-option">{logButton(userName)}</div>: null}
+      {closeUserOption ? <motion.div initial={{ x: '-50px', scale: 0.8 }} animate={{ x:'0px', scale: 1 }} transition={{type:"tween", duration: 0.1 }} className="user-option">{logButton(userName)}</motion.div>: null}
     </motion.div>
   );
 }
