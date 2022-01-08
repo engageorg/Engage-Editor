@@ -11,18 +11,13 @@ width: 100%;
   width: 100%;
 }
 
-pre{
-  color:white
+
+
+iframe{
+  width: 100%;
+  height: 100%;
 }
 
-.codeforces_data{
-  height: 90vh;
-  overflow:auto;
-}
-
-iframe {
-  width: auto;
-  height: 93vh;
-  border: none;
-  
+.iframe_div, .ps_editor{
+  height: calc(100vh - 2.4vh);
 }

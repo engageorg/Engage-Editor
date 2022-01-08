@@ -10,7 +10,7 @@ import { motion } from "framer-motion/dist/framer-motion";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-import "./sidebar.css";
+import "./editorSidebar.css";
 import { Link } from "react-router-dom";
 
 const env = process.env.NODE_ENV; // current environment

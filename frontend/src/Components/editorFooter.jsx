@@ -7,7 +7,7 @@ import { motion } from "framer-motion/dist/framer-motion";
 import "react-toastify/dist/ReactToastify.css";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import "./footer.css";
+import "./editorFooter.css";
 const env = process.env.NODE_ENV; // current environment
 let url
 if(env === "development") {
@@ -86,15 +86,16 @@ function Footer(props) {
         return false;
       }
     };
-    const codeText = document.getElementsByClassName("codeText")[0];
-    codeText.addEventListener("keyup", function () {
-      setLn(props.editor.current.getPosition().lineNumber);
-      setCol(props.editor.current.getPosition().column);
-    });
+    // const codeText = document.getElementsByClassName("codeText")[0];
+    // codeText.addEventListener("keyup", function () {
+    //   setLn(props.editor.current.getPosition().lineNumber);
+    //   setCol(props.editor.current.getPosition().column);
+    // });
   }, []);
 
   return (
     <motion.footer
+      style={{zIndex:"6"}}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.2 }}
