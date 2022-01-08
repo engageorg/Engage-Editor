@@ -1,0 +1,18 @@
+.ps_monaco{
+  padding: 10px;
+}
+
+.ps_editor{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ps_editor_buttons{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 0 0px 15px 0px;
+}
+

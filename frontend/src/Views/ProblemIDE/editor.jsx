@@ -8,9 +8,15 @@ function EditorPS(){
     return(
         <div className="ps_editor">
          <Editor
-          className="codeText"
+          width="95%"
+          height="95%"
+          className="codeText ps_monaco"
           defaultValue={DSAFiles[0].content}
           defaultLanguage="cpp"/>
+          <div className="ps_editor_buttons">
+            <button className="btn" style={{marginRight:"10px"}}>Input</button>
+            <button className="btn">Expected Output</button>
+          </div>
         </div>
     )
 }
