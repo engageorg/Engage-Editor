@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeFileName, savefile, addFile } from "../../actions";
-import { DSAFiles } from "../../reducers/filenameSelection";
+import { changeFileName, savefile, addFile } from "../actions";
+import { DSAFiles } from "../reducers/filenameSelection";
 import { motion } from "framer-motion/dist/framer-motion";
 import "react-toastify/dist/ReactToastify.css";
 import { useCookies } from "react-cookie";

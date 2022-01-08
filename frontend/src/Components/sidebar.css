@@ -27,7 +27,7 @@
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    left:100%;
+    left: 100%;
     margin-left:1px;
     width:max-content;
     padding:3px;
@@ -36,6 +36,7 @@
     text-align:center;
     display:none;
     font-size: 12px;
+    z-index: 3;
     border: 1px solid var(--sidenavcolor);
 }
 
@@ -94,11 +95,12 @@
 
 .user-option{
     position: absolute;
-    z-index: 3;
+    z-index: 4 !important;
     background-color: var(--useroptionbackgroundcolor);
     color: var(--sidenavcolor);
     left:52px;
     top:83vh;
+    min-width: 90px;
 }
 
 ul{
