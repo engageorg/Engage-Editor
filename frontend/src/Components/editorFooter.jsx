@@ -86,11 +86,11 @@ function Footer(props) {
         return false;
       }
     };
-    // const codeText = document.getElementsByClassName("codeText")[0];
-    // codeText.addEventListener("keyup", function () {
-    //   setLn(props.editor.current.getPosition().lineNumber);
-    //   setCol(props.editor.current.getPosition().column);
-    // });
+    const codeText = document.getElementsByClassName("codeText")[0];
+    codeText.addEventListener("keyup", function () {
+      setLn(props.editor.current.getPosition().lineNumber);
+      setCol(props.editor.current.getPosition().column);
+    });
   }, []);
 
   return (

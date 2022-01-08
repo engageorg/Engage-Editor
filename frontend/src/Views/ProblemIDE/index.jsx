@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import axios from "axios";
 import { cfEndMarkup, cfMarkup } from "./codeforcesTemplate";
 import { useSelector } from "react-redux";
-import { DSAFiles } from "../../reducers/filenameSelection";
 import Editor from "./editor";
 import Footer from "../../Components/editorFooter";
 import { useState } from "react";
