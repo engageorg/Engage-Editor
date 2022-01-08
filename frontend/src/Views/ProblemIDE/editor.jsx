@@ -1,4 +1,13 @@
+import React from "react";
 import "editor.css"
 
+function Editor(){
 
-function 
+    return(
+        <div className="ps_editor">
+
+        </div>
+    )
+}
+
+export default Editor;

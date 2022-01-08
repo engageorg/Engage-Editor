@@ -3,6 +3,7 @@
   flex-direction: row;
   height: calc(100vh - 2.4vh);
 }
+
 .problem_screen{
 width: 100%;
 }
@@ -10,8 +11,6 @@ width: 100%;
 .url_input{
   width: 100%;
 }
-
-
 
 iframe{
   width: 100%;

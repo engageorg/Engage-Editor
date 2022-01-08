@@ -3,7 +3,7 @@ import axios from "axios";
 import { cfEndMarkup, cfMarkup } from "./codeforcesTemplate";
 import { useSelector } from "react-redux";
 import { DSAFiles } from "../../reducers/filenameSelection";
-import Editor from "@monaco-editor/react";
+import Editor from "./editor";
 import Footer from "../../Components/editorFooter";
 import { useState } from "react";
 import "./index.css";
@@ -59,9 +59,7 @@ function Problem(props) {
               <h1>Insert problem statement link,above to show here</h1>
             </div>
 
-            <div className="ps_editor">
-
-            </div>
+            <Editor/>
           </Split>
         </div>
       </div>
