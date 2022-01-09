@@ -36,15 +36,8 @@ function EditorPS(){
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type:"tween",duration: 0.2 }} 
           className="inoutTextarea">
-            {
-              samples.map((d) => {
-                return(
-                  console.log(d)
-                )
-              })
-            }
-             <textarea className="ps_inout" onChange={setpsInput} value={psInput}/>
-             <textarea className="ps_inout" onChange={setpsOutput} value={psOutput}/>
+             <textarea className="ps_inout" value={samples[0].i1}/>
+             <textarea className="ps_inout" value={samples[0].o1}/>
           </motion.div> : ""}
         </div>
     )
