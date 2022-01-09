@@ -12,6 +12,10 @@ function EditorPS(){
     const [psOutput, setpsOutput] = useState("Please Import Problem Statement to see Expected Output here");
     useEffect(() => {
       if(document.getElementsByClassName("inoutTextarea")[0]){
+        if(samples[0].i1 !== ""){
+          setpsInput(samples[0].i1);
+          setpsOutput(samples[0].o1);
+        }
         document.getElementsByClassName("inoutTextarea")[0].scrollIntoView();
       }
     }, [divInout])
@@ -36,8 +40,9 @@ function EditorPS(){
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type:"tween",duration: 0.2 }} 
           className="inoutTextarea">
-             <textarea className="ps_inout" value={samples[0].i1}/>
-             <textarea className="ps_inout" value={samples[0].o1}/>
+
+             <textarea className="ps_inout" onChange={setpsInput} value={psInput}/>
+             <textarea className="ps_inout" onChange={setpsOutput} value={psOutput}/>
           </motion.div> : ""}
         </div>
     )
