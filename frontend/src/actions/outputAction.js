@@ -1,8 +1,12 @@
 import axios from "axios";
-
 export const runCode = ( code,language,input) => async dispatch => {
+    const env = process.env.NODE_ENV; // current environment
     let url
-    url = 'https://engage-editor-backend.herokuapp.com/'
+    if(env === "development") {
+        url = 'http://localhost:5000/'
+    }else{
+        url = 'https://engage-editor-backend.herokuapp.com/' 
+    }
     console.log(input, language)
     if(language === "python"){
         language = "python3"

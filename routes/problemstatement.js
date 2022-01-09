@@ -12,10 +12,19 @@ router.get("/", (req, res) => {
 
     //Problem Statement
     const problem_statement = $('.problem-statement > div:nth-child(2)').text()
-
     //Title
     const title = $('.problem-statement > div:nth-child(1) > .title').text()
 
+    //Sample Tests
+    //sample test case input 1
+    const sti1 = $('.problem-statement > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) > pre').text()
+    //sample test case output 1
+    const sto1 = $('.problem-statement > div:nth-child(5) > div:nth-child(2) > div:nth-child(2) > pre').text()
+    const sti2 = $('.problem-statement > div:nth-child(5) > div:nth-child(2) > div:nth-child(3) > pre').text()
+    const sto2 = $('.problem-statement > div:nth-child(5) > div:nth-child(2) > div:nth-child(4) > pre').text()
+    const sti3 = $('.problem-statement > div:nth-child(5) > div:nth-child(2) > div:nth-child(5) > pre').text()
+    const sto3 = $('.problem-statement > div:nth-child(5) > div:nth-child(2) > div:nth-child(6) > pre').text()
+    const sampleTests = [{i1:sti1,o1:sto1},{i2:sti2,o2:sto2},{i3:sti3,o3:sto3}]
     //Time limit
     const time_limit = $('.problem-statement > div:nth-child(1) > .time-limit').text().replace('time limit per test', '');
 
@@ -32,7 +41,7 @@ router.get("/", (req, res) => {
     //sample-tests -  this will be a array
     const markup = $('.problem-statement').html();
     
-    res.send({markup, title, problem_statement, time_limit, memory_limit, input_specifications, output_specifications})
+    res.send({markup, title, problem_statement, time_limit, memory_limit, input_specifications, output_specifications, sampleTests })
     })
     .catch(function(err){
     //handle error
