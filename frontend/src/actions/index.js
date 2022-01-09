@@ -69,6 +69,6 @@ export const logoutUser = () => {
 export const updateSampleTests = (sample) => {
     return {
         type : "updateSampleTests",
-        updateSampleTests : sample
+        sampleTests : sample
     }
 }

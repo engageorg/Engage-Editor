@@ -19,7 +19,6 @@ let globalUrl =
 function Problem(props) {
   const file = useSelector((state) => state.file);
   const dispatch = useDispatch();
-  const samples = useSelector((state) => state.samples);
   const editorLang = useSelector((state) => state.editorLang);
   const editorRef = useRef(null);
   const [url, setUrl] = useState("");
@@ -27,12 +26,6 @@ function Problem(props) {
     event.preventDefault();
     console.log(event)
     axios.get(globalUrl + "/ps?url=" + url).then((response) => {
-      samples[0].i1 = response.data.sampleTests[0].i1
-      samples[1].i2 = response.data.sampleTests[1].i2
-      samples[2].i3 = response.data.sampleTests[2].i3
-      samples[0].o1 = response.data.sampleTests[0].o1
-      samples[1].o2 = response.data.sampleTests[1].o2
-      samples[2].o3 = response.data.sampleTests[2].o3
       dispatch(updateSampleTests(response.data.sampleTests));
       let if_data = cfMarkup + response.data.markup + cfEndMarkup;
       var ifrm = document.createElement("iframe");
