@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import axios from "axios";
 import { cfEndMarkup, cfMarkup } from "./codeforcesTemplate";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion/dist/framer-motion";
 import Editor from "./editor";
 import Footer from "../../Components/editorFooter";
 import { useState } from "react";
@@ -33,7 +34,12 @@ function Problem(props) {
   };
   return (
     <>
-      <div className="problem">
+      <motion.div       
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.2 }} 
+        className="problem"
+      >
         <Sidebar problemWidth={props.setWidth} />
         <div className="problem_screen">
           <Split
@@ -61,7 +67,7 @@ function Problem(props) {
             <Editor/>
           </Split>
         </div>
-      </div>
+      </motion.div>
       <Footer fileName={file.name} editor={editorRef} editorLang={editorLang} />
     </>
   );

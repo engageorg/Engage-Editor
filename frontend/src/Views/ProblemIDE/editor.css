@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    overflow: auto;
     align-items: center;
 }
 
@@ -16,3 +17,17 @@
     padding: 0 0px 15px 0px;
 }
 
+.ps_inout{
+  height: 30vh;
+  margin: 5px;
+  border-radius: 15px;
+  resize: none;
+  padding: 10px;
+  background-color: var(--gutterbackground);
+  color: var(--sidenavcolor);
+}
+
+.inoutTextarea{
+  padding: 10px;
+  display: flex;
+}

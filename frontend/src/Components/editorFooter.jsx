@@ -57,7 +57,6 @@ function Footer(props) {
       langOptions = false;
     document.documentElement.addEventListener("click", (e) => {
       if(e.target.className !== 'footer_text l_footer change_lang'){
-        console.log(e.target.className)
         if (langOptions === true) {
           console.log("WORKING")
           setLangOption(false)

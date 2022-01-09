@@ -8,8 +8,8 @@
   --loginsignupcolor: #c4c3ca;
   --white: white;
 }
-/* 
- :root{
+
+ /* :root{
    --bodybackground: white;
    --footerbackground: rgb(0, 122, 204);
    --gutterbackground: #c0c0c0;
@@ -18,7 +18,7 @@
    --useroptionbackgroundcolor: #6b6a67;
    --loginsignupcolor: #c4c3ca;
    --white: white; 
-  } */ 
+  }  */
 
 body{
   font-family: "Space Mono", monospace;

@@ -193,7 +193,6 @@ function Sidebar(props) {
   useEffect(() => {
     let userOption = false;
     document.documentElement.addEventListener("click", (e) => {
-      console.log(e.target.className)
       if(e.target.className !== 'far fa-user'){
         if (userOption === true) {
           console.log("WORKING")
