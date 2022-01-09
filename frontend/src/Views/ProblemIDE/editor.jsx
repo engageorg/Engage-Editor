@@ -34,8 +34,8 @@ function EditorPS(){
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type:"tween",duration: 0.2 }} 
           className="inoutTextarea">
-             <textarea className="ps_inout" value={psInput}/>
-             <textarea className="ps_inout" value={psOutput}/>
+             <textarea className="ps_inout" onChange={setpsInput} value={psInput}/>
+             <textarea className="ps_inout" onChange={setpsOutput} value={psOutput}/>
           </motion.div> : ""}
         </div>
     )
