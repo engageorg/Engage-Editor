@@ -16,7 +16,13 @@ const sampleTestsArray = [
 
 
 const sampleTests = (state = sampleTestsArray, action) => {
-    return state;
+    switch(action.type){
+        case "updateSampleTests":
+          state = action.sampleTests;
+          return state;
+        default:
+          return state;
+      }
 }
 
 

@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import axios from "axios";
 import { cfEndMarkup, cfMarkup } from "./codeforcesTemplate";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSampleTests } from "../../actions";
 import { motion } from "framer-motion/dist/framer-motion";
 import Editor from "./editor";
 import Footer from "../../Components/editorFooter";
@@ -17,6 +18,7 @@ let globalUrl =
 
 function Problem(props) {
   const file = useSelector((state) => state.file);
+  const dispatch = useDispatch();
   const samples = useSelector((state) => state.samples);
   const editorLang = useSelector((state) => state.editorLang);
   const editorRef = useRef(null);
@@ -31,7 +33,7 @@ function Problem(props) {
       samples[0].o1 = response.data.sampleTests[0].o1
       samples[1].o2 = response.data.sampleTests[1].o2
       samples[2].o3 = response.data.sampleTests[2].o3
-      console.log(samples)
+      dispatch(updateSampleTests(response.data.sampleTests));
       let if_data = cfMarkup + response.data.markup + cfEndMarkup;
       var ifrm = document.createElement("iframe");
       ifrm.srcdoc = if_data;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Editor from "@monaco-editor/react";
 import { motion } from "framer-motion/dist/framer-motion";
 import { DSAFiles } from "../../reducers/filenameSelection";
@@ -6,6 +7,7 @@ import "./editor.css";
 
 function EditorPS(){
     const [divInout, setDivInout] = useState(false);
+    const samples = useSelector((state) => state.samples);
     const [psInput, setpsInput] = useState("Please Import Problem Statement to see input here");
     const [psOutput, setpsOutput] = useState("Please Import Problem Statement to see Expected Output here");
     useEffect(() => {
@@ -34,6 +36,13 @@ function EditorPS(){
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type:"tween",duration: 0.2 }} 
           className="inoutTextarea">
+            {
+              samples.map((d) => {
+                return(
+                  console.log(d)
+                )
+              })
+            }
              <textarea className="ps_inout" onChange={setpsInput} value={psInput}/>
              <textarea className="ps_inout" onChange={setpsOutput} value={psOutput}/>
           </motion.div> : ""}

@@ -65,3 +65,10 @@ export const logoutUser = () => {
         type : "logout"
     }
 }
+
+export const updateSampleTests = (sample) => {
+    return {
+        type : "updateSampleTests",
+        updateSampleTests : sample
+    }
+}
