@@ -4,7 +4,7 @@ import { cfEndMarkup, cfMarkup } from "./codeforcesTemplate";
 import { useDispatch, useSelector } from "react-redux";
 import { updateSampleTests } from "../../actions";
 import { motion } from "framer-motion/dist/framer-motion";
-import Editor from "./editor";
+import EditorPS from "./editor";
 import Footer from "../../Components/editorFooter";
 import { useState } from "react";
 import "./index.css";
@@ -44,7 +44,7 @@ function Problem(props) {
         transition={{ duration: 0.2 }} 
         className="problem"
       >
-        <Sidebar problemWidth={props.setWidth} />
+        <Sidebar editorLang={editorLang} problemWidth={props.setWidth} />
         <div className="problem_screen">
           <Split
             sizes={[50, 50]}
@@ -68,7 +68,7 @@ function Problem(props) {
               <h1>Insert problem statement link,above to show here</h1>
             </div>
 
-            <Editor/>
+            <EditorPS/>
           </Split>
         </div>
       </motion.div>

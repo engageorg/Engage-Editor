@@ -3,11 +3,14 @@ const router = express.Router();
 const fetch = require('node-fetch');
 
 router.post('/', async(req, res, next) => {
+  //if(req.body.in)
   const body  = {
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     ...req.body
   }
+  console.log(req.body)
+  console.log(body)
   fetch('https://api.jdoodle.com/v1/execute', {
     method: 'POST',
     body: JSON.stringify(body),
@@ -17,4 +20,4 @@ router.post('/', async(req, res, next) => {
 });
 
 
-module.exports = router;
+module.exports = router; 

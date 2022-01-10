@@ -1,5 +1,5 @@
 import axios from "axios";
-export const runCode = ( code,language,input) => async dispatch => {
+export const runCode = ( code,language,input,testcases) => async dispatch => {
     const env = process.env.NODE_ENV; // current environment
     let url
     if(env === "development") {
@@ -15,6 +15,7 @@ export const runCode = ( code,language,input) => async dispatch => {
         language: language, 
         stdin:input,
         versionIndex: "0",
-        script:code
+        script:code,
+        testcases:testcases
     })
 }

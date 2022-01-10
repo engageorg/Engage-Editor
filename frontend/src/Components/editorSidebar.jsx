@@ -40,6 +40,7 @@ function Sidebar(props) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [copyUrl, setCopyUrl] = useState("");
   const file = useSelector((state) => state.file);
+  const samples = useSelector((state) => state.samples);
   const inout = useSelector((state) => state.inout);
   const userName = useSelector((state) => state.user);
   const [cookies, setCookie,] = useCookies(["cookie-name"]);
@@ -172,7 +173,7 @@ function Sidebar(props) {
     const id = toast.loading("Running Your Code!");
     console.log(props.editorLang);
     dispatch(
-      runCode(file.content, props.editorLang, inout[0].content)
+      runCode(file.content, props.editorLang, inout[0].content, samples)
     ).then((e) => {
       inout[1].content = e.data.output;
       const data = {
