@@ -148,8 +148,9 @@ function EditorPS(){
       <div style={{overflow:"auto", height: "calc(100vh - 2.4vh)"}}>
         <div className="ps_editor">
           <Editor
-            width="95%"
+            width="100%"
             height="95vh"
+            theme="vs-dark"
             className="codeText ps_monaco"
             defaultValue={DSAFiles[0].content}
             onMount={handleEditorDidMount}
@@ -157,17 +158,16 @@ function EditorPS(){
             defaultLanguage="cpp"/>
 
           <div className="ps_editor_buttons">
-            <button className="btn" onClick = {() => { setDivInout(true); }} style={{marginRight:"10px"}}>Input</button>
-            <button className="btn"onClick = {() => { setDivInout(true); }} >Expected Output</button>
+            <button className="btn" onClick = {() => { setDivInout(true); }} style={{marginRight:"10px"}}>Edit/View Test cases</button>
+            <button className="btn" onClick = {() => { setDivInout(true); }} style={{backgroundColor:"green", color:"white !important"}}>Run test cases</button>
           </div>
         </div>
         {divInout ? 
           <motion.div         
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ type:"tween",duration: 0.2 }} 
+          transition={{ type:"tween", duration: 0.2 }} 
           className="inoutTextarea">
-
              <textarea className="ps_inout" onChange={setpsInput} value={psInput}/>
              <textarea className="ps_inout" onChange={setpsOutput} value={psOutput}/>
           </motion.div> : ""}
