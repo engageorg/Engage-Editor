@@ -1,11 +1,10 @@
-import React, { useRef } from "react";
+import React from "react";
 import axios from "axios";
 import { cfEndMarkup, cfMarkup } from "./codeforcesTemplate";
 import { useDispatch, useSelector } from "react-redux";
 import { updateSampleTests } from "../../actions";
 import { motion } from "framer-motion/dist/framer-motion";
 import EditorPS from "./editor";
-import Footer from "../../Components/editorFooter";
 import { useState } from "react";
 import "./index.css";
 import Split from "react-split";
@@ -17,10 +16,8 @@ let globalUrl =
     : "https://engage-editor-backend.herokuapp.com";
 
 function Problem(props) {
-  const file = useSelector((state) => state.file);
   const dispatch = useDispatch();
   const editorLang = useSelector((state) => state.editorLang);
-  const editorRef = useRef(null);
   const [url, setUrl] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -72,7 +69,7 @@ function Problem(props) {
           </Split>
         </div>
       </motion.div>
-      <Footer fileName={file.name} editor={editorRef} editorLang={editorLang} />
+      
     </>
   );
 }

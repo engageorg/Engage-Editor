@@ -1,5 +1,6 @@
 .texteditor_footer {
     width: 100vw;
+    left: 0;
     position: absolute;
     height: 2.6vh;
     background-color: var(--footerbackground);
