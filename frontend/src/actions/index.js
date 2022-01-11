@@ -72,3 +72,10 @@ export const updateSampleTests = (sample) => {
         sampleTests : sample
     }
 }
+
+export const sampleTestOutput = (output) => {
+    return {
+        type : "sampleTestsOutput",
+        output: output
+    }
+}

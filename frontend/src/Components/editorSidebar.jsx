@@ -6,6 +6,7 @@ import { runCode } from "../actions/outputAction";
 import { useCookies } from "react-cookie";
 import Modal from 'react-modal';
 import axios from "axios";
+import { sampleTestOutput } from "../actions";
 import { motion } from "framer-motion/dist/framer-motion";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -41,6 +42,7 @@ function Sidebar() {
   const [copyUrl, setCopyUrl] = useState("");
   const file = useSelector((state) => state.file);
   const samples = useSelector((state) => state.samples);
+  const testOutput = useSelector((state) => state.testOutput);
   const inout = useSelector((state) => state.inout);
   const editorLang = useSelector((state) => state.editorLang);
   const userName = useSelector((state) => state.user);
@@ -175,6 +177,9 @@ function Sidebar() {
     dispatch(
       runCode(file.content, editorLang, inout[0].content, samples)
     ).then((e) => {
+      console.log(e.data)
+      dispatch(sampleTestOutput(e.data))
+      console.log(testOutput) 
       inout[1].content = e.data.output;
       const data = {
         output: e.data.output,

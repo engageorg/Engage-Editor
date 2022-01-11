@@ -2,6 +2,7 @@ import files, { editorLang } from "./filenameSelection";
 import username from "./User";
 import inoutValue from "./inoutValue";
 import sampleTests from "./sampleTests";
+import testCasesOutput from "./testCasesOutput";
 import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
@@ -9,7 +10,8 @@ const allReducers = combineReducers({
     user : username,
     inout : inoutValue,
     editorLang,
-    samples:sampleTests
+    samples:sampleTests,
+    testOutput:testCasesOutput
 })
 
 export default allReducers;
