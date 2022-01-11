@@ -72,10 +72,11 @@ router.post('/', async(req, res, next) => {
      : fetch2;
     fetch3.then(result => {
       //result is a array
-      let output = []
+      let output = {o1:'', o2:'', o3:''}
       console.log(result)
       if(result.length){
-        output = {o1:result[0].output, o2:result[1].output, o3:''}
+        output.o1=result[0].output
+        output.o2=result[1].output
           if(result[2]){
             output.o3 = result[2].output
           }
@@ -83,7 +84,7 @@ router.post('/', async(req, res, next) => {
         }
       //result is a object
       else{
-        output = {o1:result.output, o2:'', o3:''}
+        output.o1 = result.output       
         res.send(output)
       }
     })

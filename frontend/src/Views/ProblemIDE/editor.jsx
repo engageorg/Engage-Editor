@@ -8,14 +8,18 @@ import { DSAFiles } from "../../reducers/filenameSelection";
 import "./editor.css";
 
 function EditorPS(){
+    console.log("WORKING")
     const [divInout, setDivInout] = useState(false);
     const file = useSelector((state) => state.file);
     const editorLang = useSelector((state) => state.editorLang);
     const editorRef = useRef(null);
     const samples = useSelector((state) => state.samples);
+    const testOutput = useSelector((state) => state.testOutput);
     const dispatch = useDispatch();
     const [psInput, setpsInput] = useState("Please Import Problem Statement to see input here");
     const [psOutput, setpsOutput] = useState("Please Import Problem Statement to see Expected Output here");
+    const [yrOutput, setyrOutput] = useState("Your Output");
+    const [exOutput, setexOutput] = useState("Expected Output");
     let snippet;
     switch (file.name.split(".").pop()) {
       case "py":
@@ -137,12 +141,12 @@ function EditorPS(){
     useEffect(() => {
       if(document.getElementsByClassName("inoutTextarea")[0]){
         if(samples[0].i1 !== ""){
-          setpsInput(samples[0].i1);
-          setpsOutput(samples[0].o1);
+          setpsInput(samples[0].i1 + samples[1].i2 + samples[2].i3);
+          setpsOutput(samples[0].o1 + " " + samples[1].o2 + " " + samples[2].o3);
         }
         document.getElementsByClassName("inoutTextarea")[0].scrollIntoView();
       }
-    }, [divInout])
+    }, [samples])
  
     return(
       <div style={{overflow:"auto", height: "calc(100vh - 2.4vh)"}}>
@@ -171,6 +175,15 @@ function EditorPS(){
              <textarea className="ps_inout" onChange={setpsInput} value={psInput}/>
              <textarea className="ps_inout" onChange={setpsOutput} value={psOutput}/>
           </motion.div> : ""}
+          <textarea style={{width:"900px"}} defaultValue="success" readOnly/>
+          <motion.div         
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ type:"tween", duration: 0.2 }} 
+          className="inoutTextarea">
+             <textarea className="ps_inout" defaultValue={yrOutput}/>
+             <textarea className="ps_inout" defaultValue={exOutput}/>
+          </motion.div> 
           <Footer fileName={file.name} editor={editorRef} editorLang={editorLang} />
         </div>
     )
