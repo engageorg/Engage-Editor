@@ -3,20 +3,74 @@ const router = express.Router();
 const fetch = require('node-fetch');
 
 router.post('/', async(req, res, next) => {
-  //if(req.body.in)
-  const body  = {
+  let body  = {
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    ...req.body
   }
-  console.log(req.body)
-  console.log(body)
-  fetch('https://api.jdoodle.com/v1/execute', {
-    method: 'POST',
-    body: JSON.stringify(body),
-    headers: { 'Content-Type': 'application/json' }
-  }).then(res => res.json())
-  .then(json => res.json(json));
+  let body1  = {
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+  }
+  let body2  = {
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+  }
+  
+  if((req.body.stdin === '' && req.body.testcases[0].i1 === '') || req.body.stdin !== ''){
+    console.log("WORK")
+    body.stdin = req.body.stdin
+    body.language = req.body.language
+    body.versionIndex = req.body.versionIndex
+    body.script = req.body.script
+    fetch('https://api.jdoodle.com/v1/execute', {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => res.json())
+    .then(json => console.log(json));
+  }else if(req.body.testcases[0].i1 !== ''){
+    //let output = []
+    if(req.body.testcases[0].i1 !== ''){
+      body.stdin = req.body.testcases[0].i1
+      body.language = req.body.language
+      body.versionIndex = req.body.versionIndex
+      body.script = req.body.script
+    }
+    if(req.body.testcases[0].i2 !== ''){
+      body1.stdin = req.body.testcases[1].i2
+      body1.language = req.body.language
+      body1.versionIndex = req.body.versionIndex
+      body1.script = req.body.script
+    }
+    if(req.body.testcases[0].i3 !== ''){
+      body2.stdin = req.body.testcases[2].i3
+      body2.language = req.body.language
+      body2.versionIndex = req.body.versionIndex
+      body2.script = req.body.script
+    }
+    //Promise.all([
+      fetch('https://api.jdoodle.com/v1/execute', {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => res.json())
+    .then(json => console.log(json));
+    fetch('https://api.jdoodle.com/v1/execute', {
+      method: 'POST',
+      body: JSON.stringify(body1),
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => res.json())
+    .then(json => console.log(json));
+    fetch('https://api.jdoodle.com/v1/execute', {
+      method: 'POST',
+      body: JSON.stringify(body2),
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => res.json())
+    .then(json => console.log(json));
+    //])
+    //.then(value => console.log(value)).catch((err) => {
+    //});
+  }
 });
 
 
