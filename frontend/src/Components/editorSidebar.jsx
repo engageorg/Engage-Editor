@@ -7,7 +7,7 @@ import { useCookies } from "react-cookie";
 import Modal from 'react-modal';
 import axios from "axios";
 import { motion } from "framer-motion/dist/framer-motion";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import "./editorSidebar.css";
@@ -33,7 +33,7 @@ const ModalStyles = {
 };
 
 
-function Sidebar(props) {
+function Sidebar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [closeUserOption, setUserOption] = useState(false);
@@ -42,6 +42,7 @@ function Sidebar(props) {
   const file = useSelector((state) => state.file);
   const samples = useSelector((state) => state.samples);
   const inout = useSelector((state) => state.inout);
+  const editorLang = useSelector((state) => state.editorLang);
   const userName = useSelector((state) => state.user);
   const [cookies, setCookie,] = useCookies(["cookie-name"]);
   
@@ -171,9 +172,8 @@ function Sidebar(props) {
 
   const codeRun = () => {
     const id = toast.loading("Running Your Code!");
-    console.log(props.editorLang);
     dispatch(
-      runCode(file.content, props.editorLang, inout[0].content, samples)
+      runCode(file.content, editorLang, inout[0].content, samples)
     ).then((e) => {
       inout[1].content = e.data.output;
       const data = {
@@ -215,12 +215,6 @@ function Sidebar(props) {
 
   return (
     <motion.div style={{zIndex:"5"}} initial={{ x: '-50px', scale: 0.8 }} animate={{ x:'0px', scale: 1 }} transition={{delay:0.1, duration: 0.1 }} className="editor-sidebar">
-      <ToastContainer
-        autoClose={5000}
-        theme="dark"
-        position="bottom-right"
-        closeOnClickrtl={true}
-      />
 
 <div>
       <Modal
