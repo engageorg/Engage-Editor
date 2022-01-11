@@ -142,7 +142,7 @@ function EditorPS(){
         }
         document.getElementsByClassName("inoutTextarea")[0].scrollIntoView();
       }
-    }, [divInout])
+    }, [divInout, samples])
  
     return(
       <div style={{overflow:"auto", height: "calc(100vh - 2.4vh)"}}>
