@@ -215,12 +215,6 @@ function Sidebar(props) {
 
   return (
     <motion.div style={{zIndex:"5"}} initial={{ x: '-50px', scale: 0.8 }} animate={{ x:'0px', scale: 1 }} transition={{delay:0.1, duration: 0.1 }} className="editor-sidebar">
-      <ToastContainer
-        autoClose={5000}
-        theme="dark"
-        position="bottom-right"
-        closeOnClickrtl={true}
-      />
 
 <div>
       <Modal

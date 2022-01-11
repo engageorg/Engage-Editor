@@ -11,6 +11,7 @@ import Login from './Views/Login';
 import Problem from './Views/ProblemIDE';
 import UserCode from './Views/SavedCode';
 import SnippetScreen from './Components/snippet';
+import { ToastContainer } from "react-toastify";
 import EditorSettingsScreen from './Components/editorSettings';
 
 const middleware = [thunk];
@@ -25,6 +26,12 @@ const store = createStore(
 function App() {
   return (
     <div>
+      <ToastContainer
+        autoClose={5000}
+        theme="dark"
+        position="bottom-right"
+        closeOnClickrtl={true}
+      />
      <Provider store={store}>
       <AnimatePresence exitBeforeEnter>
       <BrowserRouter>
