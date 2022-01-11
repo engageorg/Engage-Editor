@@ -87,8 +87,9 @@ function Footer(props) {
     };
     const codeText = document.getElementsByClassName("codeText")[0];
     codeText.addEventListener("keyup", function () {
-      setLn(props.editor.current.getPosition().lineNumber);
-      setCol(props.editor.current.getPosition().column);
+      //commented because creating error in ps screen
+      //setLn(props.editor.current.getPosition().lineNumber);
+      //setCol(props.editor.current.getPosition().column);
     });
   }, []);
 

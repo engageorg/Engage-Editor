@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Editor from "@monaco-editor/react";
+import { addContent} from "../../actions";
 import { motion } from "framer-motion/dist/framer-motion";
 import { DSAFiles } from "../../reducers/filenameSelection";
 import "./editor.css";
@@ -8,6 +9,7 @@ import "./editor.css";
 function EditorPS(){
     const [divInout, setDivInout] = useState(false);
     const samples = useSelector((state) => state.samples);
+    const dispatch = useDispatch();
     const [psInput, setpsInput] = useState("Please Import Problem Statement to see input here");
     const [psOutput, setpsOutput] = useState("Please Import Problem Statement to see Expected Output here");
     useEffect(() => {
@@ -19,6 +21,9 @@ function EditorPS(){
         document.getElementsByClassName("inoutTextarea")[0].scrollIntoView();
       }
     }, [divInout])
+    function handleEditorChange(value) {
+      dispatch(addContent(value));
+    }
     return(
       <div style={{overflow:"auto", height: "calc(100vh - 2.4vh)"}}>
         <div className="ps_editor">
@@ -27,6 +32,7 @@ function EditorPS(){
             height="95vh"
             className="codeText ps_monaco"
             defaultValue={DSAFiles[0].content}
+            onChange={handleEditorChange}
             defaultLanguage="cpp"/>
 
           <div className="ps_editor_buttons">
