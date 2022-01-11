@@ -10,6 +10,8 @@ export const runCode = ( code,language,input,testcases) => async dispatch => {
     console.log(input, language)
     if(language === "python"){
         language = "python3"
+    }if(language === "cpp"){
+        language = "cpp14"
     }
     return await axios.post( url+'runcode', {
         language: language, 
