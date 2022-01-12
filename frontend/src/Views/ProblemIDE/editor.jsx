@@ -153,34 +153,28 @@ function EditorPS(){
     }, [divInout,,outputWindow,samples])
 
     useEffect(() => {
+      console.log(samples[0].o1)
+      console.log(testOutput[0])
+      if(samples[0].o1 === testOutput[0].o1 && testOutput[0].o1 !== ''){
+        setyrOutput(yrOutput => yrOutput  + "Success\n" + testOutput[0].o1 + "\n");
+       }else if(testOutput[0].o1 !== ''){
+        setyrOutput(yrOutput => yrOutput  + "Fail\n" + testOutput[0].o1+ "\n");
+       }
+       if(samples[1].o2 === testOutput[0].o2 && samples[1].o2 !== ''){
+         setyrOutput(yrOutput => yrOutput  + "Success\n" + testOutput[0].o2+  "\n");
+       }else if(testOutput[0].o2 !== ''){
+         setyrOutput(yrOutput => yrOutput  + "Fail\n" + testOutput[0].o2 + "\n");
+       }
+       if(samples[2].o3 === testOutput[0].o3 && samples[2].o3 !== ''){
+         setyrOutput(yrOutput => yrOutput  + "Success\n" + testOutput[0].o3+ "\n");
+       }else if(testOutput[0].o3 !== ''){
+         setyrOutput(yrOutput => yrOutput  + "Fail\n" + testOutput[0].o3+ "\n");
+       } 
       document.documentElement.addEventListener("tcOutput", (e) => {
-        console.log(e.detail.output[0])
         setMessage(e.detail.message)
-        //e.detail.output.map(output => {
-        //  console.log(output)
-        //})
-        console.log(sampleOutput[0].o1)
-        console.log(e.detail.output[0].o1)
-
-        if(sampleOutput[0].o1 === e.detail.output[0].o1){
-          setyrOutput(yrOutput => yrOutput  + "Success" + e.detail.output[0].o1 + "\n");
-        }else{
-          setyrOutput(yrOutput => yrOutput  + "Fail " + e.detail.output[0].o1+ "\n");
-        }
-        // if(samples[1].o2 === e.detail.output[0].o2 && samples[1].o2 !== ''){
-        //   setyrOutput(yrOutput => yrOutput  + "Success" + e.detail.output[0].o2+  "\n");
-        // }else {
-        //   setyrOutput(yrOutput => yrOutput  + "Fail" + e.detail.output[0].o2 + "\n");
-        // }
-        // if(samples[2].o3 === e.detail.output[0].o3 && samples[2].o3 !== ''){
-        //   setyrOutput(yrOutput => yrOutput  + "Success" + e.detail.output[0].o3+ "\n");
-        // }else{
-        //   setyrOutput(yrOutput => yrOutput  + "Fail" + e.detail.output[0].o3+ "\n");
-        // } 
-        //setyrOutput(e.detail.output[0].o1 + '\n' +e.detail.output[0].o2 + '\n' + e.detail.output[0].o3)
         setoutputWindow(e.detail.openWindow)
       })
-    },[sampleOutput])
+    },[testOutput])
     return(
       <div style={{overflow:"auto", height: "calc(100vh - 2.4vh)"}}>
         <div className="ps_editor">

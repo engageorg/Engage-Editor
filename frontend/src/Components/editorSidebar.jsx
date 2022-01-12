@@ -178,7 +178,7 @@ function Sidebar() {
       runCode(file.content, editorLang, inout[0].content, samples)
     ).then((e) => {
       dispatch(sampleTestOutput(e.data.output))
-      const tcevent = new CustomEvent("tcOutput", { detail: {openWindow:true,message:"success", output:e.data.output} });
+      const tcevent = new CustomEvent("tcOutput", { detail: {openWindow:true,message:"success"} });
       document.documentElement.dispatchEvent(tcevent);
       inout[1].content = e.data.output;
       const data = {
