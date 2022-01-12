@@ -19,8 +19,8 @@ function EditorPS(){
     const dispatch = useDispatch();
     const [psInput, setpsInput] = useState("Please Import Problem Statement to see input here");
     const [psOutput, setpsOutput] = useState("Please Import Problem Statement to see Expected Output here");
-    const [yrOutput] = useState("Your Output");
-    const [exOutput] = useState("Expected Output");
+    const [yrOutput, setyrOutput] = useState("Your Output");
+    const [exOutput, setexOutput] = useState("Expected Output");
     let snippet;
     switch (file.name.split(".").pop()) {
       case "py":
