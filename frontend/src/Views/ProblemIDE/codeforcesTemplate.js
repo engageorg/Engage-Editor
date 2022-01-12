@@ -171,7 +171,7 @@ export const cfMarkup = `
         <script id="nocomb.ace-builds/ext-modelist.js" src="//codeforces.org/s/44704/js/ace-builds/ext-modelist.js" type="text/javascript"></script>
  <style>
     body{
-    background-color: #080808;
+    // background-color: #080808;
     background-attachment: fixed;
     background-size: cover;
     }
