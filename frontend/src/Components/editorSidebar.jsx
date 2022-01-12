@@ -179,7 +179,8 @@ function Sidebar() {
     ).then((e) => {
       console.log(e.data)
       dispatch(sampleTestOutput(e.data))
-      console.log(testOutput) 
+      const tcevent = new CustomEvent("tcOutput", { detail: {openWindow:true,message:"success", output:e.data} });
+      document.documentElement.dispatchEvent(tcevent);
       inout[1].content = e.data.output;
       const data = {
         output: e.data.output,

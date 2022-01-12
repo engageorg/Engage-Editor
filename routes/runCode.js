@@ -27,7 +27,7 @@ router.post('/', async(req, res, next) => {
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json())
-    .then(json => console.log(json));
+    .then(json => res.send(json));
   }else if(req.body.testcases[0].i1 !== ''){
     if(req.body.testcases[0].i1 !== ''){
       body.stdin = req.body.testcases[0].i1
@@ -82,7 +82,6 @@ router.post('/', async(req, res, next) => {
           }
           res.send(output)
         }
-      //result is a object
       else{
         output.o1 = result.output       
         res.send(output)

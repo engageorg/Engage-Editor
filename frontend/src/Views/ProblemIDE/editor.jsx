@@ -10,6 +10,8 @@ import "./editor.css";
 function EditorPS(){
     console.log("WORKING")
     const [divInout, setDivInout] = useState(false);
+    const [outputWindow, setoutputWindow] = useState(false);
+    const [message, setMessage] = useState('');
     const file = useSelector((state) => state.file);
     const editorLang = useSelector((state) => state.editorLang);
     const editorRef = useRef(null);
@@ -146,7 +148,13 @@ function EditorPS(){
         }
         document.getElementsByClassName("inoutTextarea")[0].scrollIntoView();
       }
-    }, [divInout, samples])
+      document.documentElement.addEventListener("tcOutput", (e) => {
+        console.log(e.detail.output)
+        setMessage(e.detail.message)
+        setyrOutput(e.detail.output.o1 + '\n' +e.detail.output.o2 + '\n' + e.detail.output.o3)
+        setoutputWindow(e.detail.openWindow)
+      })
+    }, [divInout,outputWindow,samples])
  
     return(
       <div style={{overflow:"auto", height: "calc(100vh - 2.4vh)"}}>
@@ -175,15 +183,30 @@ function EditorPS(){
              <textarea className="ps_inout" onChange={setpsInput} value={psInput}/>
              <textarea className="ps_inout" onChange={setpsOutput} value={psOutput}/>
           </motion.div> : ""}
-          <textarea style={{width:"900px"}} defaultValue="success" readOnly/>
-          <motion.div         
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ type:"tween", duration: 0.2 }} 
-          className="inoutTextarea">
-             <textarea className="ps_inout" defaultValue={yrOutput}/>
-             <textarea className="ps_inout" defaultValue={exOutput}/>
-          </motion.div> 
+          {outputWindow ?          <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ type:"tween", duration: 0.2 }} 
+                      className="inoutTextarea"
+          >
+            <textarea className="ps_inout" style={{height:"6vh", width:"80vh"}} defaultValue={message} readOnly/>
+          </motion.div> : ''}
+
+          {outputWindow ? 
+            <motion.div         
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type:"tween", duration: 0.2 }} 
+            className="inoutTextarea"
+            >
+
+              <textarea className="ps_inout" onChange={setyrOutput} value={yrOutput}/>
+              <textarea className="ps_inout" onChange={setpsOutput} value={psOutput}/>
+
+
+            </motion.div> 
+          : 
+          ''}
           <Footer fileName={file.name} editor={editorRef} editorLang={editorLang} />
         </div>
     )

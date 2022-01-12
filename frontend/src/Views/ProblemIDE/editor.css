@@ -25,6 +25,13 @@
   color: var(--sidenavcolor);
 }
 
+.outWindow{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .inoutTextarea{
   padding: 10px;
   display: flex;
