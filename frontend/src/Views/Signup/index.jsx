@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from 'framer-motion/dist/framer-motion';
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const env = process.env.NODE_ENV; // current environment
@@ -61,7 +61,6 @@ export default function SignUp() {
   return (
     <motion.div initial= {{opacity:0, scale: 0.8 }} animate={{opacity:1, scale: 1}} transition= {{duration: 0.2}}>
       <div className="row full-height justify-content-center signup-screen">
-        <ToastContainer/>
         <div className="col-12 text-center align-self-center py-5">
           <div>
             <div className="card-3d-wrap mx-auto">

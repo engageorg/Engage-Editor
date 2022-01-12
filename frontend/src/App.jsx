@@ -13,6 +13,8 @@ import UserCode from './Views/SavedCode';
 import SnippetScreen from './Components/snippet';
 import { ToastContainer } from "react-toastify";
 import EditorSettingsScreen from './Components/editorSettings';
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-VQGDT6VH51');
 
 const middleware = [thunk];
 
