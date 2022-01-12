@@ -72,19 +72,19 @@ router.post('/', async(req, res, next) => {
      : fetch2;
     fetch3.then(result => {
       //result is a array
-      let output = {o1:'', o2:'', o3:''}
+      let output = [{o1:'', o2:'', o3:''}]
       console.log(result)
-      if(result.length){
-        output.o1=result[0].output
-        output.o2=result[1].output
+       if(result.length){
+        output[0].o1=result[0].output
+        output[0].o2=result[1].output
           if(result[2]){
-            output.o3 = result[2].output
+            output[0].o3 = result[2].output
           }
-          res.send(output)
+          res.send({output})
         }
       else{
-        output.o1 = result.output       
-        res.send(output)
+        output[0].o1 = result.output       
+        res.send({output})
       }
     })
   }

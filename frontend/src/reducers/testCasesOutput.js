@@ -1,10 +1,10 @@
-let sampleTestOutput = 
+const sampleTestOutput = 
 
-{
-o1:'',
-o2:'',
-o3:''
-}
+[{
+"o1":'',
+"o2":'',
+"o3":''
+}]
 
 
 const testCasesOutput = (state = sampleTestOutput, action) => {

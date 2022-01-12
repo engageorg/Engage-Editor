@@ -8,18 +8,21 @@ import { DSAFiles } from "../../reducers/filenameSelection";
 import "./editor.css";
 
 function EditorPS(){
-    console.log("WORKING")
     const [divInout, setDivInout] = useState(false);
     const [outputWindow, setoutputWindow] = useState(false);
     const [message, setMessage] = useState('');
     const file = useSelector((state) => state.file);
+    const testOutput = useSelector((state) => state.testOutput);
     const editorLang = useSelector((state) => state.editorLang);
     const editorRef = useRef(null);
     const samples = useSelector((state) => state.samples);
+    console.log(samples)
+    const sampleOutput = samples
+    console.log(sampleOutput)
     const dispatch = useDispatch();
     const [psInput, setpsInput] = useState("Please Import Problem Statement to see input here");
     const [psOutput, setpsOutput] = useState("Please Import Problem Statement to see Expected Output here");
-    const [yrOutput, setyrOutput] = useState("Your Output");
+    const [yrOutput, setyrOutput] = useState('');
     const [exOutput, setexOutput] = useState("Expected Output");
     let snippet;
     switch (file.name.split(".").pop()) {
@@ -147,14 +150,37 @@ function EditorPS(){
         }
         document.getElementsByClassName("inoutTextarea")[0].scrollIntoView();
       }
+    }, [divInout,,outputWindow,samples])
+
+    useEffect(() => {
       document.documentElement.addEventListener("tcOutput", (e) => {
-        console.log(e.detail.output)
+        console.log(e.detail.output[0])
         setMessage(e.detail.message)
-        setyrOutput(e.detail.output.o1 + '\n' +e.detail.output.o2 + '\n' + e.detail.output.o3)
+        //e.detail.output.map(output => {
+        //  console.log(output)
+        //})
+        console.log(sampleOutput[0].o1)
+        console.log(e.detail.output[0].o1)
+
+        if(sampleOutput[0].o1 === e.detail.output[0].o1){
+          setyrOutput(yrOutput => yrOutput  + "Success" + e.detail.output[0].o1 + "\n");
+        }else{
+          setyrOutput(yrOutput => yrOutput  + "Fail " + e.detail.output[0].o1+ "\n");
+        }
+        // if(samples[1].o2 === e.detail.output[0].o2 && samples[1].o2 !== ''){
+        //   setyrOutput(yrOutput => yrOutput  + "Success" + e.detail.output[0].o2+  "\n");
+        // }else {
+        //   setyrOutput(yrOutput => yrOutput  + "Fail" + e.detail.output[0].o2 + "\n");
+        // }
+        // if(samples[2].o3 === e.detail.output[0].o3 && samples[2].o3 !== ''){
+        //   setyrOutput(yrOutput => yrOutput  + "Success" + e.detail.output[0].o3+ "\n");
+        // }else{
+        //   setyrOutput(yrOutput => yrOutput  + "Fail" + e.detail.output[0].o3+ "\n");
+        // } 
+        //setyrOutput(e.detail.output[0].o1 + '\n' +e.detail.output[0].o2 + '\n' + e.detail.output[0].o3)
         setoutputWindow(e.detail.openWindow)
       })
-    }, [divInout,outputWindow,samples])
- 
+    },[sampleOutput])
     return(
       <div style={{overflow:"auto", height: "calc(100vh - 2.4vh)"}}>
         <div className="ps_editor">
