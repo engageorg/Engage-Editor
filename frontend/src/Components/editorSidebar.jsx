@@ -42,7 +42,6 @@ function Sidebar() {
   const [copyUrl, setCopyUrl] = useState("");
   const file = useSelector((state) => state.file);
   const samples = useSelector((state) => state.samples);
-  const testOutput = useSelector((state) => state.testOutput);
   const inout = useSelector((state) => state.inout);
   const editorLang = useSelector((state) => state.editorLang);
   const userName = useSelector((state) => state.user);

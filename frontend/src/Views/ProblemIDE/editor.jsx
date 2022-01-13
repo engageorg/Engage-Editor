@@ -23,7 +23,6 @@ function EditorPS(){
     const [psInput, setpsInput] = useState("Please Import Problem Statement to see input here");
     const [psOutput, setpsOutput] = useState("Please Import Problem Statement to see Expected Output here");
     const [yrOutput, setyrOutput] = useState('');
-    const [exOutput, setexOutput] = useState("Expected Output");
     let snippet;
     switch (file.name.split(".").pop()) {
       case "py":
@@ -150,7 +149,7 @@ function EditorPS(){
         }
         document.getElementsByClassName("inoutTextarea")[0].scrollIntoView();
       }
-    }, [divInout,,outputWindow,samples])
+    }, [divInout, outputWindow, samples])
 
     useEffect(() => {
       console.log(samples[0].o1)
