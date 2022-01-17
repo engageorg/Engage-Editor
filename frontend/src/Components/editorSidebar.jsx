@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { addFile, loginUser } from "../actions";
 import { runCode } from "../actions/outputAction";
 import { useCookies } from "react-cookie";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import axios from "axios";
 import { sampleTestOutput } from "../actions";
 import { motion } from "framer-motion/dist/framer-motion";
@@ -15,24 +15,23 @@ import "./editorSidebar.css";
 import { Link } from "react-router-dom";
 
 const env = process.env.NODE_ENV; // current environment
-let url
-if(env === "development") {
-    url = 'http://localhost:5000'
-}else{
-    url = 'https://engage-editor-backend.herokuapp.com' 
+let url;
+if (env === "development") {
+  url = "http://localhost:5000";
+} else {
+  url = "https://engage-editor-backend.herokuapp.com";
 }
 
 const ModalStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
   },
 };
-
 
 function Sidebar() {
   const dispatch = useDispatch();
@@ -45,16 +44,18 @@ function Sidebar() {
   const inout = useSelector((state) => state.inout);
   const editorLang = useSelector((state) => state.editorLang);
   const userName = useSelector((state) => state.user);
-  const [cookies, setCookie,] = useCookies(["cookie-name"]);
-  
+  const [cookies, setCookie] = useCookies(["cookie-name"]);
+
   function openModal() {
-    axios.post(url+'/share',{
-      code:file.content,
-      input:inout[0].content,
-      output:inout[1].content
-    }).then(res => {
-      setCopyUrl(window.location +res.data.response._id)
-    })
+    axios
+      .post(url + "/share", {
+        code: file.content,
+        input: inout[0].content,
+        output: inout[1].content,
+      })
+      .then((res) => {
+        setCopyUrl(window.location + res.data.response._id);
+      });
     setIsOpen(true);
   }
 
@@ -63,14 +64,12 @@ function Sidebar() {
   }
 
   const handleLogout = () => {
-    let logoutReq = axios.get(
-      url+`/logout?id=${cookies.sessId}`
-    );
+    let logoutReq = axios.get(url + `/logout?id=${cookies.sessId}`);
 
     const id = toast.loading("Logging you out!");
 
     logoutReq.then((response) => {
-      console.log(response)
+      console.log(response);
       if (response.data.status === 200) {
         setCookie("sessId", response.data.sessId);
         dispatch(loginUser("Engage User"));
@@ -155,94 +154,106 @@ function Sidebar() {
     element.click();
 
     document.body.removeChild(element);
-  }
+  };
 
   const handleCopy = async () => {
     if (!navigator.clipboard) {
-      alert("Clipboard API not available")
-      toast.error("Clipboard API not available")
-      return
+      alert("Clipboard API not available");
+      toast.error("Clipboard API not available");
+      return;
     }
     try {
-      await navigator.clipboard.writeText(copyUrl)
-      toast.success("Link Copied to Clipboard")
+      await navigator.clipboard.writeText(copyUrl);
+      toast.success("Link Copied to Clipboard");
     } catch (err) {
-      toast.error('Failed to copy!', err)
+      toast.error("Failed to copy!", err);
     }
-  }
+  };
 
   const codeRun = () => {
     const id = toast.loading("Running Your Code!");
-    dispatch(
-      runCode(file.content, editorLang, inout[0].content, samples)
-    ).then((e) => {
-      dispatch(sampleTestOutput(e.data.output))
-      const tcevent = new CustomEvent("tcOutput", { detail: {openWindow:true,message:"success"} });
-      document.documentElement.dispatchEvent(tcevent);
-      inout[1].content = e.data.output;
-      const data = {
-        output: e.data.output,
-      };
-      const event = new CustomEvent("output", { detail: data });
-      document.documentElement.dispatchEvent(event);
-      toast.update(id, {
-        render: "Hurry!",
-        type: "success",
-        isLoading: false,
-        autoClose: 1000,
-        closeButton: true,
-      });
-    });
-  }
+    dispatch(runCode(file.content, editorLang, inout[0].content, samples)).then(
+      (e) => {
+        dispatch(sampleTestOutput(e.data.output));
+        const tcevent = new CustomEvent("tcOutput", {
+          detail: { openWindow: true, message: "success" },
+        });
+        document.documentElement.dispatchEvent(tcevent);
+        inout[1].content = e.data.output;
+        const data = {
+          output: e.data.output,
+        };
+        const event = new CustomEvent("output", { detail: data });
+        document.documentElement.dispatchEvent(event);
+        toast.update(id, {
+          render: "Hurry!",
+          type: "success",
+          isLoading: false,
+          autoClose: 1000,
+          closeButton: true,
+        });
+      }
+    );
+  };
 
   useEffect(() => {
     let userOption = false;
     document.documentElement.addEventListener("click", (e) => {
-      if(e.target.className !== 'far fa-user'){
+      if (e.target.className !== "far fa-user") {
         if (userOption === true) {
-          console.log("WORKING")
-          setUserOption(false)
+          console.log("WORKING");
+          setUserOption(false);
           userOption = false;
         }
       }
-    })
-    document.getElementsByClassName("profile")[0].onclick = function (e) {
+    });
+    document.getElementsByClassName("profile")[0].onclick = function(e) {
       if (userOption === false) {
-        setUserOption(true)
+        setUserOption(true);
         userOption = true;
       } else {
-        setUserOption(false)
+        setUserOption(false);
         userOption = false;
       }
     };
   }, []);
 
   return (
-    <motion.div style={{zIndex:"5"}} initial={{ x: '-50px', scale: 0.8 }} animate={{ x:'0px', scale: 1 }} transition={{delay:0.1, duration: 0.1 }} className="editor-sidebar">
-
-<div>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={ModalStyles}
-        contentLabel="Example Modal"
-        overlayClassName="Overlay"
-        ariaHideApp={false}
-      >
-        <button onClick={closeModal}>close</button>
-        <input id="url_input" value={copyUrl}/>
-        <button onClick={handleCopy}>Copy Url</button>
-        
-      </Modal>
-    </div>
+    <motion.div
+      style={{ zIndex: "5" }}
+      initial={{ x: "-50px", scale: 0.8 }}
+      animate={{ x: "0px", scale: 1 }}
+      transition={{ delay: 0.1, duration: 0.1 }}
+      className="editor-sidebar"
+    >
+      <div>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={ModalStyles}
+          contentLabel="Example Modal"
+          overlayClassName="Overlay"
+          ariaHideApp={false}
+        >
+          <button onClick={closeModal}>close</button>
+          <input id="url_input" value={copyUrl} />
+          <button onClick={handleCopy}>Copy Url</button>
+        </Modal>
+      </div>
       <div className="upper-icons">
-        <button className="run_code sidenav-buttons" data-text="Run Code" onClick={codeRun}>
+        <button
+          className="run_code sidenav-buttons"
+          data-text="Run Code"
+          onClick={codeRun}
+        >
           <i className="fas fa-play" style={{ color: "green" }}></i>
         </button>
         <button
           className="suprise_button sidenav-buttons"
           data-text="Import Problem Statement"
-          onClick={() => {navigate('/ps');}}
+          onClick={() => {
+            navigate("/ps");
+          }}
         >
           <i className="fas fa-file-import"></i>
         </button>
@@ -281,7 +292,16 @@ function Sidebar() {
         </button>
       </div>
 
-      {closeUserOption ? <motion.div initial={{ x: '-50px', scale: 0.8 }} animate={{ x:'0px', scale: 1 }} transition={{type:"tween", duration: 0.1 }} className="user-option">{logButton(userName)}</motion.div>: null}
+      {closeUserOption ? (
+        <motion.div
+          initial={{ x: "-50px", scale: 0.8 }}
+          animate={{ x: "0px", scale: 1 }}
+          transition={{ type: "tween", duration: 0.1 }}
+          className="user-option"
+        >
+          {logButton(userName)}
+        </motion.div>
+      ) : null}
     </motion.div>
   );
 }
