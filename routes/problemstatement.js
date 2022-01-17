@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
     const sto2 = $('.problem-statement > div:nth-child(5) > div:nth-child(2) > div:nth-child(4) > pre').text()
     const sti3 = $('.problem-statement > div:nth-child(5) > div:nth-child(2) > div:nth-child(5) > pre').text()
     const sto3 = $('.problem-statement > div:nth-child(5) > div:nth-child(2) > div:nth-child(6) > pre').text()
-    const sampleTests = [{i1:sti1,o1:sto1},{i2:sti2,o2:sto2},{i3:sti3,o3:sto3}]
+    const sampleTests = [{i:sti1,o:sto1},{i:sti2,o:sto2},{i:sti3,o:sto3}]
     //Time limit
     const time_limit = $('.problem-statement > div:nth-child(1) > .time-limit').text().replace('time limit per test', '');
 

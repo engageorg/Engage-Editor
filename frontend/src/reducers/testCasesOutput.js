@@ -1,9 +1,9 @@
 const sampleTestOutput = 
 
 [{
-"o1":'',
-"o2":'',
-"o3":''
+"o":'',
+"o":'',
+"o":''
 }]
 
 

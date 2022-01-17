@@ -15,9 +15,9 @@
 }
 
 .ps_inout{
-  height: 30vh;
+  height: 10vh;
   margin: 5px;
-  width: 40vh;
+  width: 70vh;
   border-radius: 15px;
   resize: none;
   padding: 10px;
@@ -36,4 +36,8 @@
   padding: 10px;
   display: flex;
   justify-content: center;
+}
+
+.inoutCard{
+  border: 4px solid red;
 }

@@ -152,23 +152,24 @@ function EditorPS(){
     }, [divInout, outputWindow, samples])
 
     useEffect(() => {
-      console.log(samples[0].o1)
-      console.log(testOutput[0])
-      if(samples[0].o1 === testOutput[0].o1 && testOutput[0].o1 !== ''){
-        setyrOutput(yrOutput => yrOutput  + "Success\n" + testOutput[0].o1 + "\n");
-       }else if(testOutput[0].o1 !== ''){
-        setyrOutput(yrOutput => yrOutput  + "Fail\n" + testOutput[0].o1+ "\n");
-       }
-       if(samples[1].o2 === testOutput[0].o2 && samples[1].o2 !== ''){
-         setyrOutput(yrOutput => yrOutput  + "Success\n" + testOutput[0].o2+  "\n");
-       }else if(testOutput[0].o2 !== ''){
-         setyrOutput(yrOutput => yrOutput  + "Fail\n" + testOutput[0].o2 + "\n");
-       }
-       if(samples[2].o3 === testOutput[0].o3 && samples[2].o3 !== ''){
-         setyrOutput(yrOutput => yrOutput  + "Success\n" + testOutput[0].o3+ "\n");
-       }else if(testOutput[0].o3 !== ''){
-         setyrOutput(yrOutput => yrOutput  + "Fail\n" + testOutput[0].o3+ "\n");
-       } 
+      // console.log(samples[0].o1)
+      // console.log(testOutput[0])
+      // if(samples[0].o1 === testOutput[0].o1 && testOutput[0].o1 !== ''){
+      //   setyrOutput(yrOutput => yrOutput  + "Success\n" + testOutput[0].o1 + "\n");
+      //  }else if(testOutput[0].o1 !== ''){
+      //   setyrOutput(yrOutput => yrOutput  + "Fail\n" + testOutput[0].o1+ "\n");
+      //  }
+      //  if(samples[1].o2 === testOutput[0].o2 && samples[1].o2 !== ''){
+      //    setyrOutput(yrOutput => yrOutput  + "Success\n" + testOutput[0].o2+  "\n");
+      //  }else if(testOutput[0].o2 !== ''){
+      //    setyrOutput(yrOutput => yrOutput  + "Fail\n" + testOutput[0].o2 + "\n");
+      //  }
+      //  if(samples[2].o3 === testOutput[0].o3 && samples[2].o3 !== ''){
+      //    setyrOutput(yrOutput => yrOutput  + "Success\n" + testOutput[0].o3+ "\n");
+      //  }else if(testOutput[0].o3 !== ''){
+      //    setyrOutput(yrOutput => yrOutput  + "Fail\n" + testOutput[0].o3+ "\n");
+      //  } 
+      setyrOutput(testOutput)
       document.documentElement.addEventListener("tcOutput", (e) => {
         setMessage(e.detail.message)
         setoutputWindow(e.detail.openWindow)
@@ -210,21 +211,21 @@ function EditorPS(){
             <textarea className="ps_inout" style={{height:"6vh", width:"80vh"}} defaultValue={message} readOnly/>
           </motion.div> : ''}
 
-          {outputWindow ? 
-            <motion.div         
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ type:"tween", duration: 0.2 }} 
-            className="inoutTextarea"
-            >
-
-              <textarea className="ps_inout" onChange={setyrOutput} value={yrOutput}/>
-              <textarea className="ps_inout" onChange={setpsOutput} value={psOutput}/>
-
-
-            </motion.div> 
-          : 
-          ''}
+          {samples.map((element,index) => {
+            if(element.i !== '' && outputWindow) {
+              console.log(yrOutput[index].o)
+              return (
+              <div className="inoutCard" key={index}>
+                  <div>Input</div>
+                  <div className="ps_inout">{element.i}</div>
+                  <div>Expected Output</div>
+                  <div className="ps_inout">{element.o}</div>
+                  <div>Your Output</div>
+                  <div className="ps_inout">{testOutput[index].o}</div>
+              </div>
+              )
+            }
+          })}
           <Footer fileName={file.name} editor={editorRef} editorLang={editorLang} />
         </div>
     )
