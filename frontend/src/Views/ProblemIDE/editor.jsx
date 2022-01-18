@@ -11,6 +11,12 @@ function EditorPS() {
   const [divInout, setDivInout] = useState(false);
   const [outputWindow, setoutputWindow] = useState(false);
   const [message, setMessage] = useState("");
+  const [psInput, setpsInput] = useState("Please Import Problem Statement to see input here");
+  const [psOutput, setpsOutput] = useState("Please Import Problem Statement to see Expected Output here");
+  const [yrOutput, setyrOutput] = useState("");
+  const [crStdin, setcrStdin] = useState("");
+  const [crExOut, setcrExOut] = useState("");
+  const [crYrOut, setcrYrOut] = useState("");
   const file = useSelector((state) => state.file);
   const testOutput = useSelector((state) => state.testOutput);
   const editorLang = useSelector((state) => state.editorLang);
@@ -20,13 +26,6 @@ function EditorPS() {
   const sampleOutput = samples;
   console.log(sampleOutput);
   const dispatch = useDispatch();
-  const [psInput, setpsInput] = useState(
-    "Please Import Problem Statement to see input here"
-  );
-  const [psOutput, setpsOutput] = useState(
-    "Please Import Problem Statement to see Expected Output here"
-  );
-  const [yrOutput, setyrOutput] = useState("");
   let snippet;
   switch (file.name.split(".").pop()) {
     case "py":
@@ -156,29 +155,23 @@ function EditorPS() {
   }, [divInout, outputWindow, samples]);
 
     useEffect(() => {
-      // console.log(samples[0].o1)
-      // console.log(testOutput[0])
-      // if(samples[0].o1 === testOutput[0].o1 && testOutput[0].o1 !== ''){
-      //   setyrOutput(yrOutput => yrOutput  + "Success\n" + testOutput[0].o1 + "\n");
-      //  }else if(testOutput[0].o1 !== ''){
-      //   setyrOutput(yrOutput => yrOutput  + "Fail\n" + testOutput[0].o1+ "\n");
-      //  }
-      //  if(samples[1].o2 === testOutput[0].o2 && samples[1].o2 !== ''){
-      //    setyrOutput(yrOutput => yrOutput  + "Success\n" + testOutput[0].o2+  "\n");
-      //  }else if(testOutput[0].o2 !== ''){
-      //    setyrOutput(yrOutput => yrOutput  + "Fail\n" + testOutput[0].o2 + "\n");
-      //  }
-      //  if(samples[2].o3 === testOutput[0].o3 && samples[2].o3 !== ''){
-      //    setyrOutput(yrOutput => yrOutput  + "Success\n" + testOutput[0].o3+ "\n");
-      //  }else if(testOutput[0].o3 !== ''){
-      //    setyrOutput(yrOutput => yrOutput  + "Fail\n" + testOutput[0].o3+ "\n");
-      //  } 
       setyrOutput(testOutput)
       document.documentElement.addEventListener("tcOutput", (e) => {
         setMessage(e.detail.message)
         setoutputWindow(e.detail.openWindow)
       })
+    setcrStdin(samples[0].i)
+    setcrExOut(samples[0].o)
+    setcrYrOut(testOutput[0].o)
     },[testOutput])
+
+    function changeScreen(index){
+      console.log(index)
+      setcrStdin(samples[index].i)
+      setcrExOut(samples[index].o)
+      setcrYrOut(testOutput[index].o)
+    }
+
     return(
       <div style={{overflow:"auto", height: "calc(100vh - 2.4vh)"}}>
         <div className="ps_editor">
@@ -230,22 +223,33 @@ function EditorPS() {
           >
             <textarea className="ps_inout" style={{height:"6vh", width:"80vh"}} defaultValue={message} readOnly/>
           </motion.div> : ''}
-
+          <div className="outputCard">
+          <div className="left">
           {samples.map((element,index) => {
             if(element.i !== '' && outputWindow) {
               console.log(yrOutput[index].o)
               return (
-              <div className="inoutCard" key={index}>
-                  <div>Input</div>
-                  <div className="ps_inout">{element.i}</div>
-                  <div>Expected Output</div>
-                  <div className="ps_inout">{element.o}</div>
-                  <div>Your Output</div>
-                  <div className="ps_inout">{testOutput[index].o}</div>
-              </div>
+                <button key={index+1} onClick={() => changeScreen(index)} className="inoutButton">Sample Test Case {index+1}</button>
               )
             }
           })}
+          </div>
+
+                      <div className={`inoutCard right`}>
+                      <div className="stput">
+                      <div className="inoutTitle">Input</div>
+                      <textarea className="ps_inout" defaultValue={crStdin} readOnly/>
+                      </div>
+                      <div className="expectedOut">
+                      <div className="inoutTitle">Expected Output</div>
+                      <textarea className="ps_inout" defaultValue={crExOut} readOnly />
+                      </div>
+                      <div className="yourOut">
+                      <div className="inoutTitle">Your Output</div>
+                      <textarea className="ps_inout" defaultValue={crYrOut} readOnly/>
+                      </div>
+                    </div>
+          </div>  
           <Footer fileName={file.name} editor={editorRef} editorLang={editorLang} />
         </div>
     )

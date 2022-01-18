@@ -18,7 +18,6 @@
   height: 10vh;
   margin: 5px;
   width: 70vh;
-  border-radius: 15px;
   resize: none;
   padding: 10px;
   background-color: var(--gutterbackground);
@@ -38,6 +37,23 @@
   justify-content: center;
 }
 
-.inoutCard{
-  border: 4px solid red;
+
+.inoutTitle{
+  padding-left: 10px;
+}
+
+
+.inoutButton{
+  background-color: gray;
+  border: 1px black solid;
+}
+
+.left{
+  display: flex;
+  flex-direction: column;
+}
+
+.outputCard{
+  display: flex;
+  flex-direction: row;
 }
