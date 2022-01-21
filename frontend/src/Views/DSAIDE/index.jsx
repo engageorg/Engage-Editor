@@ -99,7 +99,7 @@ function DSA() {
       const description = localStorage.getItem("description");
       const labeltrigger = localStorage.getItem("tabtrigger");
       snippet = localStorage.getItem("snippet");
-      monaco.languages.registerCompletionItemProvider("javascript", {
+      monaco.languages.registerCompletionItemProvider("cpp", {
         provideCompletionItems: () => {
           return {
             suggestions: [
