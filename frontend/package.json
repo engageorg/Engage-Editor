@@ -10,7 +10,7 @@
     "axios": "^0.24.0",
     "firebase": "^9.6.1",
     "framer-motion": "^5.5.5",
-    "nanoid": "^3.1.30",
+    "nanoid": "^3.1.31",
     "react": "^17.0.2",
     "react-animated-modal": "^1.1.1",
     "react-cookie": "^4.1.1",
