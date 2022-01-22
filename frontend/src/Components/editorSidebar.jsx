@@ -87,6 +87,7 @@ function Sidebar() {
   };
 
   const logButton = (user) => {
+    //User not logged in is a Engage User
     if (user !== "Engage User") {
       return (
         <ul>

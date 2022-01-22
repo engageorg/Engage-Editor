@@ -2,17 +2,25 @@ import React from "react";
 import "./style.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./savedCodeTable.css";
 import { useCookies } from "react-cookie";
 import Table from "./savedCodeTable";
-const userCode = [];
+let userCode = [];
+
+let globalUrl =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5000"
+    : "https://engage-editor-backend.herokuapp.com";
+
 
 export default function UserCode() {
   const [codeInfo, setCodeInfo] = useState([]);
   const [cookies] = useCookies(["cookie-name"]);
   useEffect(() => {
     (() => {
+
       axios(
-        `https://engage-editor-backend.herokuapp.com/usercode/${cookies.sessId}`
+        `${globalUrl}/usercode/${cookies.sessId}`
       ).then((response) => {
         if (response.data.status === 200) {
           response.data.code.forEach((code, index) => {
@@ -25,8 +33,9 @@ export default function UserCode() {
               createdAt: code.createdAt,
             });
           });
-          userCode.reverse();
+          //userCode.reverse();
           setCodeInfo(userCode);
+          userCode = []
         } else if (response.data.status === 401) {
           alert(response.data.message);
         }
@@ -36,7 +45,36 @@ export default function UserCode() {
 
   return (
     <>
-      <Table savedCode={codeInfo} />
+      <div className="codetable">
+      <table>
+        <tbody>
+          <tr className="table-header">
+            <th>No.</th>
+            <th>Name</th>
+            <th>Language</th>
+            <th>Created At</th>
+          </tr>
+          {codeInfo.map((lecture, key) => {
+            return (
+              <tr key={key} id={lecture.id} className="table-row">
+                <td>
+                  <a href={`usercode/${lecture.id}`}>{lecture.no}</a>
+                </td>
+                <td>
+                  <a href={`usercode/${lecture.id}`}>{lecture.name}</a>
+                </td>
+                <td>
+                  <a href={`usercode/${lecture.id}`}>{lecture.language}</a>
+                </td>
+                <td>
+                  <a href={`usercode/${lecture.id}`}>{lecture.createdAt}</a>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
     </>
   );
 }
