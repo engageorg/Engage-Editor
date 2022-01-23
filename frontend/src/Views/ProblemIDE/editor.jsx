@@ -147,8 +147,8 @@ function EditorPS() {
   useEffect(() => {
     if (document.getElementsByClassName("inoutTextarea")[0]) {
       if (samples[0].i1 !== "") {
-        setpsInput(samples[0].i1 + samples[1].i2 + samples[2].i3);
-        setpsOutput(samples[0].o1 + " " + samples[1].o2 + " " + samples[2].o3);
+        setpsInput(samples[0].i + samples[1].i + samples[2].i);
+        setpsOutput(samples[0].o + "\n" + samples[1].o + "\n" + samples[2].o);
       }
       document.getElementsByClassName("inoutTextarea")[0].scrollIntoView();
     }
@@ -159,6 +159,7 @@ function EditorPS() {
       document.documentElement.addEventListener("tcOutput", (e) => {
         setMessage(e.detail.message)
         setoutputWindow(e.detail.openWindow)
+        document.getElementsByClassName("inoutScreen")[0].style.display = "block"
       })
     setcrStdin(samples[0].i)
     setcrExOut(samples[0].o)
@@ -215,27 +216,30 @@ function EditorPS() {
              <textarea className="ps_inout" onChange={setpsInput} value={psInput}/>
              <textarea className="ps_inout" onChange={setpsOutput} value={psOutput}/>
           </motion.div> : ""}
-          {outputWindow ?          <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ type:"tween", duration: 0.2 }} 
-                      className="inoutTextarea"
-          >
-            <textarea className="ps_inout" style={{height:"6vh", width:"80vh"}} defaultValue={message} readOnly/>
-          </motion.div> : ''}
           <div className="outputCard">
           <div className="left">
           {samples.map((element,index) => {
             if(element.i !== '' && outputWindow) {
-              console.log(yrOutput[index].o)
-              return (
-                <button key={index+1} onClick={() => changeScreen(index)} className="inoutButton">Sample Test Case {index+1}</button>
-              )
+              if(samples[0].o === testOutput[0].o){
+                return (
+                  <button key={index+1} onClick={() => changeScreen(index)} className="inoutButton passed">Sample Test Case {index+1} Passed</button>
+                ) 
+              }else{
+                return (
+                  <button key={index+1} onClick={() => changeScreen(index)} className="inoutButton failed">Sample Test Case {index+1} Failed</button>
+                ) 
+              }
             }
           })}
           </div>
-
-                      <div className={`inoutCard right`}>
+        
+          <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ type:"tween", duration: 0.2 }} 
+                      className="inoutScreen"
+          >
+            <div className={`inoutCard right`}>
                       <div className="stput">
                       <div className="inoutTitle">Input</div>
                       <textarea className="ps_inout" defaultValue={crStdin} readOnly/>
@@ -249,6 +253,8 @@ function EditorPS() {
                       <textarea className="ps_inout" defaultValue={crYrOut} readOnly/>
                       </div>
                     </div>
+          </motion.div> 
+
           </div>  
           <Footer fileName={file.name} editor={editorRef} editorLang={editorLang} />
         </div>
