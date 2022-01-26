@@ -200,6 +200,7 @@ function DSA() {
                 className="codeText"
                 defaultValue={snippet}
                 value={file.content}
+                options={{ fontSize: 16, fontWeight: 400}}
                 onMount={handleEditorDidMount}
                 onChange={handleEditorChange}
               />
