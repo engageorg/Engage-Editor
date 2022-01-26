@@ -10,10 +10,9 @@ import "./editor.css";
 function EditorPS() {
   const [divInout, setDivInout] = useState(false);
   const [outputWindow, setoutputWindow] = useState(false);
-  const [message, setMessage] = useState("");
   const [psInput, setpsInput] = useState("Please Import Problem Statement to see input here");
   const [psOutput, setpsOutput] = useState("Please Import Problem Statement to see Expected Output here");
-  const [yrOutput, setyrOutput] = useState("");
+
   const [crStdin, setcrStdin] = useState("");
   const [crExOut, setcrExOut] = useState("");
   const [crYrOut, setcrYrOut] = useState("");
@@ -155,9 +154,8 @@ function EditorPS() {
   }, [divInout, outputWindow, samples]);
 
     useEffect(() => {
-      setyrOutput(testOutput)
+      //setyrOutput(testOutput)
       document.documentElement.addEventListener("tcOutput", (e) => {
-        setMessage(e.detail.message)
         setoutputWindow(e.detail.openWindow)
         document.getElementsByClassName("inoutScreen")[0].style.display = "block"
       })
@@ -220,7 +218,7 @@ function EditorPS() {
           <div className="left">
           {samples.map((element,index) => {
             if(element.i !== '' && outputWindow) {
-              if(samples[0].o === testOutput[0].o){
+              if(samples[index].o === testOutput[index].o) {
                 return (
                   <button key={index+1} onClick={() => changeScreen(index)} className="inoutButton passed">Sample Test Case {index+1} Passed</button>
                 ) 
@@ -230,6 +228,9 @@ function EditorPS() {
                 ) 
               }
             }
+            return (
+              ''
+            )
           })}
           </div>
         

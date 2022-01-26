@@ -4,7 +4,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./savedCodeTable.css";
 import { useCookies } from "react-cookie";
-import Table from "./savedCodeTable";
 let userCode = [];
 
 let globalUrl =
