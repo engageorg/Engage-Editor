@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch} from "react-redux";
 import { updateSampleTests } from "../../actions";
 import { cfEndMarkup, cfMarkup } from "./codeforcesTemplate";
+import { toast } from "react-toastify";
 
 let globalUrl =
   process.env.NODE_ENV === "development"
@@ -12,6 +13,7 @@ let globalUrl =
 function PS() {
     const dispatch = useDispatch();
     const [url, setUrl] = useState("");
+    var id;
     const handleSubmit = (event) => {
       event.preventDefault();
       console.log(event)
@@ -24,6 +26,12 @@ function PS() {
         ifrm.style.height = "100%";
         document.getElementsByClassName("iframe_div")[0].innerHTML = "";
         document.getElementsByClassName("iframe_div")[0].appendChild(ifrm);
+        console.log("loaded")
+        toast.update(id, {
+          render: `loaded`,
+          type: 'success',
+          isLoading: false,
+        });
       });
     };
 
@@ -37,7 +45,7 @@ function PS() {
             }}
             value={url}
           />
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" onClick = {() => {id = toast.loading("Loading your Problem Statement");}}/>
         </form>
         <h1>Insert problem statement link,above to show here</h1>
       </div>
