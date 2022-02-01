@@ -37,17 +37,40 @@ function PS() {
 
     return(
         <div className="iframe_div">
-        <form onSubmit={handleSubmit}>
-          <input
-            className="url_input"
-            onChange={(event) => {
-              setUrl(event.target.value);
-            }}
-            value={url}
-          />
-          <input type="submit" value="Submit" onClick = {() => {id = toast.loading("Loading your Problem Statement");}}/>
+        <div className="row full-height justify-content-center">
+        <div className="col-12 text-center align-self-center py-5">
+          <div>
+            <div className="card-3d-wrap mx-auto">
+              <div className="card-3d-wrapper">
+                <div className="card-front">
+                  <div className="center-wrap">
+                    <div className="section text-center">
+                      <h4 className="mb-4 pb-3">Insert problem statement link</h4>
+                      <div className="form-group">
+                      <form onSubmit={handleSubmit}>
+                      <input
+                        className="url_input form-style"
+                        onChange={(event) => {
+                          setUrl(event.target.value);
+                        }}
+                        value={url}
+                      />
+                        <button id="submit" className="btn mt-4"  onClick = {() => {id = toast.loading("Loading your Problem Statement");}}>Submit</button>
+                        <i className="input-icon uil uil-at">
+                          <i class="far fa-question-circle"></i>
+                        </i>
         </form>
-        <h1>Insert problem statement link,above to show here</h1>
+                      </div>
+                      <br />
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     )
 }

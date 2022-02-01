@@ -118,6 +118,7 @@ h6 span{
   position: absolute;
   border-radius: 6px;
   left: 0;
+  box-shadow: rgba(78, 78, 78, 0.25) 0px 54px 55px, rgba(78, 78, 78, 0.25) 0px -12px 30px, rgba(78, 78, 78, 0.25) 0px 4px 6px, rgba(78, 78, 78, 0.25) 0px 12px 13px, rgba(78, 78, 78, 0.25) 0px -3px 5px;
   top: 0;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -170,7 +171,6 @@ h6 span{
 }
 .form-style:focus,
 .form-style:active {
-  border: none;
   outline: none;
   box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
 }
