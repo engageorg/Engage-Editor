@@ -11,7 +11,7 @@ export const cfMarkup = `
     <meta id="viewport" name="viewport" content="width=device-width, initial-scale=0.01"/>
 
 
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery-1.8.3.js"></script>
     <script type="application/javascript">
         window.standaloneContest = false;
         function adjustViewport() {
@@ -39,8 +39,8 @@ export const cfMarkup = `
     <meta http-equiv="profileName" content="h1">
     <meta name="google-site-verification" content="OTd2dN5x4nS4OPknPI9JFg36fKxjqY0i1PSfFPv_J90"/>
     <meta property="fb:admins" content="100001352546622" />
-    <meta property="og:image" content="//codeforces.org/s/44704/images/codeforces-telegram-square.png" />
-    <link rel="image_src" href="//codeforces.org/s/44704/images/codeforces-telegram-square.png" />
+    <meta property="og:image" content="https://codeforces.org/s/44704/images/codeforces-telegram-square.png" />
+    <link rel="image_src" href="https://codeforces.org/s/44704/images/codeforces-telegram-square.png" />
     <meta property="og:title" content="Problem - 1623E - Codeforces"/>
     <meta property="og:description" content=""/>
     
@@ -58,51 +58,51 @@ export const cfMarkup = `
         <meta name="keywords" content="programming algorithm contest competition informatics olympiads c++ java graphs vkcup" />
     <meta name="robots" content="index, follow" />
 
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/font-awesome.min.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/line-awesome.min.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/font-awesome.min.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/line-awesome.min.css" type="text/css" charset="utf-8" />
 
         <link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Cuprum&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
 
-    <link rel="apple-touch-icon" sizes="57x57" href="//codeforces.org/s/44704/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="//codeforces.org/s/44704/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="//codeforces.org/s/44704/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="//codeforces.org/s/44704/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="//codeforces.org/s/44704/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="//codeforces.org/s/44704/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="//codeforces.org/s/44704/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="//codeforces.org/s/44704/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="//codeforces.org/s/44704/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="//codeforces.org/s/44704/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="//codeforces.org/s/44704/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="//codeforces.org/s/44704/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="//codeforces.org/s/44704/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://codeforces.org/s/44704/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://codeforces.org/s/44704/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://codeforces.org/s/44704/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://codeforces.org/s/44704/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://codeforces.org/s/44704/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://codeforces.org/s/44704/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://codeforces.org/s/44704/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://codeforces.org/s/44704/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://codeforces.org/s/44704/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="https://codeforces.org/s/44704/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://codeforces.org/s/44704/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://codeforces.org/s/44704/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://codeforces.org/s/44704/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="//codeforces.org/s/44704/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="https://codeforces.org/s/44704/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
     <!--CombineResourcesFilter-->
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/prettify.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/clear.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/style.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/ttypography.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/problem-statement.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/second-level-menu.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/roundbox.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/datatable.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/table-form.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/topic.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/jquery.jgrowl.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/facebox.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/jquery.wysiwyg.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/jquery.autocomplete.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/codeforces.datepick.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/colorbox.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/css/jquery.drafts.css" type="text/css" charset="utf-8" />
-        <link rel="stylesheet" href="//codeforces.org/s/44704/css/community.css" type="text/css" charset="utf-8" />
-        <link rel="stylesheet" href="//codeforces.org/s/44704/css/sidebar-menu.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/prettify.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/clear.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/style.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/ttypography.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/problem-statement.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/second-level-menu.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/roundbox.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/datatable.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/table-form.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/topic.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/jquery.jgrowl.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/facebox.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/jquery.wysiwyg.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/jquery.autocomplete.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/codeforces.datepick.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/colorbox.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/css/jquery.drafts.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="https://codeforces.org/s/44704/css/community.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="https://codeforces.org/s/44704/css/sidebar-menu.css" type="text/css" charset="utf-8" />
 
     <!-- MathJax -->
     <script type="text/x-mathjax-config">
@@ -119,42 +119,42 @@ export const cfMarkup = `
     </script>
     <!-- /MathJax -->
 
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/prettify/prettify.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/moment-with-locales.min.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/pushstream.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery.lavalamp.min.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery.jgrowl.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery.swipe.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery.hotkeys.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/facebox.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery.wysiwyg.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/controls/wysiwyg.colorpicker.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/controls/wysiwyg.table.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/controls/wysiwyg.image.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/controls/wysiwyg.link.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery.autocomplete.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/ua-parser.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery.datepick.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery.ie6blocker.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery.colorbox-min.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery.ba-bbq.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/jquery.drafts.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/clipboard.min.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/autosize.min.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/sjcl.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/prettify/prettify.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/pushstream.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery.lavalamp.min.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery.jgrowl.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery.swipe.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/facebox.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery.wysiwyg.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/controls/wysiwyg.colorpicker.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/controls/wysiwyg.table.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/controls/wysiwyg.image.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/controls/wysiwyg.link.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/ua-parser.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery.datepick.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery.ie6blocker.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery.colorbox-min.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery.ba-bbq.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/jquery.drafts.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/clipboard.min.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/autosize.min.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/sjcl.js"></script>
     <script type="text/javascript" src="/scripts/55bc10bbb08da2828994a0de4565d7df/en/codeforces-options.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/codeforces.js?v=20160131"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/EventCatcher.js?v=20160131"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/js/preparedVerdictFormats-en.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/codeforces.js?v=20160131"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/EventCatcher.js?v=20160131"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/js/preparedVerdictFormats-en.js"></script>
     <!--/CombineResourcesFilter-->
 
-    <link rel="stylesheet" href="//codeforces.org/s/44704/markitup/skins/markitup/style.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="//codeforces.org/s/44704/markitup/sets/markdown/style.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/markitup/skins/markitup/style.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://codeforces.org/s/44704/markitup/sets/markdown/style.css" type="text/css" charset="utf-8" />
 
 
-    <script type="text/javascript" src="//codeforces.org/s/44704/markitup/jquery.markitup.js"></script>
-    <script type="text/javascript" src="//codeforces.org/s/44704/markitup/sets/markdown/set.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/markitup/jquery.markitup.js"></script>
+    <script type="text/javascript" src="https://codeforces.org/s/44704/markitup/sets/markdown/set.js"></script>
 
     <!--[if IE]>
     <style>
@@ -166,9 +166,9 @@ export const cfMarkup = `
     <![endif]-->
 
 
-        <script id="nocomb.ace-builds/ace.js" src="//codeforces.org/s/44704/js/ace-builds/ace.js" type="text/javascript"></script>
-        <script id="nocomb.ace-builds/ext-language_tools.js" src="//codeforces.org/s/44704/js/ace-builds/ext-language_tools.js" type="text/javascript"></script>
-        <script id="nocomb.ace-builds/ext-modelist.js" src="//codeforces.org/s/44704/js/ace-builds/ext-modelist.js" type="text/javascript"></script>
+        <script id="nocomb.ace-builds/ace.js" src="https://codeforces.org/s/44704/js/ace-builds/ace.js" type="text/javascript"></script>
+        <script id="nocomb.ace-builds/ext-language_tools.js" src="https://codeforces.org/s/44704/js/ace-builds/ext-language_tools.js" type="text/javascript"></script>
+        <script id="nocomb.ace-builds/ext-modelist.js" src="https://codeforces.org/s/44704/js/ace-builds/ext-modelist.js" type="text/javascript"></script>
  <style>
     body{
     // background-color: #080808;
